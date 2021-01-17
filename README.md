@@ -1,8 +1,6 @@
 # **Building an Instagram Clone Web App**
 This project is part of the SOEN 341 - Software Process class at Concordia University.
 
-![Instagram App](https://en.wikipedia.org/wiki/File:Instagram_logo.svg)
-
 ## **The Task**
 In a team of maximum 7 students, implement an application (Instagram) using any programming language/ scripting language, frameworks, or any other tools of choice. All members of your team must have a good understanding of the tools used. Your documentation, both internal and external, must be clear enough to be easily understandable by a reader who may not be familiar with the language or tools used.
 
@@ -43,10 +41,6 @@ We are planning to choose [Firebase](https://firebase.google.com/) to host image
 
 [Read on Wikipedia](https://en.wikipedia.org/wiki/Node.js) or view a short explanation video in the **Tutorials** section.
 
-## **Our Repository**
-All of our work is pushed online through `Github`.
-Click on [this link](https://github.com/QuangTran304/Instagram-Clone) to visit our repository.
-
 ## **Our To-do list**
 All the tasks assigned to each team member are listed on a `Google Sheet`.
 Click on [this link](https://docs.google.com/spreadsheets/d/1X7ElBQj5sJhMfGpT3BbRrOHFpmPM4YAUXYG36gEabS8/edit?usp=sharing) to view the To-do list.
@@ -60,7 +54,7 @@ We use `Collaboard` as a collaboration platform where everyone is free to share 
 | Basic JS | A very basic JavaScript refresher tutorial. [Watch](https://www.youtube.com/watch?v=W6NZfCO5SIk) (optional).|
 | Modern JS | New syntax & concepts. Very important, make sure to watch it. [Watch](https://www.youtube.com/watch?v=NCwa_xi0Uuc) or [Read Article](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/). |
 | Node JS | Super short 3 minutes explanation. [Watch](https://www.youtube.com/watch?v=XUSHH0E-7zk&list=PLTjRvDozrdlydy3uUBWZlLUTNpJSGGCEm). |
-| npm | Basic explanation of npm in 3 minutes. [Watch]([https://link](https://www.youtube.com/watch?v=pa4dc480Apo)). |
+| npm | Basic explanation of npm in 3 minutes. [Watch](https://www.youtube.com/watch?v=pa4dc480Apo). |
 | ESLint | Reduce your code headache (an error checker plugin for VS Code). [Watch](https://www.youtube.com/watch?v=qhuFviJn-es). |
 | React JS | The **main** tutorial we should focus on. Using latest software versions. **[Note]**: some famous tutorials out there used older software versions so things may not look the same. I recommended watching [this one](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=1). |
 | Redux | I don't have experience working with Redux but I'll learn it soon. [Watch](https://www.youtube.com/watch?v=poQXNp9ItL4) |
