@@ -13,7 +13,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Mélina Deneuve - ID# 
 + Tushar Raval - ID# 40124664
 + Anonna - ID# 
-+ Corinne - ID# 
++ Corinne - ID# 40121353
 
 ## **Technologies Used**
 ### **>> Programming language**
