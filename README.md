@@ -10,7 +10,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Quang Tran - ID# 27740654
 + Shahd Yousef - ID# 40114313
 + Nareg Mouradian - ID# 40044254
-+ Mélina Deneuve - ID# 
++ Mélina Deneuve - ID# 40153103
 + Tushar Raval - ID# 40124664
 + Anonna - ID# 
 + Corinne Beaudoin-Pellerin- ID# 40121353
