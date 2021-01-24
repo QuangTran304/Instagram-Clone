@@ -12,7 +12,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Nareg Mouradian - ID# 40044254
 + Mélina Deneuve - ID# 
 + Tushar Raval - ID# 40124664
-+ Anonna - ID# 
++ Anonna Chowdhury - ID# 40127606
 + Corinne Beaudoin-Pellerin- ID# 40121353
 
 ## **Technologies Used**
