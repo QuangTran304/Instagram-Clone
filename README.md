@@ -16,16 +16,16 @@ The completed application will have 4 features. Three will be provided by the in
 + Corinne Beaudoin-Pellerin- ID# 40121353
 
 ## **Technologies Used**
-### **>> Programming language**
+### **> Programming language**
 [Modern JavaScript](https://en.wikipedia.org/wiki/ECMAScript#:~:text=ECMAScript%20(or%20ES)%20is%20a,pages%20across%20different%20Web%20browsers.) / `ECMA Script 6+` will be used in this project as the main programming language.
 
-### **>> Framework**
+### **> Framework**
 We chose to build our web app with `React` framework. See the [Getting Started](https://reactjs.org/docs/getting-started.html) guide. Quick start guide on how to [create a new React app](https://reactjs.org/docs/create-a-new-react-app.html).
 
-### **>> Database**
+### **> Database**
 We are planning to choose [Firebase](https://firebase.google.com/) to host images, posts and other data in our app.
 
-### **>> Other Tools**
+### **> Other Tools**
 #### `Redux`
 > Redux is an open-source JavaScript library for managing application state. It is most commonly used with libraries such as React or Angular for building user interfaces. 
 
