@@ -7,7 +7,7 @@ In a team of maximum 7 students, implement an application (Instagram) using any 
 The completed application will have 4 features. Three will be provided by the instructor, the 4th feature will be decided by students.
 
 ## **Team Members**
-+ Quang Tran - ID# 27740654
++ Quang Tran - ID# 27740654  (*Github: QuangTran304*)
 + Shahd Yousef - ID# 40114313
 + Nareg Mouradian - ID# 40044254
 + Mélina Deneuve - ID# 40153103
