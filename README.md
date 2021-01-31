@@ -13,7 +13,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Mélina Deneuve - ID# 40153103
 + Tushar Raval - ID# 40124664   (*Github: tusharraval102*)
 + Anonna - ID# 
-+ Corinne Beaudoin-Pellerin- ID# 40121353
++ Corinne Beaudoin-Pellerin - ID# 40121353
 
 ## **Technologies Used**
 ### **> Programming language**
