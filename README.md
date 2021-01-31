@@ -7,25 +7,26 @@ In a team of maximum 7 students, implement an application (Instagram) using any 
 The completed application will have 4 features. Three will be provided by the instructor, the 4th feature will be decided by students.
 
 ## **Team Members**
-+ Quang Tran - ID# 27740654
++ Quang Tran - ID# 27740654  (*Github: QuangTran304*)
 + Shahd Yousef - ID# 40114313
 + Nareg Mouradian - ID# 40044254
-+ Mélina Deneuve - ID# 
-+ Tushar Raval - ID# 40124664
-+ Anonna Chowdhury - ID# 40127606
-+ Corinne Beaudoin-Pellerin- ID# 40121353
++ Mélina Deneuve - ID# 40153103
++ Tushar Raval - ID# 40124664   (*Github: tusharraval102*)
++ Anonna - ID# 40127606
++ Corinne Beaudoin-Pellerin - ID# 40121353
+
 
 ## **Technologies Used**
-### **>> Programming language**
+### **> Programming language**
 [Modern JavaScript](https://en.wikipedia.org/wiki/ECMAScript#:~:text=ECMAScript%20(or%20ES)%20is%20a,pages%20across%20different%20Web%20browsers.) / `ECMA Script 6+` will be used in this project as the main programming language.
 
-### **>> Framework**
+### **> Framework**
 We chose to build our web app with `React` framework. See the [Getting Started](https://reactjs.org/docs/getting-started.html) guide. Quick start guide on how to [create a new React app](https://reactjs.org/docs/create-a-new-react-app.html).
 
-### **>> Database**
+### **> Database**
 We are planning to choose [Firebase](https://firebase.google.com/) to host images, posts and other data in our app.
 
-### **>> Other Tools**
+### **> Other Tools**
 #### `Redux`
 > Redux is an open-source JavaScript library for managing application state. It is most commonly used with libraries such as React or Angular for building user interfaces. 
 
