@@ -10,7 +10,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Quang Tran - ID# 27740654  (*Github: QuangTran304*)
 + Shahd Yousef - ID# 40114313
 + Nareg Mouradian - ID# 40044254
-+ Mélina Deneuve - ID# 40153103
++ Mélina Deneuve - ID# 40153103 (*Github: Klivree*)
 + Tushar Raval - ID# 40124664   (*Github: tusharraval102*)
 + Anonna - ID# 40127606
 + Corinne Beaudoin-Pellerin - ID# 40121353
