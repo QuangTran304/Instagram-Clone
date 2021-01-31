@@ -11,7 +11,7 @@ The completed application will have 4 features. Three will be provided by the in
 + Shahd Yousef - ID# 40114313
 + Nareg Mouradian - ID# 40044254
 + Mélina Deneuve - ID# 40153103
-+ Tushar Raval - ID# 40124664
++ Tushar Raval - ID# 40124664   (*Github: tusharraval102*)
 + Anonna - ID# 
 + Corinne Beaudoin-Pellerin- ID# 40121353
 
