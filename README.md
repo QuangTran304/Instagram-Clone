@@ -1,7 +1,7 @@
 # **Building an Instagram Clone Web App**
 This project is part of the SOEN 341 - Software Process class at Concordia University.
 
-## **The Task**
+## **The Taskk**
 In a team of maximum 7 students, implement an application (Instagram) using any programming language/ scripting language, frameworks, or any other tools of choice. All members of your team must have a good understanding of the tools used. Your documentation, both internal and external, must be clear enough to be easily understandable by a reader who may not be familiar with the language or tools used.
 
 The completed application will have 4 features. Three will be provided by the instructor, the 4th feature will be decided by students.
