@@ -22,13 +22,13 @@ The completed application will have 4 features. Three will be provided by the in
 
 ## **Team Members**
 
-- Quang Tran - ID# 27740654 (_Github: QuangTran304_)
-- Shahd Yousef - ID# 40114313 (Github: shahdyousefak)
-- Nareg Mouradian - ID# 40044254
-- Mélina Deneuve - ID# 40153103 (_Github: Klivree_)
-- Tushar Raval - ID# 40124664 (_Github: tusharraval102_)
-- Anonna Chowdhury - ID# 40127606 (*Github: anonna16*)
-- Corinne Beaudoin-Pellerin - ID# 40121353 (_Github: corinne-2000_)
+- Quang Tran - ID #27740654 (_Github: QuangTran304_)
+- Shahd Yousef - ID #40114313 (Github: shahdyousefak)
+- Nareg Mouradian - ID #40044254
+- Mélina Deneuve - ID #40153103 (_Github: Klivree_)
+- Tushar Raval - ID #40124664 (_Github: tusharraval102_)
+- Anonna Chowdhury - ID #40127606 (*Github: anonna16*)
+- Corinne Beaudoin-Pellerin - ID #40121353 (_Github: corinne-2000_)
 
 ## **Technologies Used**
 
