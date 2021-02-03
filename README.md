@@ -2,11 +2,23 @@
 
 This project is part of the SOEN 341 - Software Process class at Concordia University.
 
-## **The Taskk**
+## **The Task**
 
 In a team of maximum 7 students, implement an application (Instagram) using any programming language/ scripting language, frameworks, or any other tools of choice. All members of your team must have a good understanding of the tools used. Your documentation, both internal and external, must be clear enough to be easily understandable by a reader who may not be familiar with the language or tools used.
 
 The completed application will have 4 features. Three will be provided by the instructor, the 4th feature will be decided by students.
+
+## **The Goal Of This Project**
+
+- Learn modern web development based on agile principles.
+- Work efficiently as a team by taking advantage of the latest tools & technologies available.
+- Complete a functional web application in a limited time frame.
+
+## **Core Features**
+
+- Be able to post a picture with description.
+- Be able to follow an user.
+- Be able to leave comment & like a post.
 
 ## **Team Members**
 
@@ -16,7 +28,7 @@ The completed application will have 4 features. Three will be provided by the in
 - Mélina Deneuve - ID# 40153103 (_Github: Klivree_)
 - Tushar Raval - ID# 40124664 (_Github: tusharraval102_)
 - Anonna - ID# 40127606
-- Corinne Beaudoin-Pellerin - ID# 40121353 (\_Github: corinne-2000)
+- Corinne Beaudoin-Pellerin - ID# 40121353 (_Github: corinne-2000_)
 
 ## **Technologies Used**
 
@@ -26,19 +38,15 @@ The completed application will have 4 features. Three will be provided by the in
 
 ### **> Framework**
 
-We chose to build our web app with `React` framework. See the [Getting Started](https://reactjs.org/docs/getting-started.html) guide. Quick start guide on how to [create a new React app](https://reactjs.org/docs/create-a-new-react-app.html).
+We chose to build our web app with `React` framework along with `Material UI`. See the [Getting Started](https://reactjs.org/docs/getting-started.html) guide. Quick start guide on how to [create a new React app](https://reactjs.org/docs/create-a-new-react-app.html).
+
+For Material UI, please visit [this website](https://material-ui.com/) to learn more.
 
 ### **> Database**
 
 We are planning to choose [Firebase](https://firebase.google.com/) to host images, posts and other data in our app.
 
 ### **> Other Tools**
-
-#### `Redux`
-
-> Redux is an open-source JavaScript library for managing application state. It is most commonly used with libraries such as React or Angular for building user interfaces.
-
-[Read on Wikipedia](<https://en.wikipedia.org/wiki/Redux_(JavaScript_library)>) or see the **Tutorials** section below.
 
 #### `npm`
 
@@ -70,6 +78,5 @@ We use `Collaboard` as a collaboration platform where everyone is free to share 
 | Node JS      | Super short 3 minutes explanation. [Watch](https://www.youtube.com/watch?v=XUSHH0E-7zk&list=PLTjRvDozrdlydy3uUBWZlLUTNpJSGGCEm).                                                                                                                                                                                    |
 | npm          | Basic explanation of npm in 3 minutes. [Watch](https://www.youtube.com/watch?v=pa4dc480Apo).                                                                                                                                                                                                                        |
 | ESLint       | Reduce your code headache (an error checker plugin for VS Code). [Watch](https://www.youtube.com/watch?v=qhuFviJn-es).                                                                                                                                                                                              |
-| React JS     | The **main** tutorial we should focus on. Using latest software versions. **[Note]**: some famous tutorials out there used older software versions so things may not look the same. I recommended watching [this one](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=1). |
-| Redux        | I don't have experience working with Redux but I'll learn it soon. [Watch](https://www.youtube.com/watch?v=poQXNp9ItL4)                                                                                                                                                                                             |
-| Firebase     | Learn about Firebase here. We may decide to use it or not to use it later. [Watch](https://www.youtube.com/watch?v=q5J5ho7YUhA).                                                                                                                                                                                    |
+| React JS     | The **main** tutorial we should focus on. Using latest software versions. **[Note]**: some famous tutorials out there used older software versions so things may not look the same. I recommended watching [this one](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=1).                                                                                                                                                                                            |
+| Firebase     | Firebase will take care of our entire backend & database so that we can focus on front-end development. Learn about Firebase here. [Watch this video](https://www.youtube.com/watch?v=q5J5ho7YUhA). Or the [Complete playlist](https://www.youtube.com/watch?v=3ZEz-iposj8&list=PLpPVLI0A0OkJ-bu1zSiknRYEUIy33gCwplink).                                                                                                                                                                                    |
