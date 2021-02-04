@@ -91,7 +91,7 @@
   margin-right: 15px;
 }
 .blog-details button:hover {
-  background: #4b42f2;
+  background: #4b42ff;
   box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
   transition: 0.25s ease-in-out;
