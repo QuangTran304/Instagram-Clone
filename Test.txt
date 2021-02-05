@@ -13,3 +13,15 @@ This is Corinne's change.
 Tushar: This is a test commit with an issue number. 
 
 Nareg: This is a test of doing a commit for sprint 1.
+
+Nareg: This is a cool project.
+
+Let's do this!!! We're about to start an awesome project!
+
+Oooops. I forgot to add the issue number #18
+
+Mélina is happy to work with you all ! ♪ ♫
+
+Shahd joined the chat.
+
+Shahd committing
