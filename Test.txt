@@ -11,3 +11,5 @@ Anonna: This is a test for commits with an issue number!
 This is Corinne's change. 
 
 Tushar: This is a test commit with an issue number. 
+
+Nareg: This is a test of doing a commit for sprint 1.
