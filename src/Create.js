@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [author, setAuthor] = useState('quang');
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [author, setAuthor] = useState("quang");
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
@@ -13,50 +13,50 @@ const Create = () => {
     const blog = { title, body, author };
 
     setIsLoading(true);
-    
-    fetch('http://localhost:8000/blogs/', {
-      method: 'POST',
+
+    fetch("http://localhost:8000/blogs/", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog)
-    }).then( () => {
-      console.log('NEW BLOG ADDED');
+      body: JSON.stringify(blog),
+    }).then(() => {
+      console.log("NEW BLOG ADDED");
       setIsLoading(false);
-    })
+    });
 
-    history.push('/');    // Redirect user back to home page
-  }
+    history.push("/"); // Redirect user back to home page
+  };
 
-  return (  
+  return (
     <div className="create">
       <h2>Add a New Blog</h2>
       <form onSubmit={handleSubmit}>
         <label>Blog title: </label>
-        <input 
+        <input
           type="text"
           required
-          value={ title }
-          onChange={ (e) => setTitle(e.target.value) }
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <label>Blog body: </label>
-        <textarea 
+        <textarea
           required
-          value={ body }
-          onChange={ (e) => setBody(e.target.value) }
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
         ></textarea>
 
         <label>Blog author:</label>
-        <select value={ author } onChange={ (e) => setAuthor(e.target.value) }>
+        <select value={author} onChange={(e) => setAuthor(e.target.value)}>
           <option value="quang">Quang</option>
           <option value="maria">Maria</option>
-          <option value="josh">Josh</option>
+          <option value="josh">Corinne</option>
         </select>
 
-        { !isLoading  &&  <button>Add Blog</button> }
-        { isLoading  &&  <button disabled>Creating...</button> }
+        {!isLoading && <button>Add Blog</button>}
+        {isLoading && <button disabled>Creating...</button>}
       </form>
     </div>
   );
-}
+};
 
 export default Create;
