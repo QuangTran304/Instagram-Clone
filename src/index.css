@@ -1,11 +1,12 @@
 * {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
 /* Style for main app */
 body {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 /* Style for Nav bar */
@@ -22,8 +23,7 @@ body {
   width: 650px;
 }
 .app-logo {
-  width: 80px;
-  margin-top: 5px;
+  width: 70px;
 }
 .menu .icon-item {
   width: 18px;
@@ -31,23 +31,56 @@ body {
   margin: 2px 0 0 12px;
 }
 .search-box input {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
   font-size: 10px;
   text-align: center;
   padding: 3px 20px;
 }
-
-
 /* Style for Post */
 .post {
   background-color: white;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
-  margin: 20px auto;
+  margin: 25px auto;
   max-width: 500px;
 }
-.post-image img {
+.post-header {
+  display: flex;
+  align-items: baseline;
+  padding: 20px;
+}
+.post-avatar {
+  margin-right: 20px;
+}
+.post-image {
   width: 100%;
+}
+.post-text {
+  font-weight: lighter;
+  font-size: small;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.post-comment {
+  font-weight: lighter;
+  font-size: 10px;
+}
+
+.post-heart {
+  margin-left: 3px;
+  margin-right: 10px;
+}
+
+.post-icons {
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.post-like-number {
+  font-size: 10px;
 }
