@@ -9,4 +9,6 @@ install:
 cache: npm
 
 script:
-  - npm run start
+  - npm run build
+
+
