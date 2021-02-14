@@ -4,6 +4,7 @@ import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import FaceRoundedIcon from "@material-ui/icons/FaceRounded";
 import Post from "./Post";
+import { useState } from 'react';
 
 
 function App() {
