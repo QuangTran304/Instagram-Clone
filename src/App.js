@@ -11,8 +11,6 @@ function App() {
   // Add dummy data here ==> Create an array of fake posts (with username, image url, and post_description)
   const [posts, setPosts] = useState();
 
-
-
   return (
     <div className="app">
       <div className="nav-bar">
@@ -33,11 +31,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Post
-        username="Coco"
-        caption="HI peopleeeee!!!"
-        imageURL="https://media-exp1.licdn.com/dms/image/C4D03AQHzHDd6Gsaqow/profile-displayphoto-shrink_400_400/0/1588275209970?e=1618444800&v=beta&t=ACxMAOtr6JzysXozvis6A4t9D_-RiYI-AUHEBJ72GKg"
-      />
+      <Post />
     </div>
   );
 }
