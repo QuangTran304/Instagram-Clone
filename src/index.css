@@ -24,6 +24,7 @@ body {
 }
 .app-logo {
   width: 70px;
+  margin-top: 2px;
 }
 .menu .icon-item {
   width: 18px;
@@ -38,6 +39,8 @@ body {
   text-align: center;
   padding: 3px 20px;
 }
+
+
 /* Style for Post */
 .post {
   background-color: white;
@@ -46,17 +49,22 @@ body {
   margin: 25px auto;
   max-width: 500px;
 }
+
 .post-header {
   display: flex;
   align-items: baseline;
   padding: 20px;
 }
+
 .post-avatar {
   margin-right: 20px;
 }
 .post-image {
   width: 100%;
+  border-top: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
+
 .post-text {
   font-weight: lighter;
   font-size: small;
