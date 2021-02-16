@@ -15,6 +15,10 @@ body {
   justify-content: center;
   background-color: white;
   border-bottom: 1px solid #dbdbdb;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
 }
 .nav-container {
   display: flex;
@@ -23,10 +27,11 @@ body {
   width: 650px;
 }
 .app-logo {
-  width: 70px;
+  width: 100px;
+  margin-top: 2px;
 }
 .menu .icon-item {
-  width: 18px;
+  width: 25px;
   height: auto;
   margin: 2px 0 0 12px;
 }
@@ -34,10 +39,12 @@ body {
   background-color: #fafafa;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
-  font-size: 10px;
+  font-size: 15px;
   text-align: center;
-  padding: 3px 20px;
+  padding: 8px 30px;
 }
+
+
 /* Style for Post */
 .post {
   background-color: white;
@@ -46,17 +53,22 @@ body {
   margin: 25px auto;
   max-width: 500px;
 }
+
 .post-header {
   display: flex;
   align-items: baseline;
   padding: 20px;
 }
+
 .post-avatar {
   margin-right: 20px;
 }
 .post-image {
   width: 100%;
+  border-top: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
+
 .post-text {
   font-weight: lighter;
   font-size: small;
