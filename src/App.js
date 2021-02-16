@@ -2,7 +2,7 @@ import logo from "./Instagrill.png";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import FaceRoundedIcon from "@material-ui/icons/FaceRounded";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Post from "./Post";
 
 
@@ -24,7 +24,8 @@ function App() {
             <HomeRoundedIcon className="icon-item" />
             <ExploreOutlinedIcon className="icon-item" />
             <FavoriteBorderRoundedIcon className="icon-item" />
-            <FaceRoundedIcon className="icon-item" />
+            <AccountCircleIcon className="icon-item" />
+            
           </div>
         </div>
       </div>
