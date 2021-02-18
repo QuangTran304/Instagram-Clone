@@ -3,11 +3,12 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CreatePost from "./CreatePost";
 import Post from "./Post";
 
 
 function App() {
-
+  
   return (
     <div className="app">
       <div className="nav-bar">
@@ -29,7 +30,7 @@ function App() {
           </div>
         </div>
       </div>
-
+      <CreatePost />
       <Post />
 
     </div>
