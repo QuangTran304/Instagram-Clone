@@ -14,21 +14,31 @@ const Post = () => {
             className="post-avatar"
             alt={post.username}
             src="/static/images/avatar/1.jpg"
+            style={{width: 35, height: 35}}
           ></Avatar>
-          <h3>{post.username}</h3>
+          <div className="post-meta">
+            <h3 className="post-username" >{post.username}</h3>
+            <p className="post-location">{post.location}</p>
+          </div>
         </div>
+
         <img className="post-image" src={post.image} alt="" />
-        <div className="post-icons">
-          <FavoriteBorder className="post-heart" />
-          <ChatBubbleOutlineOutlinedIcon />
+
+
+        <div className="post-body">
+          <div className="post-icons">
+            <FavoriteBorder style={{marginRight: 8, width: 20}} />
+            <ChatBubbleOutlineOutlinedIcon style={{marginRight: 8, width: 20}} />
+          </div>
+
+          <p className="post-like-number"> Liked by {post.likes} people</p>
+
+          <h4 className="post-description">
+            <strong>{post.username}</strong> {post.description}
+          </h4>
+
+          <h3 className="post-comment">View all comments.</h3>
         </div>
-        <p className="post-like-number"> Liked by {post.likes} people</p>
-
-        <h4 className="post-text">
-          <strong>{post.username}</strong> {post.description}
-        </h4>
-
-        <h3 className="post-comment">View all comments.</h3>
       </div>
     )) 
   );

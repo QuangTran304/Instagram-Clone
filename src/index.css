@@ -56,34 +56,48 @@ body {
 
 .post-header {
   display: flex;
-  align-items: baseline;
-  padding: 20px;
+  align-items: center;
+  padding: 10px;
 }
 
 .post-avatar {
-  margin-right: 20px;
+  margin: 0 12px 0 5px;
+  background: rgb(247,151,80);
+  background: linear-gradient(90deg, rgba(247,151,80,1) 0%, rgba(199,53,141,1) 100%);
 }
+
+.post-username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.post-location {
+  font-size: 10px;
+  color: gray;
+  padding-top: 2px;
+}
+
 .post-image {
   width: 100%;
   border-top: 1px solid rgb(240, 240, 240);
   border-bottom: 1px solid rgb(240, 240, 240);
 }
 
-.post-text {
+.post-body {
+  padding: 10px 20px 15px 20px;
+}
+
+.post-description {
   font-weight: lighter;
-  font-size: small;
+  font-size: 12px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px 0;
 }
 
 .post-comment {
   font-weight: lighter;
   font-size: 10px;
-}
-
-.post-heart {
-  margin-left: 3px;
-  margin-right: 10px;
 }
 
 .post-icons {
@@ -95,9 +109,12 @@ body {
 
 .post-like-number {
   font-size: 10px;
+  padding: 5px 0;
 }
 
-.create{
+
+/* Create Post form */
+.create {
   background-color: white;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
@@ -105,7 +122,7 @@ body {
   max-width: 500px;
 }
 
-.description{
+.description {
   width: 100%;
   font-weight: lighter;
   font-size: small;
@@ -113,7 +130,7 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.create-image{
+.create-image {
  width: 20px;
  margin-right: 20px;
 }
