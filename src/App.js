@@ -11,6 +11,8 @@ function App() {
   
   return (
     <div className="app">
+
+      {/* We should make this Nav bar a Component */}
       <div className="nav-bar">
         <div className="nav-container">
           <div>
@@ -26,11 +28,14 @@ function App() {
             <ExploreOutlinedIcon className="icon-item" />
             <FavoriteBorderRoundedIcon className="icon-item" />
             <AccountCircleIcon className="icon-item" />
-            
           </div>
         </div>
       </div>
+      {/* We should make this Nav bar a Component */}
+
+
       <CreatePost />
+
       <Post />
 
     </div>
