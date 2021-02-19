@@ -1,4 +1,5 @@
-
+     import React from 'react';
+     import {NavLink} from 'react-router-dom';
      import logo from "./Instagrill.png";
      import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
      import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
@@ -7,14 +8,13 @@
 
      const Navbar = () => {
          return(
-             <div className="nav-bar">
-      <div className="nav-container">
-        <div>
-          <img src={logo} className="app-logo" alt="logo" />
-        </div>
-
+    <div className="nav-bar">
+        <div className="nav-container">
+            <div>
+                    <img src={logo} className="app-logo" alt="logo" /> 
+            </div>
         <div className="search-box">
-          <input type="text" name="search" placeholder="Search..." />
+            <input type="text" name="search" placeholder="Search..." />
         </div>
 
         <div className="menu">
