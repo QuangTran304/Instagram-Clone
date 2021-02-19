@@ -1,5 +1,4 @@
-     import React from 'react';
-     import {NavLink} from 'react-router-dom';
+     import React from "react";
      import logo from "./Instagrill.png";
      import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
      import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
@@ -11,17 +10,17 @@
     <div className="nav-bar">
         <div className="nav-container">
             <div>
-                    <img src={logo} className="app-logo" alt="logo" /> 
+                   <a href="#Home"><img src={logo} className="app-logo" alt="logo" /></a>  
             </div>
         <div className="search-box">
             <input type="text" name="search" placeholder="Search..." />
         </div>
 
         <div className="menu">
-          <HomeRoundedIcon className="icon-item" />
-          <ExploreOutlinedIcon className="icon-item" />
-          <FavoriteBorderRoundedIcon className="icon-item" />
-          <AccountCircleIcon className="icon-item" />
+          <a href="#Home"><HomeRoundedIcon className="icon-item" /></a>
+          <a href="#Explore"><ExploreOutlinedIcon className="icon-item" /></a>
+          <a href="#Likes"><FavoriteBorderRoundedIcon className="icon-item" /></a>
+          <a href="#Profile"><AccountCircleIcon className="icon-item" /></a>
         </div>
       </div>
     </div>
