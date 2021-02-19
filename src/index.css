@@ -44,6 +44,13 @@ body {
   padding: 5px 30px;
 }
 
+/*Style for Navbar mobile*/
+@media only screen and (max-width: 600px) {
+  .search-box {
+    display: none;
+  }
+}
+
 
 /* Style for Post */
 .post {
