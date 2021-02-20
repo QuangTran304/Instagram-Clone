@@ -146,11 +146,6 @@ body {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.create-image {
-    width: 20px;
-    margin-right: 20px;
-}
-
 .title {
     text-align: center;
     border-top: 2px solid rgba(199, 53, 141, 1);
@@ -164,4 +159,52 @@ body {
     border-radius: 20px;
     margin-left: 28%;
     margin-right: 28%;
+}
+
+.create label {
+    font-size: 15px;
+}
+
+.create table tr {
+    height: 35px;
+}
+
+.create table td {
+    width: 100%;
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 35px;
+}
+
+.create p {
+    font-size: 15px;
+}
+
+.create textarea {
+    border-radius: 10px;
+    overflow: auto;
+    width: 200px;
+}
+
+.create input[type="text"] {
+    border-radius: 20px;
+    border-width: 1.1px;
+}
+
+.create button {
+    border-top: 2px solid rgba(199, 53, 141, 1);
+    border-bottom: 2px solid rgb(247, 151, 80);
+    border-left: 1px solid rgba(199, 53, 141, 1);
+    border-right: 1px solid rgb(247, 151, 80);
+    background-image: linear-gradient(rgba(199, 53, 141, 1), rgb(247, 151, 80)), linear-gradient(rgba(199, 53, 141, 1), rgb(247, 151, 80));
+    background-size: 2px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.create .location {
+    font-size: 5px;
+    color: #727070;
 }
