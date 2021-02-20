@@ -4,63 +4,72 @@
             "location": "Montreal, QC",
             "description": "HI peopleeeee!!!",
             "image": "https://media-exp1.licdn.com/dms/image/C4D03AQHzHDd6Gsaqow/profile-displayphoto-shrink_400_400/0/1588275209970?e=1618444800&v=beta&t=ACxMAOtr6JzysXozvis6A4t9D_-RiYI-AUHEBJ72GKg",
-            "likes": "10,000,000"
+            "likes": 10000000,
+            "id": 1
         },
         {
             "username": "dog_lover",
             "location": "Montreal, QC",
             "description": "Puppies!",
             "image": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/07160854/Lakeland-Terrier-puppies-sitting-outdoors.jpg",
-            "likes": "999,999,999"
+            "likes": 999999999,
+            "id": 2
         },
         {
             "username": "travelling_2022",
             "location": "Montreal, QC",
             "description": "Thailand <3",
             "image": "https://vietnamtiptoptravel.com/sites/default/files/tour-du-lich-thai-lan-dao-phuket.jpg",
-            "likes": "13,982"
+            "likes": 13982,
+            "id": 3
         },
         {
             "username": "homedesign986",
             "location": "Montreal, QC",
             "description": "Mid-Century Interior Design",
             "image": "https://cdn.decorilla.com/online-decorating/wp-content/uploads/2020/07/Open-home-with-mid-century-modern-interior-design.jpg",
-            "likes": "19,832"
+            "likes": 19832,
+            "id": 4
         },
         {
             "username": "anonna16",
             "location": "Montreal, QC",
             "description": "2003...",
             "image": "https://scontent.fyhu2-1.fna.fbcdn.net/v/t31.0-8/1410928_1431701223708797_1403193479_o.jpg?_nc_cat=108&ccb=3&_nc_sid=174925&_nc_ohc=YVBEmf7CF5YAX_4qUI_&_nc_ht=scontent.fyhu2-1.fna&oh=bc45ec828558f37d84881b642b16e3b0&oe=604D9797",
-            "likes": "9,092"
+            "likes": 9092,
+            "id": 5
         },
         {
             "username": "sadvibes",
             "location": "Montreal, QC",
             "description": "",
             "image": "https://64.media.tumblr.com/c5725f649aeaf39fa6e5933da9e20a5e/tumblr_pfv0qhkbEa1wb9s3mo1_1280.jpg",
-            "likes": "8,082"
+            "likes": 8082,
+            "id": 6
         },
         {
             "username": "tushe01",
             "location": "Montreal, QC",
             "description": "Childhood Memories",
             "image": "https://scontent-yyz1-1.xx.fbcdn.net/v/t31.0-8/463819_385623448183709_686593862_o.jpg?_nc_cat=107&ccb=3&_nc_sid=cdbe9c&_nc_ohc=Ol35DDSSoxYAX_kOp1h&_nc_ht=scontent-yyz1-1.xx&oh=421ea117031fa5189375610745be7eb3&oe=604EADBD",
-            "likes": "6,900"
+            "likes": 6900,
+            "id": 7
         },
         {
             "username": "Klivree",
             "location": "Montreal, QC",
             "description": "Cute evil cat",
             "image": "https://scontent.fymq2-1.fna.fbcdn.net/v/t1.0-9/109907078_10216972567455264_5527152566234993544_o.jpg?_nc_cat=110&ccb=3&_nc_sid=730e14&_nc_ohc=f--xoAT1udoAX96nLfi&_nc_ht=scontent.fymq2-1.fna&oh=aa91d10740672145f2566bdbc5bcec4a&oe=6050B77D",
-            "likes": "25,689"
+            "likes": 25689,
+            "id": 8
         },
         {
             "username": "naregsoen",
             "location": "Montreal, QC",
             "description": "Best TV Show - Friends",
             "image": "https://s3-ap-southeast-1.amazonaws.com/staging-hifi-digital/wp-content/uploads/sites/2/2019/08/04162237/lets-talk-about-f-r-i-e-n-d-s-the-most-overrated-tv-show-ever.jpeg",
-            "likes": "10,000"
+            "likes": 10000,
+            "id": 9
         }
     ]
 }

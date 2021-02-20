@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
@@ -6,9 +6,25 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 import data from './data/database.json';
 
 const Post = () => {
+  const [likeCounter, setLikeCounter] = useState(0);
+
+  // Increase the total likes of the post after 'like' is clicked
+  // const handleLikeClick = (id) => {
+  //   const likedPost = data.posts.filter( post => post.id === id );
+  //   console.log(likedPost.map( post => (post.likes + 1) ));
+  // }
+
+  const handleLikeClick = () => {
+    setLikeCounter( (likeCounter) => {
+      return likeCounter + 1;
+    });
+  }
+
+
+
   return (
     data.posts.map( (post) => (
-      <div className="post">
+      <div className="post" key={post.id}>
         <div className="post-header">
           <Avatar
             className="post-avatar"
@@ -27,11 +43,12 @@ const Post = () => {
 
         <div className="post-body">
           <div className="post-icons">
-            <FavoriteBorder style={{marginRight: 8, width: 20}} />
+            <FavoriteBorder onClick={ handleLikeClick } style={{marginRight: 8, width: 20}} />
             <ChatBubbleOutlineOutlinedIcon style={{marginRight: 8, width: 20}} />
           </div>
 
-          <p className="post-like-number"> Liked by {post.likes} people</p>
+          {/* <p className="post-like-number"> Liked by {post.likes} people</p> */}
+          <p className="post-like-number"> Liked by {likeCounter} people</p>
 
           <h4 className="post-description">
             <strong>{post.username}</strong> {post.description}
