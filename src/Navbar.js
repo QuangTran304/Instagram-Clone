@@ -1,15 +1,31 @@
-import { Link } from 'react-router-dom';
+     import React from "react";
+     import logo from "./Instagrill.png";
+     import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+     import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
+     import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
+     import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const Navbar = () => {
-    return (
-        <nav className="navbar">
-            <h1>Bloggy</h1>
-            <div className="links">
-                <Link to="/">Home</Link>
-                <Link to="/create" class="btn">New Blog</Link>
+     const Navbar = () => {
+         return(
+    <div className="nav-bar">
+        <div className="nav-container">
+            <div>
+                   <a href="#Home"><img src={logo} className="app-logo" alt="logo" /></a>  
             </div>
-        </nav>
-    );
-}
+        <div className="search-box">
+            <input type="text" name="search" placeholder="Search..." />
+        </div>
 
-export default Navbar;
+        <div className="menu">
+          <a href="#Home"><HomeRoundedIcon className="icon-item" /></a>
+          <a href="#Explore"><ExploreOutlinedIcon className="icon-item" /></a>
+          <a href="#Likes"><FavoriteBorderRoundedIcon className="icon-item" /></a>
+          <a href="#Profile"><AccountCircleIcon className="icon-item" /></a>
+        </div>
+      </div>
+    </div>
+         )
+     }
+
+     export default Navbar;
+     
