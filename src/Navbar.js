@@ -17,10 +17,10 @@
         </div>
 
         <div className="menu">
-          <a href="#Home"><HomeRoundedIcon className="icon-item" /></a>
+          <a href="/"><HomeRoundedIcon className="icon-item" /></a>
           <a href="#Explore"><ExploreOutlinedIcon className="icon-item" /></a>
           <a href="#Likes"><FavoriteBorderRoundedIcon className="icon-item" /></a>
-          <a href="#Profile"><AccountCircleIcon className="icon-item" /></a>
+          <a href="/login"><AccountCircleIcon className="icon-item" /></a>
         </div>
       </div>
     </div>
