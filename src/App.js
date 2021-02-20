@@ -2,15 +2,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreatePost from "./CreatePost";
 import Post from "./Post";
 import Navbar from "./Navbar";
-import SignIn from "./SignIn"
-
-
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 function App() {
 
   return (
-
-
     <Router>
       <div className="app">
         <Navbar />
@@ -21,14 +18,15 @@ function App() {
             <CreatePost />
             <Post />
           </Route>
-          <Route exact path="/login">
+          <Route exact path="/signin">
             <SignIn />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp />
           </Route>
         </Switch>
       </div>
-
     </Router>
-
   );
 }
 

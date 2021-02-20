@@ -20,7 +20,7 @@
           <a href="/"><HomeRoundedIcon className="icon-item" /></a>
           <a href="#Explore"><ExploreOutlinedIcon className="icon-item" /></a>
           <a href="#Likes"><FavoriteBorderRoundedIcon className="icon-item" /></a>
-          <a href="/login"><AccountCircleIcon className="icon-item" /></a>
+          <a href="/signin"><AccountCircleIcon className="icon-item" /></a>
         </div>
       </div>
     </div>
