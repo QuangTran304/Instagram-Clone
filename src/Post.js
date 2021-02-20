@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
@@ -23,7 +23,8 @@ const Post = () => {
 
 
   return (
-    data.posts.map( (post) => (
+    // Reverse the posts (latest post first) from the database
+    data.posts.slice(0).reverse().map( (post) => (
       <div className="post" key={post.id}>
         <div className="post-header">
           <Avatar
