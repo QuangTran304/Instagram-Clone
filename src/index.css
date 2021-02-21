@@ -22,6 +22,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 5;
+    height: 9%;
 }
 
 .nav-container {
@@ -32,7 +33,7 @@ body {
 }
 
 .app-logo {
-    width: 100px;
+    width: 140px;
     margin-top: 2px;
 }
 
