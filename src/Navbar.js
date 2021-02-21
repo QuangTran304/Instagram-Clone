@@ -4,6 +4,7 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SearchIcon from '@material-ui/icons/Search';
 import { Link } from "react-router-dom";
 
 
@@ -19,6 +20,7 @@ const Navbar = () => {
         </div>
 
         <div className="menu">
+          <Link to="#Search"><SearchIcon className="search-icon" /></Link>
           <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
           <Link to="#Explore"><ExploreOutlinedIcon className="icon-item" /></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
