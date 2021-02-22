@@ -19,16 +19,20 @@ const Post = () => {
 
   useEffect( () => {
     database.collection('posts').onSnapshot( updatedData => {
-      setPosts( updatedData.docs.map( post => post.data() ));
+      setPosts( updatedData.docs.map( doc => ({
+        id: doc.id,
+        post: doc.data()   }) 
+      ));
     })
   }, []);
 
-  return (
-    // Reverse the posts (latest post first) from the database
-    // data.posts.slice(0).reverse().map( (post) => (
-    posts.map( post => (
 
-      <div className="post" key={post.id}>
+  return (
+    // Reverse the posts (latest post first) from the local database
+    // data.posts.slice(0).reverse().map( (post) => (
+    posts.map( ({id, post}) => (      // We now map an OBJECT contains: post & id
+      
+      <div className="post" key={id}>
         <div className="post-header">
           <Avatar
             className="post-avatar"

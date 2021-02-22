@@ -15,7 +15,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <CreatePost />
+              {/* <CreatePost /> */}
               <Post />
             </Route>
 
