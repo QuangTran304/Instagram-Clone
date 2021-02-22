@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from 'firebase';
 
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyD1q68FCFm9WSoUvnL6FgrOhwEe_RjZ-5k",
@@ -15,7 +15,7 @@ const storage = firebase.storage();
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
-  const userRef = firebase.firestore.doc(`users/${user.uid}`);
+  const userRef = database.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
   if (!snapshot.exists) {
     const { email, firstName, lastName, photoURL, username } = user;
@@ -37,7 +37,7 @@ export const generateUserDocument = async (user, additionalData) => {
 const getUserDocument = async uid => {
   if (!uid) return null;
   try {
-    const userDocument = await firebase.firestore.doc(`users/${uid}`).get();
+    const userDocument = await database.doc(`users/${uid}`).get();
     return {
       uid,
       ...userDocument.data()
