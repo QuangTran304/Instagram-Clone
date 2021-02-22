@@ -4,6 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import data from './data/database.json';
+import {database} from "./firebase";
 
 const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);

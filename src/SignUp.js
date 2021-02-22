@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {auth, database, generateUserDocument} from "./firebase";
+import {useState} from 'react';
 
 function Copyright() {
   return (
@@ -49,6 +51,40 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [error, setError] = useState(null);
+  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+    event.preventDefault();
+
+    try{
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      generateUserDocument(user, {firstName});
+    }
+    catch(error){
+      setError('Error Signing up with email and password');
+    }
+
+    setEmail("");
+    setPassword("");
+    setFirstName("");
+    setLastName("");
+  };
+  const onChangeHandler = event => {
+    const { name, value } = event.currentTarget;
+    if (name === "userEmail") {
+      setEmail(value);
+    } else if (name === "userPassword") {
+      setPassword(value);
+    } else if (name === "firstName") {
+      setFirstName(value);
+    } else if (name === "lastName") {
+      setLastName(value);
+    }
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -71,6 +107,8 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value ={firstName}
+                onChange={event => onChangeHandler(event)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -82,6 +120,8 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value ={lastName}
+                onChange={event => onChangeHandler(event)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +133,9 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                defaultValue={email}
+                value= {email}
+                onChange={event => onChangeHandler(event)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,12 +148,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                value ={password}
+                onChange={event => onChangeHandler(event)}
               />
             </Grid>
           </Grid>
@@ -120,6 +159,9 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick ={event => {
+              createUserWithEmailAndPasswordHandler(event, email, password);
+            }}
           >
             Sign Up
           </Button>
