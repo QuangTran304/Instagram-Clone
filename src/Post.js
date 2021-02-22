@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-import data from './data/database.json';
+// import data from './data/database.json';
+import { database } from './firebase';
 
 const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);
-
-  // Increase the total likes of the post after 'like' is clicked
-  // const handleLikeClick = (id) => {
-  //   const likedPost = data.posts.filter( post => post.id === id );
-  //   console.log(likedPost.map( post => (post.likes + 1) ));
-  // }
 
   const handleLikeClick = () => {
     setLikeCounter( (likeCounter) => {
@@ -20,11 +15,19 @@ const Post = () => {
     });
   }
 
+  const [posts, setPosts] = useState([]);
 
+  useEffect( () => {
+    database.collection('posts').onSnapshot( updatedData => {
+      setPosts( updatedData.docs.map( post => post.data() ));
+    })
+  }, []);
 
   return (
     // Reverse the posts (latest post first) from the database
-    data.posts.slice(0).reverse().map( (post) => (
+    // data.posts.slice(0).reverse().map( (post) => (
+    posts.map( post => (
+
       <div className="post" key={post.id}>
         <div className="post-header">
           <Avatar
@@ -48,8 +51,8 @@ const Post = () => {
             <ChatBubbleOutlineOutlinedIcon style={{marginRight: 8, width: 20}} />
           </div>
 
-          {/* <p className="post-like-number"> Liked by {post.likes} people</p> */}
-          <p className="post-like-number"> Liked by {likeCounter} people</p>
+          <p className="post-like-number"> Liked by {post.likes} people</p>
+          {/* <p className="post-like-number"> Liked by {likeCounter} people</p> */}
 
           <h4 className="post-description">
             <strong>{post.username}</strong> {post.description}
@@ -58,6 +61,7 @@ const Post = () => {
           <h3 className="post-comment">View all comments.</h3>
         </div>
       </div>
+    
     )) 
   );
 };
