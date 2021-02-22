@@ -74,9 +74,9 @@ export default function SignUp() {
   };
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
-    if (name === "userEmail") {
+    if (name === "email") {
       setEmail(value);
-    } else if (name === "userPassword") {
+    } else if (name === "password") {
       setPassword(value);
     } else if (name === "firstName") {
       setFirstName(value);
