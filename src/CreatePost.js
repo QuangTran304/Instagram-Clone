@@ -1,13 +1,14 @@
 import React from "react";
 import "./index.css";
-import { useState } from "react";
+import { useState, useParams } from "react";
 import "./data/database.json";
 import firebase from "firebase";
 import { database, storage } from './firebase';
 
-const CreatePost = () => {
+const CreatePost = (username) => {
 
     var Nickname = "Pseudo";
+    const { id } = useParams();
     const [image, setImage] = useState(null);
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
@@ -36,10 +37,11 @@ const CreatePost = () => {
                     .then( url => {
                         database.collection("posts").add({
                             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                            caption: description,
+                            description: description,
                             location: location,
-                            imageUrl: url,
-                            username: "someone"
+                            image: url,
+                            username: "someone",
+                            likes: 0
                         });
                         setImage = null;
                         setDescription = "";

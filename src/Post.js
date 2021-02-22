@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import data from './data/database.json';
-import {database} from "./firebase";
+import { database } from './firebase';
 
 const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);
+  const[posts, setPosts] = useState([]);
 
   // Increase the total likes of the post after 'like' is clicked
   // const handleLikeClick = (id) => {
@@ -15,18 +16,26 @@ const Post = () => {
   //   console.log(likedPost.map( post => (post.likes + 1) ));
   // }
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (like) => {
     setLikeCounter( (likeCounter) => {
       return likeCounter + 1;
     });
   }
 
 
+  useEffect(() => {
+    database.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({
+        id: doc.id,
+        post: doc.data()})));
+    })
+  }, []);
 
   return (
+
     // Reverse the posts (latest post first) from the database
-    data.posts.slice(0).reverse().map( (post) => (
-      <div className="post" key={post.id}>
+    posts.slice(0).reverse().map(({id, post}) => (
+      <div className="post" key={id}>
         <div className="post-header">
           <Avatar
             className="post-avatar"
