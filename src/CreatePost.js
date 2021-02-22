@@ -8,7 +8,6 @@ import { database, storage } from './firebase';
 const CreatePost = (username) => {
 
     var Nickname = "Pseudo";
-    const { id } = useParams();
     const [image, setImage] = useState(null);
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
