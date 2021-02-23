@@ -71,6 +71,10 @@ body {
     }
 }
 
+/*Style for making the navbar and the main part of the page not overlap*/
+.content {
+    padding-top: 60px;
+}
 
 /* Style for Post */
 
