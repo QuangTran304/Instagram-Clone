@@ -62,9 +62,11 @@ export default function SignUp() {
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
       generateUserDocument(user, {firstName});
+      alert('Your registration was successful. Welcome to our application !');
     }
     catch(error){
       setError('Error Signing up with email and password');
+      alert('Your password did not correspond to the conditions.')
     }
 
     setEmail("");
