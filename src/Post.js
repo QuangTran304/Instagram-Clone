@@ -3,7 +3,7 @@ import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-import data from './data/database.json';
+// import data from './data/database.json';
 import { database } from './firebase';
 
 const Post = () => {
@@ -22,19 +22,18 @@ const Post = () => {
     });
   }
 
-
   useEffect(() => {
     database.collection('posts').onSnapshot(snapshot => {
-      setPosts(snapshot.docs.map(doc => ({
+      setPosts(snapshot.docs.map( doc => ({
         id: doc.id,
-        post: doc.data()})));
+        post: doc.data()
+      }) ));
     })
   }, []);
 
   return (
+    posts.map( ( {id, post} ) => (
 
-    // Reverse the posts (latest post first) from the database
-    posts.slice(0).reverse().map(({id, post}) => (
       <div className="post" key={id}>
         <div className="post-header">
           <Avatar
@@ -58,7 +57,6 @@ const Post = () => {
             <ChatBubbleOutlineOutlinedIcon style={{marginRight: 8, width: 20}} />
           </div>
 
-          {/* <p className="post-like-number"> Liked by {post.likes} people</p> */}
           <p className="post-like-number"> Liked by {likeCounter} people</p>
 
           <h4 className="post-description">

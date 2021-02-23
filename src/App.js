@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <div className="content">
           <Switch>
