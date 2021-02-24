@@ -1,169 +1,172 @@
 * {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
 }
-
 
 /* Style for main app */
 
 body {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
-
 
 /* Style for Nav bar */
 
 .nav-bar {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    border-bottom: 1px solid #dbdbdb;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 5;
-    height: 9%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  height: 9%;
 }
 
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 650px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 650px;
 }
 
 .app-logo {
-    width: 140px;
-    margin-top: 2px;
+  width: 140px;
+  margin-top: 2px;
+  margin-right: 20px;
 }
 
 .menu .icon-item {
-    width: 10%;
-    height: auto;
-    margin: 2px 0 0 12px;
+  width: 10%;
+  height: auto;
+  margin: 2px 0 0 12px;
 }
 
 .search-box input {
-    background-color: #fafafa;
-    border: 1px solid #dbdbdb;
-    border-radius: 2px;
-    font-size: 12px;
-    text-align: center;
-    padding: 5px 30px;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 30px;
 }
 
 .menu .search-icon {
-    width: 10%;
-    height: auto;
-    display: none;
+  width: 10%;
+  height: auto;
+  display: none;
 }
 
 /*Style for Navbar mobile*/
 
 @media only screen and (max-width: 600px) {
-    .search-box {
-        display: none;
-    }
-    .menu .search-icon {
-        display: inline;
-        width: 10%;
-        height: auto;
-    }
+  .search-box {
+    display: none;
+  }
+  .menu .search-icon {
+    display: inline;
+    width: 10%;
+    height: auto;
+  }
 }
-
 
 /* Style for Post */
 
 .post {
-    background-color: white;
-    border: 1px solid #dbdbdb;
-    border-radius: 2px;
-    margin: 25px auto;
-    max-width: 500px;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  margin: 25px auto;
+  max-width: 500px;
 }
 
 .post-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
 .post-avatar {
-    margin: 0 12px 0 5px;
-    background: rgb(247, 151, 80);
-    background: linear-gradient(90deg, rgba(247, 151, 80, 1) 0%, rgba(199, 53, 141, 1) 100%);
+  margin: 0 12px 0 5px;
+  background: rgb(247, 151, 80);
+  background: linear-gradient(
+    90deg,
+    rgba(247, 151, 80, 1) 0%,
+    rgba(199, 53, 141, 1) 100%
+  );
 }
 
 .post-username {
-    font-size: 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .post-location {
-    font-size: 10px;
-    color: gray;
-    padding-top: 2px;
+  font-size: 10px;
+  color: gray;
+  padding-top: 2px;
 }
 
 .post-image {
-    width: 100%;
-    border-top: 1px solid rgb(240, 240, 240);
-    border-bottom: 1px solid rgb(240, 240, 240);
+  width: 100%;
+  border-top: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
 
 .post-body {
-    padding: 10px 20px 15px 20px;
+  padding: 10px 20px 15px 20px;
 }
 
 .post-description {
-    font-weight: lighter;
-    font-size: 12px;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    padding: 10px 0;
+  font-weight: lighter;
+  font-size: 12px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px 0;
 }
 
 .post-comment {
-    font-weight: lighter;
-    font-size: 10px;
+  font-weight: lighter;
+  font-size: 10px;
 }
 
 .post-icons {
-    font-weight: bold;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .post-like-number {
-    font-size: 10px;
-    padding: 5px 0;
+  font-size: 10px;
+  padding: 5px 0;
 }
-
 
 /* Styles for Post Upload Form */
 
 .postUploadContainer {
-    margin: auto;
-    max-width: 500px;
-    margin-top: 50px;
+  margin: auto;
+  max-width: 500px;
+  margin-top: 100px;
 }
 
 .postUploadForm {
-    display: flex;
-    flex-direction: column;
-    background: whilte;
-    border: 1px solid #fdcfde;
-    border-radius: 3px;
-    padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  background: whilte;
+  border: 1px solid #fdcfde;
+  border-radius: 3px;
+  padding: 15px 20px;
 }
 
 .MuiOutlinedInput-root {
-    margin-bottom: 15px;
-    padding: 0 0;
+  margin-bottom: 15px;
+  padding: 0 0;
 }
 
 .postFormTitle {
-    font-family: inherit;
-    text-align: center;
-    margin-bottom: 20px;
+  font-family: inherit;
+  text-align: center;
+  margin-bottom: 20px;
 }
