@@ -23,7 +23,7 @@ const Post = () => {
   }
 
   useEffect(() => {
-    database.collection('posts').onSnapshot(snapshot => {
+    database.collection('posts').orderBy("timestamp", "desc").onSnapshot(snapshot => {
       setPosts(snapshot.docs.map( doc => ({
         id: doc.id,
         post: doc.data()

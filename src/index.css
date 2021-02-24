@@ -154,10 +154,11 @@ body {
 .postUploadForm {
   display: flex;
   flex-direction: column;
-  background: whilte;
+  background: white;
   border: 1px solid #fdcfde;
   border-radius: 3px;
   padding: 15px 20px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.103);
 }
 
 .MuiOutlinedInput-root {
