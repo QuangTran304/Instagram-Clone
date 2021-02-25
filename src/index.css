@@ -24,51 +24,150 @@ body {
   height: 9%;
 }
 
+
 .nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 650px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    height: auto;
+    
 }
 
+.nav-logo-and-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 .app-logo {
-  width: 140px;
-  margin-top: 2px;
-  margin-right: 20px;
+    width: 140px;
+    margin: 7px;
+    padding: auto;
 }
 
 .menu .icon-item {
-  width: 10%;
-  height: auto;
-  margin: 2px 0 0 12px;
+    width: 30px;
+    height: auto;
+    margin: 5px;
 }
 
 .search-box input {
-  background-color: #fafafa;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  font-size: 12px;
-  text-align: center;
-  padding: 5px 30px;
-}
-
-.menu .search-icon {
-  width: 10%;
-  height: auto;
-  display: none;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 20px;
+    width: 200px;
+    height: auto;
+    margin: 150px;
 }
 
 /*Style for Navbar mobile*/
 
 @media only screen and (max-width: 600px) {
-  .search-box {
-    display: none;
-  }
-  .menu .search-icon {
-    display: inline;
-    width: 10%;
-    height: auto;
-  }
+    .menu .icon-item{
+        width: 40px;
+        height: auto;
+    }
+
+    .menu {
+        background-color: #fafafa;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+        text-align: center;
+        margin: 0;
+
+    }
+
+    .nav-logo-and-search {
+        background-color: #fafafa;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
+        width: 100%;
+        top:0;
+        position: fixed;
+        margin-top:0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .app-logo {
+        width: 100px;
+        margin: 7px;
+        padding: auto;
+    }
+
+    .search-box input {
+        margin: 10px 40px 10px 10px;
+        width: 150px;
+        height: auto;
+        padding: auto;
+    }
+
+}
+
+/*Style for Navbar mobile for Galaxy Fold*/
+
+@media only screen and (max-width: 300px) {
+
+    .menu .icon-item{
+        width: 40px;
+        height: auto;
+    }
+
+    .menu {
+        background-color: #fafafa;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+        text-align: center;
+        margin: 0;
+
+    }
+
+    .nav-logo-and-search {
+        background-color: #fafafa;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
+        width: 100%;
+        top:0;
+        position: fixed;
+        margin-top:0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .app-logo {
+        width: 80px;
+        margin: 7px;
+        padding: auto;
+    }
+
+    .search-box input {
+        margin: 10px 30px 10px 10px;
+        width: 100px;
+        height: auto;
+        padding: auto;
+    }
+
+
+}
+
+/*Style for making the navbar and the main part of the page not overlap*/
+.content {
+    padding-top: 80px;
 }
 
 /* Style for Post */
@@ -148,7 +247,7 @@ body {
 .postUploadContainer {
   margin: auto;
   max-width: 500px;
-  margin-top: 100px;
+  margin-top: 15px;
 }
 
 .postUploadForm {

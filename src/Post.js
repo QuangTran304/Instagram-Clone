@@ -10,13 +10,7 @@ const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);
   const[posts, setPosts] = useState([]);
 
-  // Increase the total likes of the post after 'like' is clicked
-  // const handleLikeClick = (id) => {
-  //   const likedPost = data.posts.filter( post => post.id === id );
-  //   console.log(likedPost.map( post => (post.likes + 1) ));
-  // }
-
-  const handleLikeClick = (like) => {
+  const handleLikeClick = () => {
     setLikeCounter( (likeCounter) => {
       return likeCounter + 1;
     });
@@ -66,6 +60,7 @@ const Post = () => {
           <h3 className="post-comment">View all comments.</h3>
         </div>
       </div>
+    
     )) 
   );
 };
