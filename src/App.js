@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React, {useContext} from 'react';
 import CreatePost from "./CreatePost";
 import Post from "./Post";
@@ -15,7 +15,9 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signin" component={SignIn}>
+          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
+        </Route>
         <Route exact path="/signup" component={SignUp} />
       </Switch>
     </Router>
