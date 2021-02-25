@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { firebaseAuth } from '../provider/AuthProvider'
-
+import logo from "../Instagrill.png";
 
 function Copyright() {
     return (
@@ -66,12 +66,10 @@ export default function SignInSide() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('handleSubmit')
         handleSignin()
     }
     const handleChange = e => {
         const { name, value } = e.target
-        console.log(inputs)
         setInputs(prev => ({ ...prev, [name]: value }))
     }
 
@@ -81,9 +79,7 @@ export default function SignInSide() {
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                 <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                    <img src={logo} className="app-logo-signin" alt="logo" />
                     <Typography component="h1" variant="h5">
                         Sign in
           </Typography>

@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { firebaseAuth } from '../provider/AuthProvider'
+import logo from "../Instagrill.png";
 
 function Copyright() {
   return (
@@ -64,9 +65,7 @@ export default function SignUp(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+      <img src={logo} className="app-logo-signup" alt="logo" />
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
