@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
@@ -8,6 +8,7 @@ import { database } from './firebase';
 
 const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);
+  const[posts, setPosts] = useState([]);
 
   const handleLikeClick = () => {
     setLikeCounter( (likeCounter) => {
@@ -15,23 +16,18 @@ const Post = () => {
     });
   }
 
-  const [posts, setPosts] = useState([]);
-
-  useEffect( () => {
-    database.collection('posts').onSnapshot( updatedData => {
-      setPosts( updatedData.docs.map( doc => ({
+  useEffect(() => {
+    database.collection('posts').orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map( doc => ({
         id: doc.id,
-        post: doc.data()   }) 
-      ));
+        post: doc.data()
+      }) ));
     })
   }, []);
 
-
   return (
-    // Reverse the posts (latest post first) from the local database
-    // data.posts.slice(0).reverse().map( (post) => (
-    posts.map( ({id, post}) => (      // We now map an OBJECT contains: post & id
-      
+    posts.map( ( {id, post} ) => (
+
       <div className="post" key={id}>
         <div className="post-header">
           <Avatar
@@ -55,8 +51,7 @@ const Post = () => {
             <ChatBubbleOutlineOutlinedIcon style={{marginRight: 8, width: 20}} />
           </div>
 
-          <p className="post-like-number"> Liked by {post.likes} people</p>
-          {/* <p className="post-like-number"> Liked by {likeCounter} people</p> */}
+          <p className="post-like-number"> Liked by {likeCounter} people</p>
 
           <h4 className="post-description">
             <strong>{post.username}</strong> {post.description}

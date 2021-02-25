@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreatePost from "./CreatePost";
 import Post from "./Post";
 import Navbar from "./Navbar";
@@ -6,23 +6,22 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
 function App() {
-
   return (
     <Router>
       <div className="app">
-        <Navbar />
+        {<Navbar />}
 
         <div className="content">
           <Switch>
             <Route exact path="/">
-              {/* <CreatePost /> */}
+              <CreatePost />
               <Post />
             </Route>
 
             <Route exact path="/signin">
               <SignIn />
             </Route>
-            
+
             <Route exact path="/signup">
               <SignUp />
             </Route>

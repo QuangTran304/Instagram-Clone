@@ -4,7 +4,6 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link } from "react-router-dom";
 
 
