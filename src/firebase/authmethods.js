@@ -10,8 +10,6 @@ export const authMethods = {
         //set token to localStorage 
         await localStorage.setItem('token', token)
         setToken(token)
-        //grab token from local storage and set to state. 
-          console.log(res)
         })
         .catch(err => {
         setErrors(prev => ([...prev, err.message]))
