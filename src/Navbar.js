@@ -12,15 +12,15 @@ const Navbar = () => {
   return (
     <div className="nav-bar">
       <div className="nav-container">
-        <div>
-          <Link to="/"><img src={logo} className="app-logo" alt="logo" /></Link>
+        <div className="nav-logo-and-search">
+          <div>
+            <Link to="/"><img src={logo} className="app-logo" alt="logo" /></Link>
+          </div>
+          <div className="search-box">
+            <input type="text" className="search" placeholder="Search..." />
+          </div>
         </div>
-        <div className="search-box">
-          <input type="text" name="search" placeholder="Search..." />
-        </div>
-
         <div className="menu">
-          <Link to="#Search"><SearchIcon className="search-icon" /></Link>
           <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
           <Link to="#Explore"><ExploreOutlinedIcon className="icon-item" /></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
