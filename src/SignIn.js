@@ -55,8 +55,20 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const signInWithEmailAndPasswordHandler = (event, email, password) => {
+  const signInWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
+    
+    try{
+      const {user} = await auth.signInWithEmailAndPassword(email, password);
+      alert('Your are signed in !');
+    }
+    catch(error){
+      setError('Error Signing up with email and password');
+      alert('Your email or password is not correct.')
+    }
+
+    setEmail("");
+    setPassword("");
   };
 
   const onChangeHandler = (event) => {
