@@ -79,7 +79,7 @@ export default function SignUp(props) {
                 id="firstName"
                 label="First Name"
                 autoFocus
-                value={inputs.firstName}
+                value={inputs.displayName}
                 onChange={handleChange}
               />
             </Grid>
