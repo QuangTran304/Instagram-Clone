@@ -7,15 +7,15 @@
 /* Style for Sign In Page */
 
 .app-logo-signin{
-    margin-top: 50px;
-    margin-bottom: 150px;
-    width: 300px;
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+    width: 250px;
     height: auto;
 }
 
 .app-logo-signup{
-    margin-bottom: 50px;
-    width: 300px;
+    margin-bottom: 15vh;
+    width: 250px;
     height: auto;
 }
 
@@ -259,13 +259,13 @@ body {
 
 /* Styles for Post Upload Form */
 
-.postUploadContainer {
+.post-upload-container {
   margin: auto;
   max-width: 500px;
-  margin-top: 15px;
+  margin-top: 100px;
 }
 
-.postUploadForm {
+.post-upload-form {
   display: flex;
   flex-direction: column;
   background: white;
@@ -280,7 +280,7 @@ body {
   padding: 0 0;
 }
 
-.postFormTitle {
+.post-form-title {
   font-family: inherit;
   text-align: center;
   margin-bottom: 20px;

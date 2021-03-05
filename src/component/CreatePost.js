@@ -1,9 +1,8 @@
 import React from "react";
-import "./index.css";
+import "../index.css";
 import { useState } from "react";
-import "./data/database.json";
 import firebase from "firebase";
-import { database } from './firebase';
+import { database } from '../firebase/firebase';
 import { Button, TextField } from "@material-ui/core";
 
 
@@ -27,9 +26,9 @@ const CreatePost = () => {
 
     return (
 
-    <div className="postUploadContainer">
-        <form className="postUploadForm" noValidate autoComplete="off">
-            <h1 className="postFormTitle">New Post</h1>
+    <div className="post-upload-container">
+        <form className="post-upload-form" noValidate autoComplete="off">
+            <h1 className="post-form-title">New Post</h1>
             <TextField
                 type="text"
                 label="Username"

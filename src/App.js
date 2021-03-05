@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React, {useContext} from 'react';
-import CreatePost from "./CreatePost";
-import Post from "./Post";
-import Navbar from './Navbar'
+import CreatePost from "./component/CreatePost";
+import Post from "./component/Post";
+import Navbar from './component/Navbar'
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
 import {firebaseAuth} from "./provider/AuthProvider"
