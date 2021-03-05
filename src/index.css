@@ -4,6 +4,21 @@
     Arial, sans-serif;
 }
 
+/* Style for Sign In Page */
+
+.app-logo-signin{
+    margin-top: 50px;
+    margin-bottom: 150px;
+    width: 300px;
+    height: auto;
+}
+
+.app-logo-signup{
+    margin-bottom: 50px;
+    width: 300px;
+    height: auto;
+}
+
 /* Style for main app */
 
 body {

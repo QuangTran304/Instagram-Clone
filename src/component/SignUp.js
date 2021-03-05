@@ -1,25 +1,21 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {auth, generateUserDocument} from "./firebase";
-import {useState} from 'react';
+import { firebaseAuth } from '../provider/AuthProvider'
+import logo from "../Instagrill.png";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="#">
+      <Link color="inherit" href="/">
         Instagrill
       </Link>{' '}
       {new Date().getFullYear()}
@@ -48,56 +44,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
-    event.preventDefault();
+  const { handleSignup, inputs, setInputs, errors } = useContext(firebaseAuth)
 
-    try{
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, {firstName});
-      alert('Your registration was successful. Welcome to our application !');
-    }
-    catch(error){
-      setError('Error Signing up with email and password');
-      alert('Your password did not correspond to the conditions.')
-    }
-
-    setEmail("");
-    setPassword("");
-    setFirstName("");
-    setLastName("");
-  };
-  const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    } else if (name === "firstName") {
-      setFirstName(value);
-    } else if (name === "lastName") {
-      setLastName(value);
-    }
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await handleSignup()
+    props.history.push('/')
+  }
+  const handleChange = e => {
+    const { name, value } = e.target
+    setInputs(prev => ({ ...prev, [name]: value }))
+  }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+      <img src={logo} className="app-logo-signup" alt="logo" />
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -109,8 +79,8 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
-                value ={firstName}
-                onChange={event => onChangeHandler(event)}
+                value={inputs.displayName}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -122,8 +92,8 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
-                value ={lastName}
-                onChange={event => onChangeHandler(event)}
+                value={inputs.lastName}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -135,9 +105,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                defaultValue={email}
-                value= {email}
-                onChange={event => onChangeHandler(event)}
+                value={inputs.email}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -150,8 +119,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value ={password}
-                onChange={event => onChangeHandler(event)}
+                value={inputs.password}
+                onChange={handleChange}
               />
             </Grid>
           </Grid>
@@ -161,12 +130,10 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick ={event => {
-              createUserWithEmailAndPasswordHandler(event, email, password);
-            }}
           >
             Sign Up
           </Button>
+          {errors.length > 0 ? errors.map(error => <p style={{color: 'red'}}>{error}</p> ) : null}
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/signin" variant="body2">
