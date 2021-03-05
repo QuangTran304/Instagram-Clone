@@ -5,7 +5,8 @@ import Post from "./Post";
 import Navbar from './Navbar'
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
-import {firebaseAuth} from "./provider/AuthProvider"
+import {firebaseAuth} from "./provider/AuthProvider";
+import PopUp from "./PopUp";
 
 function App() {
   const {token} = useContext(firebaseAuth)
@@ -14,9 +15,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]} />
+        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <PopUp/>, <Post /> ]} />
         <Route exact path="/signin" component={SignIn}>
-          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
+          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <PopUp/>, <Post />]}
         </Route>
         <Route exact path="/signup" component={SignUp} />
       </Switch>
