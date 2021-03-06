@@ -285,3 +285,14 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.post-upload-image {
+  font-family: inherit;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+  color: gray;
+  background: rgb(240, 240, 240);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
