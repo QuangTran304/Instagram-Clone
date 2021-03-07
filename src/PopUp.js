@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import CreatePost from "./CreatePost.js";
+import "./index.css";
 
 function getModalStyle() {
   const top = 50;
@@ -21,13 +22,20 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         padding: theme.spacing(7, 15),
         boxShadow: theme.shadows[5],
+        textAlign: 'center',
   },
     button:{
         marginLeft: '30%',
         marginRight: '30%',
         width: '40%',
         padding: theme.spacing(2),
-        marginTop: theme.spacing(10),
+        marginTop: theme.spacing(20),
+        display: "flex",
+        flexDirection: "column",
+        background: "white",
+        border: "1px solid #fdcfde",
+        borderRadius: "3px",
+        boxShadow: "0 0 12px 0 rgba(0, 0, 0, 0.103)",
   },
 }));
 
