@@ -5,6 +5,7 @@ import Post from "./component/Post";
 import Navbar from './component/Navbar'
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
+import Profile from "./component/Profile";
 import {firebaseAuth} from "./provider/AuthProvider"
 
 function App() {
@@ -14,9 +15,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]} />
+        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />, <Profile />]} />
         <Route exact path="/signin" component={SignIn}>
-          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
+          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />, <Profile />]}
         </Route>
         <Route exact path="/signup" component={SignUp} />
       </Switch>
