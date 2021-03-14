@@ -15,12 +15,14 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />, <Profile />]} />
+        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]} />
         <Route exact path="/signin" component={SignIn}>
-          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />, <Profile />]}
+          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
         </Route>
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/profile" component={Profile} />
+        
+        
       </Switch>
     </Router>
   );

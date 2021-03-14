@@ -37,7 +37,7 @@ const Navbar = () => {
           <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
           <Link onClick={handleProfile} to="/profile"><AccountCircleIcon className="icon-item" /></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
-          <Link onClick={handleSignout} to="#"><ExitToAppIcon className="icon-item" /></Link>
+          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" /></Link>
         
           <Popover>Logout</Popover>
         </div>
