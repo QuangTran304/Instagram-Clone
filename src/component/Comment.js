@@ -3,21 +3,21 @@ import { useState, useEffect } from "react";
 import firebase from "firebase";
 import { database } from "../firebase/firebase";
 import "../index.css";
-import CreatePost from "./CreatePost";
 
 const Comment = ({ postId, username }) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    if (postId) {
+    if ( postId ) {
       database
-        .collection("posts")
+        .collection('posts')
         .doc(postId)
-        .collection("comments")
-        .orderBy("timestamp", "desc")
-        .onSnapshot((snapshot) => {
-          setComments(snapshot.docs.map((doc) => doc.data()));
+        .collection('comments')
+        .onSnapshot( snapshot => {
+          setComments(snapshot.docs.map( doc => ({
+            text: doc.data()
+          }) ));
         });
     }
   }, [postId]);
@@ -29,22 +29,36 @@ const Comment = ({ postId, username }) => {
       .doc(postId)
       .collection("comments")
       .add({
-        text: comment,
-        username: username,
+        comment: comment,
         timestamp: firebase.firestore.FieldValue.serverTimestamp.orderBy(
           "timestamp",
           "desc"
         ),
       });
   };
+
   return (
-    <div className="post_comments">
-      {comments.map((comment) => (
-        <p>
-          <strong>{comment.username}</strong> {comment.text}
-        </p>
-      ))}
+comments.map( ( { comment } ) => (
+
+      <div className="post"> 
+        <div className="post-comment">
+        <strong> {username} </strong> { comment }
+        </div>
+        {/* <div className="add_comments">
+         <form>
+           <input
+            className="input"
+            type="text"            
+            placeholder="Add a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          ></input>
+        </form>
+      </div> */}
     </div>
+
+    )) 
   );
 };
+
 export default Comment;

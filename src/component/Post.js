@@ -3,7 +3,9 @@ import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+import firebase from "firebase";
 import { database } from '../firebase/firebase';
+import Comment from './Comment';
 
 const Post = () => {
   const [likeCounter, setLikeCounter] = useState(0);
@@ -25,9 +27,9 @@ const Post = () => {
   }, []);
 
   return (
-    posts.map( ( {id, post} ) => (
+    posts.map( ( {id, post } ) => (
 
-      <div className="post" key={id}>
+      <div className="post" key={id} >
         <div className="post-header">
           <Avatar
             className="post-avatar"
@@ -57,9 +59,15 @@ const Post = () => {
           </h4>
 
           <h3 className="post-comment">View all comments.</h3>
+
+          <Comment
+            postId = { id }
+            username = { post.username }
+          />
+
         </div>
       </div>
-    
+
     )) 
   );
 };

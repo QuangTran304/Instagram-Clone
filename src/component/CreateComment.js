@@ -32,4 +32,4 @@ const CreatePost = (postId) => {
   ));
 };
 
-("i think my part is mostly inside of the post because it's the posts that are going to have the comments. Okk ");
+
