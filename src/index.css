@@ -280,3 +280,21 @@ body {
 .post_comments {
   flex: 1;
 }
+
+.post_commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post_input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.post_button {
+  flex: 0;
+  border: none;
+  border-top: 1px solid lightgray;
+}
