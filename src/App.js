@@ -14,15 +14,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          {rProps => {
-            if(token === null){
-              return <SignIn />
-            }else{
-              return [<Navbar />, <CreatePost />, <Post />]
-            }
-          }}
-        </Route>
+        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]}/>
         <Route exact path="/signin">
           {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
         </Route>
@@ -34,4 +26,4 @@ function App() {
 
 export default App;
 
-// render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]}
+// 
