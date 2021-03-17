@@ -7,7 +7,7 @@ const AuthProvider = (props) => {
   const initState = {email: '', password: '', username: ''}
   const [inputs, setInputs] = useState(initState)
   const [errors, setErrors] = useState([])
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(localStorage.getItem('token'))
 
 
   const handleSignup = () => {
