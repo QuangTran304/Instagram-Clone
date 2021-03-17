@@ -8,7 +8,6 @@ import { Button, TextField } from "@material-ui/core";
 
 
 const CreatePost = () => {
-  const [username, setUsername] = useState("");
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [description, setDescription] = useState("");
@@ -47,7 +46,7 @@ const CreatePost = () => {
           .then( url => {
             database.collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              username: username,
+              username: firebase.auth().currentUser.displayName,
               image: url,     // This is just the image URL reference from the storage
               description: description,
               location: location
@@ -57,7 +56,6 @@ const CreatePost = () => {
             setProgress(0);
             setDescription("");
             setLocation("");
-            setUsername("");
             setImage(null);
           });
       }
@@ -70,13 +68,6 @@ const CreatePost = () => {
     <div className="post-upload-container">
       <form className="post-upload-form" noValidate autoComplete="off">
         <h1 className="post-form-title">New Post</h1>
-        <TextField
-          type="text"
-          label="Username"
-          placeholder="Your Username"
-          variant="outlined"
-          onChange={(e) => setUsername(e.target.value)}
-        />
         <TextField
           type="text"
           label="Location"
