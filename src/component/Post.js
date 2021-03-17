@@ -8,7 +8,7 @@ import Comment from "./Comment";
 import firebase from 'firebase'
 
 
-const Post = ({ }) => {
+const Post = () => {
   const [posts, setPosts] = useState([]);
   const increment = firebase.firestore.FieldValue.increment(1);
 
@@ -65,7 +65,7 @@ const Post = ({ }) => {
           <strong>{post.username}</strong> {post.description}
         </h4>
 
-        <h3 className="post-comment">View all comments.</h3>
+        <h3 className="post-comment">Comments</h3>
 
         <Comment postId={id} />
       </div>
