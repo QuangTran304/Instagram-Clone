@@ -22,9 +22,9 @@ const CreatePost = () => {
   }
 
   const handleSubmit = () => {
-    const uploadedImage = storage.ref(`images/${image.name}`).put(image);
+    const uploadedContent = storage.ref(`images/${image.name}`).put(image);
 
-    uploadedImage.on(
+    uploadedContent.on(
       "state_changed",
 
       (snapshot) => {
@@ -48,11 +48,18 @@ const CreatePost = () => {
             database.collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               username: username,
-              image: url,   // This is just the image URL reference
+              image: url,     // This is just the image URL reference from the storage
               description: description,
               location: location
-            })
-          })
+            });
+
+            // Reset the form to blank
+            setProgress(0);
+            setDescription("");
+            setLocation("");
+            setUsername("");
+            setImage(null);
+          });
       }
     )
   };
@@ -92,6 +99,8 @@ const CreatePost = () => {
         />
 
         <Button color="secondary" onClick={handleSubmit}>Post</Button>
+        
+        <progress value={progress} max="100"> hello</progress>
       </form>
     </div>
 
