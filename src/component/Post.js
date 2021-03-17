@@ -5,18 +5,16 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
+import firebase from 'firebase'
 
 
-
-const Post = ({ postId, commentId, user, username }) => {
-  const [likeCounter, setLikeCounter] = useState(0);
+const Post = ({ }) => {
   const [posts, setPosts] = useState([]);
-  const [comments, setComments] = useState([]);
+  const increment = firebase.firestore.FieldValue.increment(1);
 
-  const handleLikeClick = () => {
-    setLikeCounter((likeCounter) => {
-      return likeCounter + 1;
-    });
+  const handleLikeClick = ( id ) => {
+    var post = database.collection("posts").doc(id);
+    post.update({ likes: increment });
   };
 
   useEffect(() => {
@@ -33,26 +31,8 @@ const Post = ({ postId, commentId, user, username }) => {
       });
   }, []); 
 
-  
-  useEffect(() => {
-    if (postId) {
-      database
-        .collection("posts")
-        .doc(postId)
-        .collection("comments")
-        .onSnapshot((snapshot) => {
-          setComments(
-            snapshot.docs.map((doc) => ({
-              text: doc.data(),
-              commentId : doc.id,
-            }))
-          );
-        });
-    }
-  }, [postId]);
-
   return posts.map(({ id, post }) => (
-    <div className="post" key={id}>
+    <div className="post" key={ id }>
       <div className="post-header">
         <Avatar
           className="post-avatar"
@@ -71,7 +51,7 @@ const Post = ({ postId, commentId, user, username }) => {
       <div className="post-body">
         <div className="post-icons">
           <FavoriteBorder
-            onClick={handleLikeClick}
+            onClick={() => handleLikeClick( id )}
             style={{ marginRight: 8, width: 20 }}
           />
           <ChatBubbleOutlineOutlinedIcon
@@ -79,7 +59,7 @@ const Post = ({ postId, commentId, user, username }) => {
           />
         </div>
 
-        <p className="post-like-number"> Liked by {likeCounter} people</p>
+        <p className="post-like-number"> Liked by { post.likes } people</p>
 
         <h4 className="post-description">
           <strong>{post.username}</strong> {post.description}
@@ -87,13 +67,6 @@ const Post = ({ postId, commentId, user, username }) => {
 
         <h3 className="post-comment">View all comments.</h3>
 
-        <div className="post_comments">
-          {comments.map((comment) => (
-            <p>
-              <h3> {username}</h3> {comments.comment}
-            </p>
-          ))}
-        </div>
         <Comment postId={id} />
       </div>
     </div>
