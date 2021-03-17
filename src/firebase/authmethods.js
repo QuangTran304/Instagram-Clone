@@ -57,11 +57,3 @@ export const authMethods = {
       })
   },
 }
-
-// user.updateProfile({
-//   displayName: username
-// }).then(function () {
-//     console.log('username successfully added')
-// }, function (error) {
-//     console.log('fatal error, fml')
-// });

@@ -9,8 +9,6 @@ import {firebaseAuth} from "./provider/AuthProvider"
 
 function App() {
   const {token} = useContext(firebaseAuth)
-  console.log(token + "this is token from App.js")
-
   return (
     <Router>
       <Switch>
@@ -25,5 +23,3 @@ function App() {
 }
 
 export default App;
-
-// 
