@@ -13,7 +13,6 @@ const Post = ({ postId, commentId, user, username }) => {
   const [likeCounter, setLikeCounter] = useState(0);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-  const [comment, setComment] = useState("");
 
   const handleLikeClick = () => {
     setLikeCounter((likeCounter) => {
@@ -51,17 +50,7 @@ const Post = ({ postId, commentId, user, username }) => {
           );
         });
     }
-  }, [postId, commentId]);
-
-  const postComment = (event) => {
-    event.preventDefault();
-    database.collection("posts").doc(postId).collection("comments").add({
-      comment: comment,
-      username: firebase.auth().currentUser.displayName,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setComment("");
-  };
+  }, [postId]);
 
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
@@ -106,25 +95,6 @@ const Post = ({ postId, commentId, user, username }) => {
             </p>
           ))}
         </div>
-
-        <form className="post_commentBox">
-          <input
-            className="post_input"
-            type="text"
-            placeholder="Add a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            className="post_button"
-            disabled={!comment}
-            type="submit"
-            onClick={postComment}
-          >
-            Post
-          </button>
-        </form>
-
         <Comment postId={id} />
       </div>
     </div>

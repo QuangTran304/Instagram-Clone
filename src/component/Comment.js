@@ -8,59 +8,63 @@ const Comment = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
-
   useEffect(() => {
-    if ( postId ) {
+    if (postId) {
       database
         .collection('posts')
         .doc(postId)
         .collection('comments')
         .orderBy("timestamp", "asc")
-        .onSnapshot( snapshot => {
-          setComments(snapshot.docs.map( doc => ({
-            username: firebase.auth().currentUser.displayName,
-            comment: doc.data()
-          }) ));
+        .onSnapshot(snapshot => {
+          setComments(snapshot.docs.map(doc => ({
+            username: doc.data().username,
+            comment: doc.data().comment
+          })));
         });
     }
   }, [postId]);
 
-  // const postComment = (e) => {
-  //   e.preventDefault();
-  //   database
-  //     .collection("posts")
-  //     .doc(postId)
-  //     .collection("comments")
-  //     .add({
-  //       comment: comment,
-  //       timestamp: firebase.firestore.FieldValue.serverTimestamp.orderBy(
-  //         "timestamp",
-  //         "desc"
-  //       ),
-  //     });
-  // };
+  const postComment = (event) => {
+    event.preventDefault();
+    database.collection("posts").doc(postId).collection("comments").add({
+      comment: comment,
+      username: firebase.auth().currentUser.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setComment("");
+  };
+
 
   return (
-// comments.map( ( { username, comment } ) => (
-      <div className="post"> 
-        <div className="post-comment">
-        <strong> {firebase.auth().currentUser.displayName} </strong> { comment }
+    <div>
+      {comments.map(({ username, comment }) => (
+        <div className="post">
+          <div class="comment">
+            <p> {username}  {comment} </p>
+          </div>
         </div>
-        {/* <div className="add_comments">
-         <form>
-           <input
-            className="input"
-            type="text"            
-            placeholder="Add a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          ></input>
-        </form>
-      </div> */}
-    </div>
+      ))
+      }
 
-    // )) 
-  );
+      <form className="post_commentBox">
+        <input
+          className="post_input"
+          type="text"
+          placeholder="Add a comment..."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <button
+          className="post_button"
+          disabled={!comment}
+          type="submit"
+          onClick={postComment}
+        >
+          Post
+          </button>
+      </form>
+    </div>
+  )
 };
 
 export default Comment;
