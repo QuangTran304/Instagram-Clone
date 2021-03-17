@@ -7,7 +7,9 @@ import firebase from "firebase";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 
-const Post = ({ postId, user, username }) => {
+
+
+const Post = ({ postId, commentId, user, username }) => {
   const [likeCounter, setLikeCounter] = useState(0);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
@@ -31,31 +33,31 @@ const Post = ({ postId, user, username }) => {
           }))
         );
       });
-  }, []);
+  }, []); 
 
+  
   useEffect(() => {
     if (postId) {
       database
         .collection("posts")
         .doc(postId)
         .collection("comments")
-        .doc(commentId)
         .onSnapshot((snapshot) => {
           setComments(
             snapshot.docs.map((doc) => ({
-              username: user.displayName,
               text: doc.data(),
+              commentId : doc.id,
             }))
           );
         });
     }
-  }, [postId]);
+  }, [postId, commentId]);
 
   const postComment = (event) => {
     event.preventDefault();
     database.collection("posts").doc(postId).collection("comments").add({
       comment: comment,
-      username: user.displayName,
+      username: firebase.auth().currentUser.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setComment("");
@@ -123,7 +125,7 @@ const Post = ({ postId, user, username }) => {
           </button>
         </form>
 
-        <Comment postId={id} username={post.username} />
+        <Comment postId={id} />
       </div>
     </div>
   ));
