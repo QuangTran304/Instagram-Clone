@@ -277,18 +277,14 @@ body {
   margin-bottom: 20px;
 }
 
-.post_comments {
-  flex: 1;
-}
-
 .post_commentBox {
   display: flex;
-  margin-top: 10px;
 }
 
 .post_input {
   flex: 1;
   border: none;
+  padding-top: 15px;
   padding: 10px;
   border-top: 1px solid lightgray;
 }
@@ -296,5 +292,18 @@ body {
 .post_button {
   flex: 0;
   border: none;
-  border-top: 1px solid lightgray;
+  height : 15%; 
+}
+
+/* Post Comments */
+
+.post_comment{
+
+  font-size: 12px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 5px 0;
+  margin-left: 7.5px;
+  display: flex ;
+  margin: 0 30px 0 5px;
 }
