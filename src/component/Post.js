@@ -1,9 +1,8 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-import firebase from "firebase";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 
