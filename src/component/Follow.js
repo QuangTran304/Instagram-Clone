@@ -12,7 +12,6 @@ const Follow = () => {
     const [users, setUsers] = useState([]);
     // const [newUsers, setNewUsers] = useState([]);
     var currentId = ""
-    var currentUser = firebase.auth().currentUser.displayName;
 
     useEffect(() => {
         database
@@ -29,7 +28,7 @@ const Follow = () => {
 
     function findUser() {
         users.map(({ id, user }) => {
-            if (user === currentUser) {
+            if (user === firebase.auth().currentUser.displayName) {
                 currentId = id;
             }
         })
@@ -38,7 +37,7 @@ const Follow = () => {
 
     const followUser = ({ id, user }) => {
         database.collection('users').doc(id).update({
-            follower: firebase.firestore.FieldValue.arrayUnion({ currentUser })
+            follower: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.displayName)
         })
     }
 
@@ -46,7 +45,7 @@ const Follow = () => {
         <div>
            {users.map(({id,user}) => (
                <div>
-                   {user !== currentUser && 
+                   {user !== firebase.auth().currentUser.displayName && 
                    <div>
                        {user}
                    </div> }
