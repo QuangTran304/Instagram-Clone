@@ -21,7 +21,7 @@ const CreatePost = () => {
   }
 
   const handleSubmit = () => {
-    const uploadedContent = storage.ref(`images/${image.name}`).put(image);
+    const uploadedContent = storage.ref(`${firebase.auth().currentUser.displayName}/${image.name}`).put(image);
 
     uploadedContent.on(
       "state_changed",
@@ -40,7 +40,7 @@ const CreatePost = () => {
 
       () => {
         storage
-          .ref("images")
+          .ref(`${firebase.auth().currentUser.displayName}`)
           .child(image.name)
           .getDownloadURL()
           .then( url => {
@@ -52,11 +52,11 @@ const CreatePost = () => {
               location: location
             });
 
-            // Reset the form to blank
-            setProgress(0);
-            setDescription("");
-            setLocation("");
-            setImage(null);
+            // // Reset the form to blank
+            // setProgress(0);
+            // setDescription("");
+            // setLocation("");
+            // setImage(null);
           });
       }
     )
