@@ -5,8 +5,6 @@ import firebase from "firebase";
 import { database, storage } from '../firebase/firebase';
 import { Button, TextField } from "@material-ui/core";
 
-
-
 const CreatePost = () => {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -64,7 +62,6 @@ const CreatePost = () => {
 
 
   return (
-
     <div className="post-upload-container">
       <form className="post-upload-form" noValidate autoComplete="off">
         <h1 className="post-form-title">New Post</h1>
@@ -94,7 +91,6 @@ const CreatePost = () => {
         <progress value={progress} max="100"> hello</progress>
       </form>
     </div>
-
   );
 };
 

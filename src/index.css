@@ -6,17 +6,17 @@
 
 /* Style for Sign In Page */
 
-.app-logo-signin{
-    margin-top: 5vh;
-    margin-bottom: 15vh;
-    width: 250px;
-    height: auto;
+.app-logo-signin {
+  margin-top: 5vh;
+  margin-bottom: 15vh;
+  width: 250px;
+  height: auto;
 }
 
-.app-logo-signup{
-    margin-bottom: 15vh;
-    width: 250px;
-    height: auto;
+.app-logo-signup {
+  margin-bottom: 15vh;
+  width: 250px;
+  height: auto;
 }
 
 /* Style for main app */
@@ -39,150 +39,141 @@ body {
   height: 9%;
 }
 
-
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 900px;
-    height: auto;
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  height: auto;
 }
 
 .nav-logo-and-search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
 .app-logo {
-    width: 140px;
-    margin: 7px;
-    padding: auto;
+  width: 140px;
+  margin: 7px;
+  padding: auto;
 }
 
 .menu .icon-item {
-    width: 30px;
-    height: auto;
-    margin: 5px;
+  width: 30px;
+  height: auto;
+  margin: 5px;
 }
 
 .search-box input {
-    background-color: #fafafa;
-    border: 1px solid #dbdbdb;
-    border-radius: 2px;
-    font-size: 12px;
-    text-align: center;
-    padding: 5px 20px;
-    width: 200px;
-    height: auto;
-    margin: 150px;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 20px;
+  width: 200px;
+  height: auto;
+  margin: 150px;
 }
 
 /*Style for Navbar mobile*/
 
 @media only screen and (max-width: 600px) {
-    .menu .icon-item{
-        width: 40px;
-        height: auto;
-    }
+  .menu .icon-item {
+    width: 40px;
+    height: auto;
+  }
 
-    .menu {
-        background-color: #fafafa;
-        border: 1px solid #dbdbdb;
-        border-radius: 2px;
-        width: 100%;
-        bottom: 0;
-        position: fixed;
-        text-align: center;
-        margin: 0;
+  .menu {
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    margin: 0;
+  }
 
-    }
+  .nav-logo-and-search {
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin-top: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .nav-logo-and-search {
-        background-color: #fafafa;
-        border: 1px solid #dbdbdb;
-        border-radius: 2px;
-        width: 100%;
-        top:0;
-        position: fixed;
-        margin-top:0;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .app-logo {
+    width: 100px;
+    margin: 7px;
+    padding: auto;
+  }
 
-    .app-logo {
-        width: 100px;
-        margin: 7px;
-        padding: auto;
-    }
-
-    .search-box input {
-        margin: 10px 40px 10px 10px;
-        width: 150px;
-        height: auto;
-        padding: auto;
-    }
-
+  .search-box input {
+    margin: 10px 40px 10px 10px;
+    width: 150px;
+    height: auto;
+    padding: auto;
+  }
 }
 
 /*Style for Navbar mobile for Galaxy Fold*/
 
 @media only screen and (max-width: 300px) {
+  .menu .icon-item {
+    width: 40px;
+    height: auto;
+  }
 
-    .menu .icon-item{
-        width: 40px;
-        height: auto;
-    }
+  .menu {
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    margin: 0;
+  }
 
-    .menu {
-        background-color: #fafafa;
-        border: 1px solid #dbdbdb;
-        border-radius: 2px;
-        width: 100%;
-        bottom: 0;
-        position: fixed;
-        text-align: center;
-        margin: 0;
+  .nav-logo-and-search {
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin-top: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    }
+  .app-logo {
+    width: 80px;
+    margin: 7px;
+    padding: auto;
+  }
 
-    .nav-logo-and-search {
-        background-color: #fafafa;
-        border: 1px solid #dbdbdb;
-        border-radius: 2px;
-        width: 100%;
-        top:0;
-        position: fixed;
-        margin-top:0;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .app-logo {
-        width: 80px;
-        margin: 7px;
-        padding: auto;
-    }
-
-    .search-box input {
-        margin: 10px 30px 10px 10px;
-        width: 100px;
-        height: auto;
-        padding: auto;
-    }
-
-
+  .search-box input {
+    margin: 10px 30px 10px 10px;
+    width: 100px;
+    height: auto;
+    padding: auto;
+  }
 }
 
 /*Style for making the navbar and the main part of the page not overlap*/
 .content {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
 /* Style for Post */
@@ -286,6 +277,37 @@ body {
   margin-bottom: 20px;
 }
 
+.post_commentBox {
+  display: flex;
+}
+
+.post_input {
+  flex: 1;
+  border: none;
+  padding-top: 15px;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.post_button {
+  flex: 0;
+  border: none;
+  height : 15%; 
+}
+
+/* Post Comments */
+
+.post_comment{
+
+  font-size: 12px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 5px 0;
+  margin-left: 7.5px;
+  display: flex ;
+  margin: 0 30px 0 5px;
+}
+
 .post-upload-image {
   font-family: inherit;
   padding: 15px 15px;
@@ -309,3 +331,4 @@ progress::-webkit-progress-value {
   background-color: rgb(247, 128, 128);
   border-radius: 0 0 2px 2px;
 }
+
