@@ -6,12 +6,15 @@ import { database } from "../firebase/firebase"
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import "../index.css"
+import { useRef } from 'react'
+import { Brightness1Rounded } from "@material-ui/icons"
 
 const Follow = () => {
     const [follow, setFollow] = useState([]);
     const [users, setUsers] = useState([]);
     // const [newUsers, setNewUsers] = useState([]);
     var currentId = ""
+    let btnRef = useRef()
 
     useEffect(() => {
         database
@@ -20,7 +23,8 @@ const Follow = () => {
                 setUsers(
                     snapshot.docs.map(doc => ({
                         id: doc.id,
-                        user: doc.data().username
+                        user: doc.data().username,
+                        following: doc.data().following
                     })));
             })
 
@@ -35,27 +39,45 @@ const Follow = () => {
     }
     console.log(currentId)
 
-    const followUser = ({ id, user }) => {
+    const followUser = (id, user) => {
+        if (btnRef.current) {
+            btnRef.current.setAttribute("disabled", "disabled");
+        }
         database.collection('users').doc(id).update({
             follower: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.displayName)
+        })
+        database.collection('users').doc(currentId).update({
+            following: firebase.firestore.FieldValue.arrayUnion(user)
         })
     }
 
     return (
         <div>
-           {users.map(({id,user}) => (
-               <div>
-                   {user !== firebase.auth().currentUser.displayName && 
-                   <div>
-                       {user}
-                   </div> }
-               </div>
-           ) 
-           )}
+            {findUser()}
+            {users.map(({ id, user }) => (
+                <div>
+                    <div>
+                        {user !== firebase.auth().currentUser.displayName &&
+                            <div>
+                                {user} <Button ref={btnRef} onClick={() => followUser(id, user)}> Follow </Button>
+                            </div>}
+                    </div>
+                </div>
+            )
+            )}
+            {users.map(({user, following}) => (
+                <div>
+                {
+                    user === firebase.auth().currentUser.displayName &&
+                    <div>
+                        {following}
+                    </div>
+                }
+            </div>
+            )
+            )}
         </div>
     )
-
-
 }
 
 export default Follow;

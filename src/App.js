@@ -8,11 +8,14 @@ import SignUp from "./component/SignUp";
 import Follow from "./component/Follow"
 import {firebaseAuth} from "./provider/AuthProvider"
 import firebase from "firebase"
+import ScrollToTop from './component/ScrollToTop';
 
 function App() {
   const {token} = useContext(firebaseAuth)
   return (
+    <ScrollToTop>
     <Router>
+      <ScrollToTop>
       <Switch>
         <Route exact path="/" render={ rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />,<Follow />, <Post />]}/>
         <Route exact path="/signin">
@@ -20,7 +23,9 @@ function App() {
         </Route>
         <Route exact path="/signup" component={SignUp} />
       </Switch>
+      </ ScrollToTop>
     </Router>
+    </ScrollToTop>
   );
 }
 
