@@ -42,11 +42,25 @@ const UnFollow = () => {
         });
     }, [])
 
+    const unFollowUser = (username) => {
+        database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
+            console.log("User successfully deleted from the following guy!");
+        }).catch((error) => {
+            console.error("Error removing user: ", error);
+        });
+
+        database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
+            console.log("User successfully deleted from the follower guy!");
+        }).catch((error) => {
+            console.error("Error removing user: ", error);
+        });
+    }
+
     return (
         <div>
             {following.map(({ username }) => (
                 <div>
-                    {username} <Button>Unfollow</Button>
+                    {username} <Button onClick={() => unFollowUser(username)}>Unfollow</Button>
                 </div>
             )
             )}
@@ -55,18 +69,3 @@ const UnFollow = () => {
 }
 
 export default UnFollow;
-
-// This is to be used to implement unFollow later: 
-// const unFollowUser = (username) => {
-    //     database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
-    //         console.log("User successfully deleted from the following guy!");
-    //     }).catch((error) => {
-    //         console.error("Error removing user: ", error);
-    //     });
-
-    //     database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
-    //         console.log("User successfully deleted from the follower guy!");
-    //     }).catch((error) => {
-    //         console.error("Error removing user: ", error);
-    //     });
-    // }
