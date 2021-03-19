@@ -47,10 +47,17 @@ body {
   height: auto;
 }
 
+.search-box {
+  position: absolute;
+  left: 40%;
+  right: 40%;
+}
+
 .nav-logo-and-search {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 9%;
 }
 
 .app-logo {
@@ -74,7 +81,6 @@ body {
   padding: 5px 20px;
   width: 200px;
   height: auto;
-  margin: 150px;
 }
 
 /*Style for Navbar mobile*/
@@ -332,3 +338,17 @@ progress::-webkit-progress-value {
   border-radius: 0 0 2px 2px;
 }
 
+/* Follow and Unfollow */
+
+.user-description {
+  font-weight: 300;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px 0;
+}
+
+.user-username{
+  font-size: 20px;
+  font-weight: 600;
+}
