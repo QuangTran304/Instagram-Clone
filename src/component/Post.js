@@ -45,8 +45,10 @@ const Post = () => {
     array.push(username)
   })
 
+  array.push(firebase.auth().currentUser.displayName)
+
   useEffect(() => {
-    if (array !== undefined && array.length > 0) {
+    if (array !== undefined && array.length > 1) {
       database
         .collection("posts")
         .orderBy("timestamp", "desc")
@@ -63,6 +65,7 @@ const Post = () => {
       database
         .collection("posts")
         .orderBy("timestamp", "desc")
+        .where('username', 'in', array)
         .onSnapshot((snapshot) => {
           setPosts(
             snapshot.docs.map((doc) => ({
