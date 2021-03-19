@@ -11,6 +11,7 @@ import { Brightness1Rounded } from "@material-ui/icons"
 
 const UnFollow = () => {
     const [following, setFollowing] = useState([]);
+    const [follower, setFollower] = useState([]);
     const [users, setUsers] = useState([]);
     var currentId= "";
 
@@ -35,31 +36,33 @@ const UnFollow = () => {
                 .onSnapshot(snapshot => {
                     setFollowing(
                         snapshot.docs.map(doc => ({
-                            username: doc.id
+                            username: doc.data().username
                         })));
                 })
             }
+            
     }, [currentId])
 
-    useEffect(() => {
-            if(currentId){
-                database
-                .collection('users')
-                .doc(currentId)
-                .collection('following')
-                .onSnapshot(snapshot => {
-                    setFollowing(
-                        snapshot.docs.map(doc => ({
-                            username: doc.id
-                        })));
-                })
-            }
-    }, [currentId])
+    // useEffect(() => {
+    //         if(currentId){
+    //             database
+    //             .collection('users')
+    //             .doc(currentId)
+    //             .collection('following')
+    //             .onSnapshot(snapshot => {
+    //                 setFollowing(
+    //                     snapshot.docs.map(doc => ({
+    //                         username: doc.data().username
+    //                     })));
+    //             })
+    //         }
+    // }, [currentId])
 
     function findUser() {
-        users.map(({ id, user }) => {
+        users.map(({user }) => {
             if (user === firebase.auth().currentUser.displayName) {
-                currentId = id;
+                currentId = firebase.auth().currentUser.displayName;
+                console.log(user)
             }
         })
      }
@@ -83,6 +86,7 @@ const UnFollow = () => {
             {findUser()}
             {following.map(({ username }) => (
                 <div>
+                    {console.log(username + " should be username")}
                     {username} <Button onClick={ () => unFollowUser({username}) }>Unfollow</Button>
                 </div>
             )
