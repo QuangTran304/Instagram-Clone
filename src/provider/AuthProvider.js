@@ -1,5 +1,6 @@
 import React, {useState, createContext} from 'react';
 import {authMethods} from '../firebase/authmethods'
+import {database} from '../firebase/firebase'
 
 export const firebaseAuth = createContext()
 
@@ -12,6 +13,9 @@ const AuthProvider = (props) => {
 
   const handleSignup = () => {
     authMethods.signup(inputs.email, inputs.password, inputs.username,setErrors ,setToken )
+    database.collection('users').doc(inputs.username).set({
+      username: inputs.username
+    })
   }
   const handleSignin = () => {
     authMethods.signin(inputs.email, inputs.password, setErrors, setToken)
