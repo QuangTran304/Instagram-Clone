@@ -13,10 +13,8 @@ const AuthProvider = (props) => {
 
   const handleSignup = () => {
     authMethods.signup(inputs.email, inputs.password, inputs.username,setErrors ,setToken )
-    database.collection('users').add({
-      username: inputs.username,
-      follower: [],
-      following: []
+    database.collection('users').doc(inputs.username).set({
+      username: inputs.username
     })
   }
   const handleSignin = () => {
