@@ -11,12 +11,26 @@ import { Brightness1Rounded } from "@material-ui/icons"
 
 const UnFollow = () => {
     const [following, setFollowing] = useState([]);
+    const [users, setUsers] = useState([]);
+    var currentId= "";
 
     useEffect(() => {
-        if (firebase.auth().currentUser.displayName) {
-            database
+        database
+            .collection('users')
+            .onSnapshot(snapshot => {
+                setUsers(
+                    snapshot.docs.map(doc => ({
+                        user: doc.data().username
+                    })));
+            })
+
+    }, [])
+
+    useEffect(() => {
+            if(currentId){
+                database
                 .collection('users')
-                .doc(firebase.auth().currentUser.displayName)
+                .doc(currentId)
                 .collection('following')
                 .onSnapshot(snapshot => {
                     setFollowing(
@@ -24,14 +38,14 @@ const UnFollow = () => {
                             username: doc.id
                         })));
                 })
-        }
-    }, [])
+            }
+    }, [currentId])
 
     useEffect(() => {
-        if (firebase.auth().currentUser.displayName) {
-            database
+            if(currentId){
+                database
                 .collection('users')
-                .doc(firebase.auth().currentUser.displayName)
+                .doc(currentId)
                 .collection('following')
                 .onSnapshot(snapshot => {
                     setFollowing(
@@ -39,8 +53,16 @@ const UnFollow = () => {
                             username: doc.id
                         })));
                 })
-        }
-    }, [])
+            }
+    }, [currentId])
+
+    function findUser() {
+        users.map(({ id, user }) => {
+            if (user === firebase.auth().currentUser.displayName) {
+                currentId = id;
+            }
+        })
+     }
     
     const unFollowUser = (username) => {
         database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
@@ -58,6 +80,7 @@ const UnFollow = () => {
     
     return (
         <div>
+            {findUser()}
             {following.map(({ username }) => (
                 <div>
                     {username} <Button onClick={ () => unFollowUser({username}) }>Unfollow</Button>

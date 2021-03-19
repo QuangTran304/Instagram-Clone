@@ -19,7 +19,7 @@ const Follow = () => {
             .onSnapshot(snapshot => {
                 setUsers(
                     snapshot.docs.map(doc => ({
-                        user: doc.id
+                        user: doc.data().username
                     })));
             })
 
