@@ -80,10 +80,11 @@ export default function SignInSide() {
                     <img src={logo} className="app-logo-signin" alt="logo" />
                     <Typography component="h1" variant="h5">
                         Sign in
-          </Typography>
+                    </Typography>
                     <form className={classes.form} onSubmit={handleSubmit}>
                         <TextField
                             variant="outlined"
+                            data-testid="userEmail"
                             margin="normal"
                             required
                             fullWidth
@@ -97,6 +98,7 @@ export default function SignInSide() {
                         />
                         <TextField
                             variant="outlined"
+                            data-testid="password"
                             margin="normal"
                             required
                             fullWidth
@@ -114,19 +116,20 @@ export default function SignInSide() {
                         />
                         <Button
                             type="submit"
+                            data-testid="signInSubmit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.submit}
                         >
                             Sign In
-            </Button>
+                        </Button>
                         {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null}
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
                                     Forgot password?
-                </Link>
+                                </Link>
                             </Grid>
                             <Grid item>
                                 <Link href="/signup" variant="body2">

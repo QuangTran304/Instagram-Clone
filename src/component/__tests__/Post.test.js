@@ -10,7 +10,7 @@
 
 
 
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import Post from '../Post';
 
 test('Post should render', () => {
