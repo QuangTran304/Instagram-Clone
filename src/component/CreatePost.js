@@ -92,6 +92,7 @@ const CreatePost = () => {
 
         <Button
           color="secondary"
+          disabled={!((image !== null && location) && description)}
           onClick={handleSubmit}
         >Post
         </Button>

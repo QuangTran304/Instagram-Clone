@@ -12,52 +12,71 @@ const Post = () => {
   const [posts, setPosts] = useState([]);
   const [following, setFollowing] = useState([]);
   const increment = firebase.firestore.FieldValue.increment(1);
-  
+  var array = [];
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            database
-                .collection('users')
-                .doc(firebase.auth().currentUser.displayName)
-                .collection('following')
-                .onSnapshot(snapshot => {
-                    setFollowing(
-                        snapshot.docs.map(doc => ({
-                            username: doc.data().username
-                        })));
-                })
+      if (user) {
+        
 
-        } else {
-            // No user is signed in.
-        }
+        database
+          .collection('users')
+          .doc(firebase.auth().currentUser.displayName)
+          .collection('following')
+          .onSnapshot(snapshot => {
+            setFollowing(
+              snapshot.docs.map(doc => ({
+                username: doc.data().username
+              })));
+          })
+        console.log("in side")
+      } else {
+        console.log('outside')
+      }
     });
   }, [])
 
-  const handleLikeClick = ( id ) => {
+  const handleLikeClick = (id) => {
     var post = database.collection("posts").doc(id);
     post.update({ likes: increment });
   };
 
-  useEffect(() => {
-    database
-      .collection("posts")
-      .orderBy("timestamp", "desc")
-      .where('username', 'in', ['Corinne', 'anonna16'])
-      .onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
-  }, []); 
+  following.map(({ username }) => {
+    array.push(username)
+  })
 
-  console.log(following);
+  useEffect(() => {
+    if (array !== undefined && array.length > 0) {
+      database
+        .collection("posts")
+        .orderBy("timestamp", "desc")
+        .where('username', 'in', array)
+        .onSnapshot((snapshot) => {
+          setPosts(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              post: doc.data(),
+            }))
+          );
+        });
+    } else {
+      database
+        .collection("posts")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setPosts(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              post: doc.data(),
+            }))
+          );
+        });
+    }
+  }, [array]);
 
   return posts.map(({ id, post }) => (
-    <div className="post" key={ id }>
-      { 
+    <div className="post" key={id}>
+      {
         <div>
           <div className="post-header">
             <Avatar
@@ -77,7 +96,7 @@ const Post = () => {
           <div className="post-body">
             <div className="post-icons">
               <FavoriteBorder
-                onClick={() => handleLikeClick( id )}
+                onClick={() => handleLikeClick(id)}
                 style={{ marginRight: 8, width: 20 }}
               />
               <ChatBubbleOutlineOutlinedIcon
@@ -85,7 +104,7 @@ const Post = () => {
               />
             </div>
 
-            <p className="post-like-number"> Liked by { post.likes } people</p>
+            <p className="post-like-number"> Liked by {post.likes} people</p>
 
             <h4 className="post-description">
               <strong>{post.username}</strong> {post.description}
