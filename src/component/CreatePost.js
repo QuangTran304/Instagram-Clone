@@ -68,6 +68,7 @@ const CreatePost = () => {
         <TextField
           type="text"
           label="Location"
+          value={location}
           placeholder="Montreal, QC"
           variant="outlined"
           onChange={(e) => setLocation(e.target.value)}
@@ -76,6 +77,7 @@ const CreatePost = () => {
           label="What's on your mind?"
           placeholder="Post Description"
           multiline
+          value = {description}
           rows={4}
           variant="outlined"
           onChange={(e) => setDescription(e.target.value)}
@@ -86,7 +88,12 @@ const CreatePost = () => {
           onChange={handleImage} 
         />
 
-        <Button color="secondary" onClick={handleSubmit}>Post</Button>
+        <Button 
+          color="secondary" 
+          onClick={handleSubmit}
+          disabled={!((image !== null && description) && location)}
+          >Post
+        </Button>
         
         <progress value={progress} max="100"> hello</progress>
       </form>
