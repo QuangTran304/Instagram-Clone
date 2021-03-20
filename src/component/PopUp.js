@@ -3,13 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import CreatePost from "./CreatePost.js";
 import "../index.css";
-import { ExitToApp } from '@material-ui/icons';
-
-function exit(){
-    document.getElementsByClassName("exit")[0].onclick = function() {
-    document.getElementById("PopUp").style.display = "none";
-  }
-}
 
 function getModalStyle() {
   const top = 50;
@@ -62,7 +55,7 @@ export default function PopUp() {
 
   const body = (
     <div id="PopUp" style={modalStyle} className={classes.paper}>
-      <p className="exit">&times;</p><br/>
+      <p className="exit" onClick={handleClose}>&times;</p><br/>
       <p id="simple-modal-description">
       <CreatePost/>
       </p>
