@@ -259,17 +259,17 @@ body {
 .post-upload-container {
   margin: auto;
   max-width: 500px;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .post-upload-form {
   display: flex;
   flex-direction: column;
   background: white;
-  border: 1px solid #fdcfde;
+  border: 2px solid #fdcfde;
   border-radius: 3px;
   padding: 20px 25px;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.103);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.103);
 }
 
 .MuiOutlinedInput-root {
@@ -290,7 +290,7 @@ body {
 .post_input {
   flex: 1;
   border: none;
-  padding-top: 15px;
+  padding-top: 5px;
   padding: 10px;
   border-top: 1px solid lightgray;
 }
@@ -301,6 +301,18 @@ body {
   height : 15%; 
 }
 
+.exit {
+  color: #aaa;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.exit:hover,
+.exit:focus {
+    color: black;
+    cursor: pointer;
+} 
 /* Post Comments */
 
 .post_comment{
