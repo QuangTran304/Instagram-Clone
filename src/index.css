@@ -314,7 +314,6 @@ body {
   margin: 0 30px 0 5px;
 }
 
-
 .content {
   style : flex;
 }
@@ -323,3 +322,50 @@ body {
     background: red;
     color: white;
 } 
+
+
+/* Profile Page Styling */
+.profile-userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-userName {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-userMeta {
+  display: flex;
+  margin: 50px 15% 50px 15%;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 0px 3px rgb(252, 157, 120);
+}
+
+.profile-stats {
+  margin-left: 80px;
+}
+
+.profile-followArea {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.profile-userPosts {
+  column-count: 3;
+  width: 100vw;
+}
+
+.profile-userPosts img {
+  width: 100%;
+  margin-bottom: 10px;
+}

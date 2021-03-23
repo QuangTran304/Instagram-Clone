@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const {handleSignout} = useContext(firebaseAuth)
-  const {handleProfile} = useContext(firebaseAuth)
+  // const {handleProfile} = useContext(firebaseAuth)
 
   return (
     <div className="nav-bar">
@@ -35,7 +35,8 @@ const Navbar = () => {
         </div>
         <div className="menu">
           <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
-          <Link onClick={handleProfile} to="/profile"><AccountCircleIcon className="icon-item" /></Link>
+          {/* <Link onClick={handleProfile} to="/profile"><AccountCircleIcon className="icon-item" /></Link> */}
+          <Link to="/profile"><AccountCircleIcon className="icon-item" /></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
           <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" /></Link>
         
