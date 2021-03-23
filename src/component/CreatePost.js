@@ -50,11 +50,11 @@ const CreatePost = () => {
               location: location
             });
 
-            // // Reset the form to blank
-            // setProgress(0);
-            // setDescription("");
-            // setLocation("");
-            // setImage(null);
+            // Reset the form to blank
+            setProgress(0);
+            setDescription("");
+            setLocation("");
+            setImage(null);
           });
       }
     )

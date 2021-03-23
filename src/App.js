@@ -6,7 +6,7 @@ import Navbar from './component/Navbar'
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
 import Follow from "./component/Follow";
-import PopUp from "./component/PopUp";
+import PopUp from "./component/PopUpPostButton";
 import {firebaseAuth} from "./provider/AuthProvider"
 import firebase from "firebase"
 
@@ -16,10 +16,18 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={ rProps => token === null ? <SignIn /> : [<Navbar />, <PopUp />,<Follow />, <Post />]}/>
-        <Route exact path="/signin">
-          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <PopUp />, <Post />]}
-        </Route>
+        <Route exact path="/" 
+          render={ rProps => token === null ? 
+            <SignIn /> : 
+            [<Navbar />, <PopUp />,<Follow />, <Post />]}
+        />
+        
+        <Route exact path="/signin"
+          render={rProps => token === null ? 
+          <Redirect to='/' /> : 
+          [<Navbar />, <PopUp />, <Post />]}
+        />
+        
         <Route exact path="/signup" component={SignUp} />
       </Switch>
     </Router>

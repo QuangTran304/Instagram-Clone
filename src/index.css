@@ -301,7 +301,7 @@ body {
   height : 15%; 
 }
 
-.exit {
+/* .exit {
   color: #aaa;
   float: right;
   font-size: 35px;
@@ -312,11 +312,11 @@ body {
 .exit:focus {
     color: black;
     cursor: pointer;
-} 
+}  */
+
 /* Post Comments */
 
 .post_comment{
-
   font-size: 12px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
