@@ -18,7 +18,6 @@ function App() {
           {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
         </Route>
         <Route exact path="/signup" component={SignUp} />
-        {/* <Route exact path="/profile" component={Profile} /> */}
         <Route exact path="/profile" render={rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <Profile />]}/>
         
         
