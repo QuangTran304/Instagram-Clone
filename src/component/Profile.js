@@ -8,38 +8,56 @@ import Button from '@material-ui/core/Button';
 
 
 const Profile = () => {  
-  const  user = firebase.auth().currentUser;
-  const [allUsers, setAllUsers] = useState();
-
-  // useEffect(() => {
-  //   database
-  //     .collection("users")
-  //     .onSnapshot((snapshot) => {
-  //       setAllUsers(
-  //         snapshot.docs.map((doc) => ({
-  //           allUsers: doc.data()
-  //         }))
-  //       );
-  //     });
-  // }, []); 
+  const [follower, setFollower] = useState();
+  const [following, setFollowing] = useState();
+  const [postCount, setPostCount] = useState();
+  const [userPosts, setUserPosts] = useState([]);
 
 
   useEffect(() => {
     database
-      .collection("users")
-      .doc(user.displayName)
+      .collection("posts")
+      .where("username", "==", firebase.auth().currentUser.displayName)
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        console.log("id = " + snapshot.id);
-        console.log("username = " + snapshot.data().username);
-        // setAllUsers(
-        //   snapshot.docs.map((doc) => ({
-        //     allUsers: doc.data()
-        //   }))
-        // );
+        setPostCount(
+          snapshot.docs.length
+        );
+        setUserPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
       });
   }, []); 
 
-  // return posts.map( (allUsers) => (
+  useEffect(() => {
+    database
+      .collection("users")
+      .doc(firebase.auth().currentUser.displayName)
+      .collection("follower")
+      .onSnapshot((snapshot) => {
+        setFollower(
+          snapshot.docs.length
+        );
+      });
+  }, []); 
+
+  useEffect(() => {
+    database
+      .collection("users")
+      .doc(firebase.auth().currentUser.displayName)
+      .collection("following")
+      .onSnapshot((snapshot) => {
+        setFollowing(
+          snapshot.docs.length
+        );
+      });
+  }, []); 
+
+
+
   return (
   <>
     <div className="profile-userInfo">
@@ -49,34 +67,33 @@ const Profile = () => {
 
       <div className="profile-userMeta">
         <div className="profile-userName">
-          <h2>{user.displayName}'s Profile</h2>
-          <Button variant="contained" style={{marginLeft: '20px'}}>Follow</Button>
+          <h2>{firebase.auth().currentUser.displayName}'s Profile</h2>
+          <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>
         </div>
       
         <div className="profile-stats-box">
           <div className="profile-stats">
-            <h4>1,020 <br /> Posts</h4>
+            <h4>{postCount} <br /> Posts</h4>
           </div>
           <div className="profile-stats">
-            <h4>3,000 <br /> Followers</h4>
+            <h4>{follower} <br /> Followers</h4>
           </div>
           <div className="profile-stats">
-            <h4>900 <br /> Following</h4>
+            <h4>{following} <br /> Following</h4>
           </div>
         </div>
       </div>
-      
     </div>
 
 
     <div className="profile-userPosts">
-      <img src="https://source.unsplash.com/random/" alt=""/>
-      <img src="https://source.unsplash.com/random/" alt=""/>
-      <img src="https://source.unsplash.com/random/" alt=""/>
-      <img src="https://source.unsplash.com/random/" alt=""/>
-      <img src="https://source.unsplash.com/random/" alt=""/>
-      <img src="https://source.unsplash.com/random/" alt=""/>
+    {
+      userPosts.map( ({id, post}) => (
+        <img src={post.image} alt={id}/>
+      ))
+    }
     </div>
+
   </>
   );
 };
