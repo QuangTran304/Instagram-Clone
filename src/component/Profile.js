@@ -1,4 +1,4 @@
-import React, {useContext , useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import "../index.css";
 import { database } from '../firebase/firebase';
 import firebase from 'firebase'
@@ -8,10 +8,8 @@ import Button from '@material-ui/core/Button';
 
 
 const Profile = () => {  
-  const [allUsers, setAllUsers] = useState([]);
   const  user = firebase.auth().currentUser;
-  const [posts, setPosts] = useState([]);
-
+  const [allUsers, setAllUsers] = useState();
 
   // useEffect(() => {
   //   database
@@ -19,40 +17,55 @@ const Profile = () => {
   //     .onSnapshot((snapshot) => {
   //       setAllUsers(
   //         snapshot.docs.map((doc) => ({
-  //           allUsers: doc.data(),
+  //           allUsers: doc.data()
   //         }))
   //       );
   //     });
   // }, []); 
 
 
-  return (
-    <>
+  useEffect(() => {
+    database
+      .collection("users")
+      .doc(user.displayName)
+      .onSnapshot((snapshot) => {
+        console.log("id = " + snapshot.id);
+        console.log("username = " + snapshot.data().username);
+        // setAllUsers(
+        //   snapshot.docs.map((doc) => ({
+        //     allUsers: doc.data()
+        //   }))
+        // );
+      });
+  }, []); 
 
+  // return posts.map( (allUsers) => (
+  return (
+  <>
     <div className="profile-userInfo">
-      <div className="profile-userName" style={{ marginTop: '100px'}}>
-        <h2>{user.displayName}'s Profile</h2>
+      <div className="profile-avatar">
+          <img src="https://source.unsplash.com/random/250x250" alt="Profile Avatar"/>
       </div>
 
       <div className="profile-userMeta">
-        <div className="profile-avatar">
-          <img src="https://source.unsplash.com/random/250x250" alt="Profile Avatar"/>
+        <div className="profile-userName">
+          <h2>{user.displayName}'s Profile</h2>
+          <Button variant="contained" style={{marginLeft: '20px'}}>Follow</Button>
         </div>
-        <div className="profile-stats">
-          <h4>1,020 <br /> Posts</h4>
-        </div>
-        <div className="profile-stats">
-          <h4>3,000 <br /> Followers</h4>
-        </div>
-        <div className="profile-stats">
-          <h4>900 <br /> Following</h4>
+      
+        <div className="profile-stats-box">
+          <div className="profile-stats">
+            <h4>1,020 <br /> Posts</h4>
+          </div>
+          <div className="profile-stats">
+            <h4>3,000 <br /> Followers</h4>
+          </div>
+          <div className="profile-stats">
+            <h4>900 <br /> Following</h4>
+          </div>
         </div>
       </div>
       
-      <div className="profile-followArea">
-        <Button variant="contained" style={{marginRight: '20px'}}>Follow</Button>
-        <Button variant="contained" color="primary">Message</Button>
-      </div>
     </div>
 
 
@@ -64,9 +77,8 @@ const Profile = () => {
       <img src="https://source.unsplash.com/random/" alt=""/>
       <img src="https://source.unsplash.com/random/" alt=""/>
     </div>
-
-   </>
-  )
-}
+  </>
+  );
+};
 
 export default Profile;

@@ -315,7 +315,7 @@ body {
 }
 
 .content {
-  style : flex;
+  display : flex;
 }
 
 .unfollow{
@@ -327,20 +327,14 @@ body {
 /* Profile Page Styling */
 .profile-userInfo {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-}
-
-.profile-userName {
-  display: flex;
-  justify-content: center;
+  align-items: center;
+  padding: 110px 0 70px 0;
+  margin-bottom: 15px;
 }
 
 .profile-userMeta {
-  display: flex;
-  margin: 50px 15% 50px 15%;
-  align-items: center;
-  justify-content: center;
+  margin-left: 5%;
 }
 
 .profile-avatar img {
@@ -350,14 +344,19 @@ body {
   box-shadow: 0 0 0px 3px rgb(252, 157, 120);
 }
 
-.profile-stats {
-  margin-left: 80px;
+.profile-userName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.profile-followArea {
+.profile-stats-box {
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+}
+
+.profile-stats {
+  margin-right: 35px;
 }
 
 .profile-userPosts {
