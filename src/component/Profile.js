@@ -5,7 +5,12 @@ import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
+import Comment from './Comment';
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+
 
 
 const Profile = () => {  
@@ -13,39 +18,35 @@ const Profile = () => {
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
+
+  const [postObj, setPostObj] = useState([]);
   const [open, setOpen] = useState(false);
+  const increment = firebase.firestore.FieldValue.increment(1);
 
-  const [currentPost, setCurrentPost] = useState([]);
-
-  const handleOpen = (post) => {
-    setOpen(true);
-    // setCurrentPost(post);
+  
+  const handleOpen = (clicked) => {
+    setOpen(clicked);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  // function rand() {
-  //   return Math.round(Math.random() * 20) - 10;
-  // }
+  const handleImageClick = (postObj, clicked) => {
+    handleOpen(clicked);
+    setPostObj(postObj);
+    // console.log(postObj.post.image);  // TESTING ONLY
+  }
 
-  // function getModalStyle() {
-  //   const top = 50 + rand();
-  //   const left = 50 + rand();
-  
-  //   return {
-  //     top: `${top}%`,
-  //     left: `${left}%`,
-  //     transform: `translate(-${top}%, -${left}%)`,
-  //   };
-  // }
-  // const [modalStyle] = useState(getModalStyle);
+  const handleLikeClick = ( id ) => {
+    const post = database.collection("posts").doc(id);
+    post.update({ likes: increment });
+  };
 
   useEffect(() => {
     database
       .collection("posts")
-      .where("username", "==", firebase.auth().currentUser.displayName)
+      .where("username", "==", firebase.auth().currentUserr.displayName)
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setPostCount(
@@ -96,7 +97,7 @@ const Profile = () => {
       <div className="profile-userMeta">
         <div className="profile-userName">
           <h2>{firebase.auth().currentUser.displayName}'s Profile</h2>
-          <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>
+          { !firebase.auth().currentUser.displayName && <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button> }
         </div>
       
         <div className="profile-stats-box">
@@ -116,18 +117,59 @@ const Profile = () => {
 
 
     <div className="profile-userPosts">
-    {
+    { // Loop through each image user have posted, onClick == show that post
       userPosts.map( ({id, post}) => (
-        <img src={post.image} alt={id} onClick={ () => handleOpen(post) }/>
+        <img src={post.image} alt={id} onClick={() => handleImageClick( {id, post}, true)}/>
       ))
     }
-
-      <Modal open={open} onClose={handleClose} >
-        {/* <img src={currentPost.image} alt="" /> */}
-        <img src="https://source.unsplash.com/random/" style={{width: '80%'}} alt="" />
-      </Modal>
     </div>
 
+
+
+    <Modal open={open} onClose={handleClose}>
+      <div className="profile-postModal">
+        <div className="post" key={ postObj.id }>
+          <div className="post-header">
+            <Link to={{ pathname: '/profile', state: {username: postObj.post.username } }} style={{ textDecoration: 'none' }}>
+            <Avatar
+              className="post-avatar"
+              alt={postObj.post.username}
+              src="/static/images/avatar/1.jpg"
+              style={{ width: 35, height: 35 }}
+            ></Avatar>
+            </Link>
+            <div className="post-meta">
+              <h3 className="post-username">{postObj.post.username}</h3>
+              <p className="post-location">{postObj.post.location}</p>
+            </div>
+          </div>
+          <img className="post-image" src={postObj.post.image} alt="" />
+
+          <div className="post-body">
+            <div className="post-icons">
+              <FavoriteBorder
+                onClick={() => handleLikeClick( postObj.id )}
+                style={{ marginRight: 8, width: 20 }}
+              />
+              <ChatBubbleOutlineOutlinedIcon
+                style={{ marginRight: 8, width: 20 }}
+              />
+            </div>
+
+            <p className="post-like-number"> Liked by { postObj.post.likes } people</p>
+
+            <h4 className="post-description">
+              <strong>{ postObj.post.username }</strong> { postObj.post.description }
+            </h4>
+
+            <h3 className="post-comment">Comments</h3>
+
+            <Comment postId={ postObj.id } />
+          </div>
+        </div>
+
+      </div>
+    </Modal>
   </>
   );
 };
