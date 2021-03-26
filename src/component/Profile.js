@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 const Profile = () => {  
   const  user = firebase.auth().currentUser;
   const [allUsers, setAllUsers] = useState();
+  const [posts , setPosts] = useState();
 
   // useEffect(() => {
   //   database
@@ -50,7 +51,7 @@ const Profile = () => {
       <div className="profile-userMeta">
         <div className="profile-userName">
           <h2>{user.displayName}'s Profile</h2>
-          <Button variant="contained" style={{marginLeft: '20px'}}>Follow</Button>
+          {!user.displayName && <Button variant="contained" style={{marginLeft: '20px'}}>Follow</Button>}
         </div>
       
         <div className="profile-stats-box">
