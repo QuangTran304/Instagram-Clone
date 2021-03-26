@@ -41,7 +41,7 @@ const Follow = () => {
                     })));
             })
 
-    }, [])
+    }, [users])
 
     const followUser = (user) => {
         if (btnRef.current) {

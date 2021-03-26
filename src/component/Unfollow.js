@@ -20,7 +20,7 @@ const UnFollow = () => {
                     })));
             })
 
-    }, [])
+    }, [users])
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(function (user) {

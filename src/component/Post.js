@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
-import firebase from 'firebase'
-
+import Like from "./Like";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
-  const increment = firebase.firestore.FieldValue.increment(1);
-
-  const handleLikeClick = ( id ) => {
-    var post = database.collection("posts").doc(id);
-    post.update({ likes: increment });
-  };
 
   useEffect(() => {
     database
@@ -29,7 +21,7 @@ const Post = () => {
           }))
         );
       });
-  }, []); 
+  }, [posts]); 
 
   return posts.map(({ id, post }) => (
     <div className="post" key={ id }>
@@ -50,10 +42,7 @@ const Post = () => {
 
       <div className="post-body">
         <div className="post-icons">
-          <FavoriteBorder
-            onClick={() => handleLikeClick( id )}
-            style={{ marginRight: 8, width: 20 }}
-          />
+          <Like id={id} />
           <ChatBubbleOutlineOutlinedIcon
             style={{ marginRight: 8, width: 20 }}
           />
@@ -66,7 +55,7 @@ const Post = () => {
         </h4>
 
         <h3 className="post-comment">Comments</h3>
-
+        
         <Comment postId={id} />
       </div>
     </div>
