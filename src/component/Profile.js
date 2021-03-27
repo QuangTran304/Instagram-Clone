@@ -4,23 +4,31 @@ import { database, auth } from '../firebase/firebase';
 import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
-// import Modal from '@material-ui/core/Modal';
-// import { Link } from 'react-router-dom';
-// import { Avatar } from '@material-ui/core';
-// import Comment from './Comment';
-// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-// import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+import Modal from '@material-ui/core/Modal';
+import { Link } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
+import Comment from './Comment';
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 
 
 const Profile = () => {
-  const [user, setUser] = useState(auth.currentUser);  
+  const[username, setUserName] = useState("");
+
+  firebase.auth().onAuthStateChanged( function(user) {
+    if(user) {
+      setUserName(auth.currentUser.displayName);
+    }
+  }) 
+
+  // For User's stats
   const [follower, setFollower] = useState();
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
 
-  // These are for the <Modal />
+  // For the <Modal />
   const [postObj, setPostObj] = useState([]);
   const [open, setOpen] = useState(false);
   const increment = firebase.firestore.FieldValue.increment(1);
@@ -47,49 +55,62 @@ const Profile = () => {
     console.log("[Is button clicked]: " + clicked);             // TESTING ONLY
   }
 
+
   // Get user posts & id on page load
   useEffect(() => {
-    database
-      .collection("posts")
-      .where("username", "==", user.displayName)
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        setPostCount(
-          snapshot.docs.length
-        );
-        setUserPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        database
+          .collection("posts")
+          .where("username", "==", auth.currentUser.displayName)
+          .orderBy("timestamp", "desc")
+          .onSnapshot((snapshot) => {
+            setPostCount(
+              snapshot.docs.length
+            );
+            setUserPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                post: doc.data(),
+              }))
+            );
+          });
+      } 
+    })
   }, []); 
 
   // Get # of follower on page load
   useEffect(() => {
-    database
-      .collection("users")
-      .doc(user.displayName)
-      .collection("follower")
-      .onSnapshot((snapshot) => {
-        setFollower(
-          snapshot.docs.length
-        );
-      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        database
+          .collection("users")
+          .doc(username)
+          .collection("follower")
+          .onSnapshot((snapshot) => {
+            setFollower(
+              snapshot.docs.length
+            );
+          });
+      }
+    })
   }, []); 
 
   // Get # of following on page load
   useEffect(() => {
-    database
-      .collection("users")
-      .doc(user.displayName)
-      .collection("following")
-      .onSnapshot((snapshot) => {
-        setFollowing(
-          snapshot.docs.length
-        );
-      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        database
+          .collection("users")
+          .doc(username)
+          .collection("following")
+          .onSnapshot((snapshot) => {
+            setFollowing(
+              snapshot.docs.length
+            );
+          });
+      } 
+    })
   }, []); 
 
 
@@ -103,8 +124,8 @@ const Profile = () => {
 
       <div className="profile-userMeta">
         <div className="profile-userName">
-          <h2>{user.displayName}'s Profile</h2>
-          {!user  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
+          <h2>{username}'s Profile</h2>
+          {!username  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
         </div>
       
         <div className="profile-stats-box">
