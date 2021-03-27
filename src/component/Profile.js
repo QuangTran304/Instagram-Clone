@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import "../index.css";
-import { database } from '../firebase/firebase';
+import { database, auth } from '../firebase/firebase';
 import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import { Link } from 'react-router-dom';
-import { Avatar } from '@material-ui/core';
-import Comment from './Comment';
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+// import Modal from '@material-ui/core/Modal';
+// import { Link } from 'react-router-dom';
+// import { Avatar } from '@material-ui/core';
+// import Comment from './Comment';
+// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+// import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 
 
-const Profile = () => {  
+const Profile = () => {
+  const [user, setUser] = useState(auth.currentUser);  
   const [follower, setFollower] = useState();
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
 
+  // These are for the <Modal />
   const [postObj, setPostObj] = useState([]);
   const [open, setOpen] = useState(false);
   const increment = firebase.firestore.FieldValue.increment(1);
 
-  
   const handleOpen = (clicked) => {
     setOpen(clicked);
   };
@@ -32,21 +33,25 @@ const Profile = () => {
     setOpen(false);
   };
 
-  const handleImageClick = (postObj, clicked) => {
-    handleOpen(clicked);
-    setPostObj(postObj);
-    // console.log(postObj.post.image);  // TESTING ONLY
-  }
-
   const handleLikeClick = ( id ) => {
     const post = database.collection("posts").doc(id);
     post.update({ likes: increment });
   };
 
+  const handleImageClick = (postObj, clicked) => {
+    handleOpen(clicked);
+    setPostObj(postObj);
+
+    console.log("\n\n[Post ImageURL]: " + postObj.post.image);  // TESTING ONLY
+    console.log("[Post id]: " + postObj.id);                    // TESTING ONLY
+    console.log("[Is button clicked]: " + clicked);             // TESTING ONLY
+  }
+
+  // Get user posts & id on page load
   useEffect(() => {
     database
       .collection("posts")
-      .where("username", "==", firebase.auth().currentUserr.displayName)
+      .where("username", "==", user.displayName)
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setPostCount(
@@ -61,10 +66,11 @@ const Profile = () => {
       });
   }, []); 
 
+  // Get # of follower on page load
   useEffect(() => {
     database
       .collection("users")
-      .doc(firebase.auth().currentUser.displayName)
+      .doc(user.displayName)
       .collection("follower")
       .onSnapshot((snapshot) => {
         setFollower(
@@ -73,10 +79,11 @@ const Profile = () => {
       });
   }, []); 
 
+  // Get # of following on page load
   useEffect(() => {
     database
       .collection("users")
-      .doc(firebase.auth().currentUser.displayName)
+      .doc(user.displayName)
       .collection("following")
       .onSnapshot((snapshot) => {
         setFollowing(
@@ -96,8 +103,8 @@ const Profile = () => {
 
       <div className="profile-userMeta">
         <div className="profile-userName">
-          <h2>{firebase.auth().currentUser.displayName}'s Profile</h2>
-          { !firebase.auth().currentUser.displayName && <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button> }
+          <h2>{user.displayName}'s Profile</h2>
+          {!user  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
         </div>
       
         <div className="profile-stats-box">
@@ -119,18 +126,18 @@ const Profile = () => {
     <div className="profile-userPosts">
     { // Loop through each image user have posted, onClick == show that post
       userPosts.map( ({id, post}) => (
-        <img src={post.image} alt={id} onClick={() => handleImageClick( {id, post}, true)}/>
+        <img src={post.image} alt="" onClick={() => handleImageClick( {id, post}, true)}/>
       ))
     }
     </div>
 
 
 
-    <Modal open={open} onClose={handleClose}>
+    {/* <Modal open={open} onClose={handleClose}>
       <div className="profile-postModal">
         <div className="post" key={ postObj.id }>
           <div className="post-header">
-            <Link to={{ pathname: '/profile', state: {username: postObj.post.username } }} style={{ textDecoration: 'none' }}>
+            <Link to={{ pathname: '/profile' }} style={{ textDecoration: 'none' }}>
             <Avatar
               className="post-avatar"
               alt={postObj.post.username}
@@ -148,7 +155,7 @@ const Profile = () => {
           <div className="post-body">
             <div className="post-icons">
               <FavoriteBorder
-                onClick={() => handleLikeClick( postObj.id )}
+                onClick={() => handleLikeClick(postObj.id)}
                 style={{ marginRight: 8, width: 20 }}
               />
               <ChatBubbleOutlineOutlinedIcon
@@ -169,7 +176,7 @@ const Profile = () => {
         </div>
 
       </div>
-    </Modal>
+    </Modal> */}
   </>
   );
 };
