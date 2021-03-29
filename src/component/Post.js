@@ -21,10 +21,11 @@ const Post = () => {
           }))
         );
       });
-  }, [posts]); 
+    // eslint-disable-next-line
+  }, []);
 
   return posts.map(({ id, post }) => (
-    <div className="post" key={ id }>
+    <div className="post" key={id}>
       <div className="post-header">
         <Avatar
           className="post-avatar"
@@ -48,14 +49,14 @@ const Post = () => {
           />
         </div>
 
-        <p className="post-like-number"> Liked by { post.likes } people</p>
+        <p className="post-like-number"> Liked by {post.likes} people</p>
 
         <h4 className="post-description">
           <strong>{post.username}</strong> {post.description}
         </h4>
 
         <h3 className="post-comment">Comments</h3>
-        
+
         <Comment postId={id} />
       </div>
     </div>

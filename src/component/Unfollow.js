@@ -7,20 +7,6 @@ import "../index.css"
 
 const UnFollow = () => {
     const [following, setFollowing] = useState([]);
-    // const [follower, setFollower] = useState([]);
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        database
-            .collection('users')
-            .onSnapshot(snapshot => {
-                setUsers(
-                    snapshot.docs.map(doc => ({
-                        user: doc.data().username
-                    })));
-            })
-
-    }, [users])
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(function (user) {
@@ -40,6 +26,7 @@ const UnFollow = () => {
                 // No user is signed in.
             }
         });
+        // eslint-disable-next-line
     }, [])
 
     const unFollowUser = (username) => {
@@ -50,7 +37,6 @@ const UnFollow = () => {
         });
 
         database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
-            console.log("User successfully deleted from the follower guy!");
         }).catch((error) => {
             console.error("Error removing user: ", error);
         });

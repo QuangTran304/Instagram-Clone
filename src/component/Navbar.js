@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import logo from "../Instagrill.png";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
@@ -7,7 +7,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
-import {firebaseAuth} from '../provider/AuthProvider';
+import { firebaseAuth } from '../provider/AuthProvider';
 
 const useStyles = makeStyles((theme) => ({
   popover: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = () => {
-  const {handleSignout} = useContext(firebaseAuth)
+  const { handleSignout } = useContext(firebaseAuth)
 
   return (
     <div className="nav-bar">

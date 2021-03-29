@@ -63,7 +63,7 @@ export default function SignUp(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-      <img src={logo} className="app-logo-signup" alt="logo" />
+        <img src={logo} className="app-logo-signup" alt="logo" />
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -120,7 +120,7 @@ export default function SignUp(props) {
           >
             Sign Up
           </Button>
-          {errors.length > 0 ? errors.map(error => <p style={{color: 'red'}}>{error}</p> ) : null}
+          {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null}
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/signin" variant="body2">

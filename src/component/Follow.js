@@ -1,35 +1,14 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { makeStyles } from '@material-ui/core/styles'
 import firebase from "firebase"
 import { database } from "../firebase/firebase"
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import "../index.css"
-import { useRef } from 'react'
-import { Brightness1Rounded } from "@material-ui/icons"
 import UnFollow from "./Unfollow"
 import "../index.css";
-import Grid from '@material-ui/core/Grid';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        height: 140,
-        width: 100,
-    },
-    control: {
-        padding: theme.spacing(2),
-    },
-}));
 
 const Follow = () => {
     const [users, setUsers] = useState([]);
-    // const [followed, setFollowed] = useState(false);
-    let btnRef = useRef()
-    const classes = useStyles();
 
     useEffect(() => {
         database
@@ -40,13 +19,10 @@ const Follow = () => {
                         user: doc.data().username
                     })));
             })
-
-    }, [users])
+        // eslint-disable-next-line
+    }, [])
 
     const followUser = (user) => {
-        if (btnRef.current) {
-            btnRef.current.setAttribute("disabled", "disabled");
-        }
         database.collection('users').doc(user).collection('follower').doc(firebase.auth().currentUser.displayName).set({
             username: firebase.auth().currentUser.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -68,7 +44,7 @@ const Follow = () => {
                                 <div>
                                     {user !== firebase.auth().currentUser.displayName &&
                                         <div>
-                                            {user} <Button ref={btnRef} onClick={() => followUser(user)}> Follow </Button>
+                                            {user} <Button onClick={() => followUser(user)}> Follow </Button>
                                         </div>}
                                 </div>
                             </div>

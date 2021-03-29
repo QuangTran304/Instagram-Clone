@@ -35,7 +35,8 @@ const Comment = ({ postId }) => {
           })));
         });
     }
-  }, [postId]);
+    // eslint-disable-next-line
+  }, []);
 
   const postComment = (event) => {
     event.preventDefault();
@@ -63,10 +64,10 @@ const Comment = ({ postId }) => {
         <TextField
           className="post_input"
           data-testid="commentingBox"
-          variant = "outlined"
-          size = "small"
-          margin ="normal"
-          label = "Comment"
+          variant="outlined"
+          size="small"
+          margin="normal"
+          label="Comment"
           autoFocus
           type="text"
           placeholder="Add a comment..."
