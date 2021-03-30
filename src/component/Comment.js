@@ -62,6 +62,7 @@ const Comment = ({ postId }) => {
       <form className="post_commentBox">
         <TextField
           className="post_input"
+          data-testid="commentingBox"
           variant = "outlined"
           size = "small"
           margin ="normal"
@@ -74,6 +75,7 @@ const Comment = ({ postId }) => {
         />
         <Button
           disabled={!comment}
+          data-testid="addCommentButton"
           type="submit"
           onClick={postComment}
           className={classes.margin}

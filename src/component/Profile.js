@@ -4,12 +4,12 @@ import { database, auth } from '../firebase/firebase';
 import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import { Link } from 'react-router-dom';
-import { Avatar } from '@material-ui/core';
-import Comment from './Comment';
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+// import Modal from '@material-ui/core/Modal';
+// import { Link } from 'react-router-dom';
+// import { Avatar } from '@material-ui/core';
+// import Comment from './Comment';
+// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+// import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 
 
@@ -50,9 +50,9 @@ const Profile = () => {
     handleOpen(clicked);
     setPostObj(postObj);
 
-    console.log("\n\n[Post ImageURL]: " + postObj.post.image);  // TESTING ONLY
-    console.log("[Post id]: " + postObj.id);                    // TESTING ONLY
-    console.log("[Is button clicked]: " + clicked);             // TESTING ONLY
+    // console.log("\n\n[Post ImageURL]: " + postObj.post.image);  // TESTING ONLY
+    // console.log("[Post id]: " + postObj.id);                    // TESTING ONLY
+    // console.log("[Is button clicked]: " + clicked);             // TESTING ONLY
   }
 
 
@@ -119,7 +119,7 @@ const Profile = () => {
   <>
     <div className="profile-userInfo">
       <div className="profile-avatar">
-          <img src="https://source.unsplash.com/random/250x250" alt="Profile Avatar"/>
+          <img src="https://source.unsplash.com/random/250x250/?nature" alt="Profile Avatar"/>
       </div>
 
       <div className="profile-userMeta">

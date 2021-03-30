@@ -259,17 +259,17 @@ body {
 .post-upload-container {
   margin: auto;
   max-width: 500px;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .post-upload-form {
   display: flex;
   flex-direction: column;
   background: white;
-  border: 1px solid #fdcfde;
+  border: 2px solid #fdcfde;
   border-radius: 3px;
-  padding: 15px 20px;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.103);
+  padding: 20px 25px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.103);
 }
 
 .MuiOutlinedInput-root {
@@ -290,7 +290,7 @@ body {
 .post_input {
   flex: 1;
   border: none;
-  padding-top: 15px;
+  padding-top: 5px;
   padding: 10px;
   border-top: 1px solid lightgray;
 }
@@ -301,10 +301,22 @@ body {
   height : 15%; 
 }
 
+/* .exit {
+  color: #aaa;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.exit:hover,
+.exit:focus {
+    color: black;
+    cursor: pointer;
+}  */
+
 /* Post Comments */
 
 .post_comment{
-
   font-size: 12px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -388,4 +400,43 @@ body {
   /* background: white; */
   border: 0 transparent;
   width: 100%;
+}
+
+.post-upload-image {
+  font-family: inherit;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+  color: gray;
+  background: rgb(240, 240, 240);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+progress {
+  border-radius: 2px; 
+  width: 100%;
+  height: 5px;
+}
+progress::-webkit-progress-bar {
+  background-color: rgba(247, 128, 128, 0);
+  border-radius: 0 0 2px 2px;
+}
+progress::-webkit-progress-value {
+  background-color: rgb(247, 128, 128);
+  border-radius: 0 0 2px 2px;
+}
+
+/* Follow and Unfollow */
+
+.user-description {
+  font-weight: 300;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px 0;
+}
+
+.user-username{
+  font-size: 20px;
+  font-weight: 600;
 }
