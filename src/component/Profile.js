@@ -4,21 +4,23 @@ import { database, auth } from '../firebase/firebase';
 import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
-// import Modal from '@material-ui/core/Modal';
-// import { Link } from 'react-router-dom';
-// import { Avatar } from '@material-ui/core';
-// import Comment from './Comment';
-// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-// import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+import Modal from '@material-ui/core/Modal';
+import { Link } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
+import Comment from './Comment';
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 
 
 const Profile = () => {
-  const[username, setUserName] = useState("");
+  // const[username, setUsername] = useState("");
+  const[username, setUsername] = useState();
 
-  firebase.auth().onAuthStateChanged( (user) => {
+  auth.onAuthStateChanged( (user) => {
     if(user) {
-      setUserName(auth.currentUser.displayName);
+      // setUsername(auth.currentUser.displayName);
+      setUsername(user.displayName);
     }
   }) 
 
@@ -28,10 +30,25 @@ const Profile = () => {
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
 
+  // Dummy Post data to prevent 'undefined' error
+  const dummyPostObj = {
+    id: "123412427490",
+    post: {
+      comments: [],
+      description: "",
+      image: "",
+      likes: "",
+      location: "",
+      timestamp: "",
+      username: "",
+    }
+  };
+
   // For the <Modal />
-  const [postObj, setPostObj] = useState([]);
+  const [postObj, setPostObj] = useState(dummyPostObj);
   const [open, setOpen] = useState(false);
   const increment = firebase.firestore.FieldValue.increment(1);
+
 
   const handleOpen = (clicked) => {
     setOpen(clicked);
@@ -46,8 +63,8 @@ const Profile = () => {
     post.update({ likes: increment });
   };
 
-  const handleImageClick = (postObj, clicked) => {
-    handleOpen(clicked);
+  const handleImageClick = (postObj) => {
+    handleOpen(true);
     setPostObj(postObj);
 
     // console.log("\n\n[Post ImageURL]: " + postObj.post.image);  // TESTING ONLY
@@ -58,11 +75,11 @@ const Profile = () => {
 
   // Get user posts & id on page load
   useEffect(() => {
-    firebase.auth().onAuthStateChanged( (user) => {
+    auth.onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("posts")
-          .where("username", "==", auth.currentUser.displayName)
+          .where("username", "==", user.displayName)
           .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
             setPostCount(
@@ -81,11 +98,11 @@ const Profile = () => {
 
   // Get # of follower on page load
   useEffect(() => {
-    firebase.auth().onAuthStateChanged( (user) => {
+    auth.onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("users")
-          .doc(username)
+          .doc(user.displayName)
           .collection("follower")
           .onSnapshot((snapshot) => {
             setFollower(
@@ -102,7 +119,7 @@ const Profile = () => {
       if (user) {
         database
           .collection("users")
-          .doc(username)
+          .doc(user.displayName)
           .collection("following")
           .onSnapshot((snapshot) => {
             setFollowing(
@@ -147,14 +164,14 @@ const Profile = () => {
     <div className="profile-userPosts">
     { // Loop through each image user have posted, onClick == show that post
       userPosts.map( ({id, post}) => (
-        <img src={post.image} alt="" onClick={() => handleImageClick( {id, post}, true)}/>
+        <img src={post.image} alt="" onClick={() => handleImageClick( {id, post} )}/>
       ))
     }
     </div>
 
 
 
-    {/* <Modal open={open} onClose={handleClose}>
+    <Modal open={open} onClose={handleClose}>
       <div className="profile-postModal">
         <div className="post" key={ postObj.id }>
           <div className="post-header">
@@ -197,7 +214,7 @@ const Profile = () => {
         </div>
 
       </div>
-    </Modal> */}
+    </Modal>
   </>
   );
 };
