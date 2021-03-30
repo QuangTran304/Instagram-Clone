@@ -16,7 +16,7 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 const Profile = () => {
   const[username, setUserName] = useState("");
 
-  firebase.auth().onAuthStateChanged( function(user) {
+  firebase.auth().onAuthStateChanged( (user) => {
     if(user) {
       setUserName(auth.currentUser.displayName);
     }
@@ -58,7 +58,7 @@ const Profile = () => {
 
   // Get user posts & id on page load
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("posts")
@@ -81,7 +81,7 @@ const Profile = () => {
 
   // Get # of follower on page load
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("users")
@@ -98,7 +98,7 @@ const Profile = () => {
 
   // Get # of following on page load
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("users")

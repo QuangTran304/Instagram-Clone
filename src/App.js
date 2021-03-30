@@ -13,12 +13,12 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={rProps => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]}/>
+        <Route exact path="/" render={() => token === null ? <SignIn /> : [<Navbar />, <CreatePost />, <Post />]}/>
         <Route exact path="/signin">
-          {rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
+          {() => token === null ? <Redirect to='/' /> : [<Navbar />, <CreatePost />, <Post />]}
         </Route>
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/profile" render={rProps => token === null ? <Redirect to='/' /> : [<Navbar />, <Profile />]}/>
+        <Route exact path="/profile" render={() => token === null ? <Redirect to='/' /> : [<Navbar />, <Profile />]}/>
         
         
       </Switch>
