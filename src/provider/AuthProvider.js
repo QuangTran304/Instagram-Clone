@@ -18,9 +18,7 @@ const AuthProvider = (props) => {
     //   follower: [],
     //   following: []
     database.collection('users').doc(inputs.username).set({
-      username: inputs.username,
-      follower: [],
-      following: []
+      username: inputs.username
     })
   }
   const handleSignin = () => {
