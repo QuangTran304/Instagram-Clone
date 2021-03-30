@@ -1,22 +1,22 @@
 import React, {useContext} from "react";
 import logo from "../Instagrill.png";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
-import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Popover from '@material-ui/core/Popover';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
 import {firebaseAuth} from '../provider/AuthProvider';
 
-const useStyles = makeStyles((theme) => ({
-  popover: {
-    pointerEvents: 'none',
-  },
-  paper: {
-    padding: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   popover: {
+//     pointerEvents: 'none',
+//   },
+//   paper: {
+//     padding: theme.spacing(1),
+//   },
+// }));
 
 const Navbar = () => {
   const {handleSignout} = useContext(firebaseAuth)
@@ -34,9 +34,10 @@ const Navbar = () => {
         </div>
         <div className="menu">
           <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
-          <Link to="#Explore"><ExploreOutlinedIcon className="icon-item" /></Link>
+          <Link to="/profile"><AccountCircleIcon className="icon-item" /></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
-          <Link onClick={handleSignout}><AccountCircleIcon className="icon-item" /></Link>
+          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" /></Link>
+        
           <Popover>Logout</Popover>
         </div>
       </div>
