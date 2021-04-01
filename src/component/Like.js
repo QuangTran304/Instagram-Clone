@@ -68,12 +68,12 @@ const Like = ({ id }) => {
             {liked ? <FavoriteIcon
                 onClick={() => handleLikeClick(id)}
                 color="secondary"
-                style={{ marginRight: 8, width: 20 }}
+                style={{ marginRight: 8, width: 20, cursor: "pointer" }}
             />
                 :
                 <FavoriteBorder
                     onClick={() => handleLikeClick(id)}
-                    style={{ marginRight: 8, width: 20}}
+                    style={{ marginRight: 8, width: 20, cursor: "pointer"}}
                 />
             }
         </div>

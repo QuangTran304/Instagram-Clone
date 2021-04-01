@@ -71,7 +71,7 @@ const Post = () => {
         <div className="post-icons">
           <Like id={id} />
           <ChatBubbleOutlineOutlinedIcon
-            style={{ marginRight: 8, width: 20 }}
+            style={{ marginRight: 8, width: 20, cursor: "pointer" }}
           />
         </div>
         <p className="post-like-number"> Liked by {post.likes} 
