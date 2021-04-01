@@ -5,7 +5,7 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 import Like from "./Like";
-import Popup from 'reactjs-popup'
+// import Popup from 'reactjs-popup'
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -75,9 +75,9 @@ const Post = () => {
           />
         </div>
         <p className="post-like-number"> Liked by {post.likes} 
-        <Popup trigger={<span> people </span>} modal>
+        {/* <Popup trigger={<span> people </span>} modal>
           {/* <span> <PopUpLike id = {id} /> </span> */}
-        </Popup>
+        {/* </Popup> */}
         </p>
 
 
