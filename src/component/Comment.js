@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import "../index.css";
 
 const Comment = ({ postId }) => {
+  const increment = firebase.firestore.FieldValue.increment(1);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const useStyles = makeStyles((theme) => ({
@@ -46,12 +47,13 @@ const Comment = ({ postId }) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setComment("");
+    database.collection("posts").doc(postId).update({comments : increment})
   };
 
 
   return (
     <div>
-      {comments.map(({ username, comment }) => (
+      {comments.slice(0,3).map(({ username, comment }) => (
         <div className="post_comment">
           <p>
             <strong>{username} </strong> {comment}

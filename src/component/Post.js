@@ -5,7 +5,7 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 import Like from "./Like";
-// import Popup from 'reactjs-popup'
+import PopUpLike from "./PopUpLike"
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -24,31 +24,6 @@ const Post = () => {
       });
     // eslint-disable-next-line
   }, []);
-
-  // function PopUpLike(id) {
-  //   const [liked, setLiked] = useState([]);
-
-  //   if(id){
-  //     database
-  //     .collection("posts")
-  //     .doc(id)
-  //     .collection('likes')
-  //     .orderBy('timestamp', 'asc')
-  //     .onSnapshot((snapshot) => {
-  //         setLiked(
-  //           snapshot.docs.map((doc) => ({
-  //             username: doc.data().username,
-  //           }))
-  //         )
-  //     })
-  //   }
-
-  //     return liked.map(({username}) => (
-  //       <div>
-  //         {username}
-  //       </div>
-  //     ))
-  // }
 
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
@@ -73,11 +48,11 @@ const Post = () => {
           <ChatBubbleOutlineOutlinedIcon
             style={{ marginRight: 8, width: 20, cursor: "pointer" }}
           />
+          {post.comments}
         </div>
+        
         <p className="post-like-number"> Liked by {post.likes} 
-        {/* <Popup trigger={<span> people </span>} modal>
-          {/* <span> <PopUpLike id = {id} /> </span> */}
-        {/* </Popup> */}
+          <PopUpLike id = {id} />
         </p>
 
 
