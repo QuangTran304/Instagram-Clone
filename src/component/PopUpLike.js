@@ -30,16 +30,17 @@ const PopUpLike = ({id}) => {
                 }))
               )
           })
+          // eslint-disable-next-line
       }, []);
 
     return (
     <>
-        <span onClick={handleOpen}> people </span>
+        <span className="like-people" onClick={handleOpen}> people </span>
         <Modal open={open} onClose={handleClose}>
-            <div>
+            <div className="like-popup">
                 {liked.map(({username}) => (
                     <div>
-                        {username}
+                        <h4 className="popup-like-username">{username}</h4>
                     </div>
                 ))}
             </div>

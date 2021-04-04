@@ -7,10 +7,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import "../index.css";
 
-const Comment = ({ postId }) => {
+const Comment = ({ postId, all }) => {
   const increment = firebase.firestore.FieldValue.increment(1);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  let length = 0;
+
   const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(2),
@@ -50,10 +52,20 @@ const Comment = ({ postId }) => {
     database.collection("posts").doc(postId).update({comments : increment})
   };
 
+  function lengthIs() {
+    if (all) {
+      length = comments.length
+    }
+    else {
+      length = 3
+    }
+  }
+
 
   return (
     <div>
-      {comments.slice(0,3).map(({ username, comment }) => (
+      {lengthIs()}
+      {comments.slice(0, length).map(({ username, comment }) => (
         <div className="post_comment">
           <p>
             <strong>{username} </strong> {comment}

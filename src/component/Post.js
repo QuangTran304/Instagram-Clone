@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
-import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 import Like from "./Like";
 import PopUpLike from "./PopUpLike"
+import PostPopUp from "./PostPopUp"
+// import { Link, Redirect, useHistory as browserHistory} from 'react-router-dom'
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -25,6 +26,17 @@ const Post = () => {
     // eslint-disable-next-line
   }, []);
 
+  // const handleClick = (postId, data) => {
+  //   this.props.history.push({
+  //     pathname: "/individualPost",
+  //     state:{
+  //       id: postId,
+  //       post: data
+  //     }
+  //   })
+  // }
+
+ 
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
       <div className="post-header">
@@ -45,14 +57,12 @@ const Post = () => {
       <div className="post-body">
         <div className="post-icons">
           <Like id={id} />
-          <ChatBubbleOutlineOutlinedIcon
-            style={{ marginRight: 8, width: 20, cursor: "pointer" }}
-          />
-          {post.comments}
+          <PostPopUp id={id} post={post} />
+          <h5> {post.comments} </h5>
         </div>
-        
-        <p className="post-like-number"> Liked by {post.likes} 
-          <PopUpLike id = {id} />
+
+        <p className="post-like-number"> Liked by {post.likes}
+          <PopUpLike id={id} />
         </p>
 
 
@@ -62,7 +72,11 @@ const Post = () => {
 
         <h3 className="post-comment">Comments</h3>
 
-        <Comment postId={id} />
+        <Comment postId={id} all={false} />
+
+        {/* <span onClick={() => handleClick({id, post})}> 
+            View all comments </span> */}
+
       </div>
     </div>
   ));

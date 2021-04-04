@@ -46,6 +46,7 @@ const Follow = () => {
     function isFollowed(user) {
         let follow = false;
 
+        // eslint-disable-next-line
         following.map(({ username }) => {
             if (user === username) {
                 follow = true;
@@ -89,19 +90,18 @@ const Follow = () => {
                     <p className="user-username"> Users: </p>
                     <h4 className="user-description">
                         {users.map(({ user }) => (
-                            <div>
                                 <div>
                                     {user !== firebase.auth().currentUser.displayName &&
                                         <div>
                                             {user}
                                             {isFollowed(user) ?
-                                                <Button onClick={() => unFollowUser(user)}>Unfollow</Button>
+                                                <Button className="follow-button" onClick={() => unFollowUser(user)}>Unfollow</Button>
                                                 :
                                                 <Button onClick={() => followUser(user)} className="follow-button"> Follow </Button>
                                             }
                                         </div>
-                                    }</div>
-                            </div>
+                                    }
+                                </div>
                         )
                         )}
                     </h4>

@@ -201,11 +201,9 @@ body {
 .post-avatar {
   margin: 0 12px 0 5px;
   background: rgb(247, 151, 80);
-  background: linear-gradient(
-    90deg,
-    rgba(247, 151, 80, 1) 0%,
-    rgba(199, 53, 141, 1) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(247, 151, 80, 1) 0%,
+      rgba(199, 53, 141, 1) 100%);
 }
 
 .post-username {
@@ -298,7 +296,7 @@ body {
 .post_button {
   flex: 0;
   border: none;
-  height : 15%; 
+  height: 15%;
 }
 
 /* .exit {
@@ -316,13 +314,13 @@ body {
 
 /* Post Comments */
 
-.post_comment{
+.post_comment {
   font-size: 12px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 5px 0;
   margin-left: 7.5px;
-  display: flex ;
+  display: flex;
   margin: 0 30px 0 5px;
 }
 
@@ -337,14 +335,16 @@ body {
 }
 
 progress {
-  border-radius: 2px; 
+  border-radius: 2px;
   width: 100%;
   height: 5px;
 }
+
 progress::-webkit-progress-bar {
   background-color: rgba(247, 128, 128, 0);
   border-radius: 0 0 2px 2px;
 }
+
 progress::-webkit-progress-value {
   background-color: rgb(247, 128, 128);
   border-radius: 0 0 2px 2px;
@@ -363,6 +363,7 @@ progress::-webkit-progress-value {
 }
 
 .follow-button{
+  position: absolute;
   right: 0;
 }
 
@@ -374,7 +375,47 @@ progress::-webkit-progress-value {
   padding: 10px;
 }
 
-.user-username{
+.user-username {
   font-size: 20px;
   font-weight: 600;
+}
+
+/* PopUp Post*/
+
+.post-popup {
+  background-color: white;
+  border-radius: 2px;
+  max-width: 75%;
+  min-height: 50%;
+  max-height: 85%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.post-popup-image {
+  width: 100%;
+  max-height: 83vmin;
+  object-fit: contain;
+}
+
+/* Like Popup*/
+
+.like-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: white;
+}
+
+.popup-like-username{
+  margin: 20px auto;
+}
+
+.like-people {
+  cursor: pointer;
 }
