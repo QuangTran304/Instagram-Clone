@@ -355,18 +355,21 @@ progress::-webkit-progress-value {
 .follow-users {
   position: fixed;
   top: 58px;
-  right: 12%;
+  right: 10%;
   margin: 25px auto;
   max-width: 500px;
-}
-
-.follow-body {
   padding: 10px 20px 10px 20px;
 }
 
-.follow-button{
+
+.follow-align{
   position: absolute;
   right: 0;
+  display: flex;
+}
+
+.follow-button {
+  text-transform: unset !important;
 }
 
 .user-description {
@@ -377,9 +380,31 @@ progress::-webkit-progress-value {
   padding: 10px;
 }
 
-.user-username {
+.user-headline {
   font-size: 20px;
   font-weight: 600;
+}
+
+.user-info {
+  display: flex;
+  padding: 5px;
+  width: 200px;
+}
+
+.user-right {
+  display: flex;
+}
+
+.user-username {
+  padding-top: 8px;
+}
+
+.user-avatar {
+  margin: 0 12px 0 5px;
+  background: rgb(247, 151, 80);
+  background: linear-gradient(90deg,
+      rgba(247, 151, 80, 1) 0%,
+      rgba(199, 53, 141, 1) 100%);
 }
 
 /* Mobile View for User Follow List */
@@ -387,6 +412,9 @@ progress::-webkit-progress-value {
   .follow-users {
   position: static;
   top: 0;
+}
+.follow-button {
+  right: 50px;
 }
 
 }

@@ -1,8 +1,10 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import firebase from "firebase"
+import Avatar from "@material-ui/core/Avatar";
 import { database } from "../firebase/firebase"
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid';
 import "../index.css";
 
 const Follow = () => {
@@ -84,26 +86,33 @@ const Follow = () => {
 
     return (
         <div className="follow-users">
-                <div className="follow-body">
-                    <p className="user-username"> Users: </p>
+                    <p className="user-headline"> Suggestions for You </p>
                     <h4 className="user-description">
                         {users.map(({ user }) => (
                                 <div>
                                     {user !== firebase.auth().currentUser.displayName &&
-                                        <div>
-                                            {user}
-                                            {isFollowed(user) ?
-                                                <Button className="follow-button" onClick={() => unFollowUser(user)}>Unfollow</Button>
-                                                :
-                                                <Button onClick={() => followUser(user)} className="follow-button"> Follow </Button>
-                                            }
+                                        <div className="user-info">
+                                            <Grid className='user-right'>
+                                                <Avatar
+                                                    className="user-avatar"
+                                                    src="/broken-image.jpg"
+                                                    style={{ width: 35, height: 35 }}
+                                                ></Avatar>
+                                                <span className='user-username'>{user}</span>
+                                            </Grid>
+                                            <Grid className="follow-align">
+                                                {isFollowed(user) ?
+                                                    <Button className="follow-button" style={{ color: 'DodgerBlue' }} onClick={() => unFollowUser(user)}>Unfollow</Button>
+                                                    :
+                                                    <Button className="follow-button" style={{ color: 'DodgerBlue' }} onClick={() => followUser(user)}> Follow </Button>
+                                                }
+                                            </Grid>
                                         </div>
                                     }
                                 </div>
                         )
                         )}
                     </h4>
-                </div>
         </div>
     )
 }
