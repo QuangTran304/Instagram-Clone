@@ -419,6 +419,17 @@ progress::-webkit-progress-value {
 
 }
 
+@media only screen and (max-width: 1024px) {
+  .follow-users {
+  position: static;
+  top: 0;
+}
+.follow-button {
+  right: 320px;
+}
+
+}
+
 /* PopUp Post*/
 
 .post-popup {
