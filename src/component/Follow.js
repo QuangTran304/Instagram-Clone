@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import firebase from "firebase"
 import { database } from "../firebase/firebase"
 import Button from '@material-ui/core/Button'
-import "../index.css"
 import "../index.css";
 
 const Follow = () => {
@@ -85,7 +84,6 @@ const Follow = () => {
 
     return (
         <div className="follow-users">
-            <div className="post">
                 <div className="follow-body">
                     <p className="user-username"> Users: </p>
                     <h4 className="user-description">
@@ -106,7 +104,6 @@ const Follow = () => {
                         )}
                     </h4>
                 </div>
-            </div>
         </div>
     )
 }

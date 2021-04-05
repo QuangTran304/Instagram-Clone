@@ -355,7 +355,9 @@ progress::-webkit-progress-value {
 .follow-users {
   position: fixed;
   top: 58px;
-  right: 0.7%;
+  right: 12%;
+  margin: 25px auto;
+  max-width: 500px;
 }
 
 .follow-body {
@@ -378,6 +380,15 @@ progress::-webkit-progress-value {
 .user-username {
   font-size: 20px;
   font-weight: 600;
+}
+
+/* Mobile View for User Follow List */
+@media only screen and (max-width: 600px) {
+  .follow-users {
+  position: static;
+  top: 0;
+}
+
 }
 
 /* PopUp Post*/
