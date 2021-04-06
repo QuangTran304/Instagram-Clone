@@ -173,7 +173,7 @@ const Profile = () => {
 
     <Modal open={open} onClose={handleClose}>
       <div className="profile-postModal">
-        <div className="post" key={ postObj.id }>
+        <div className="profile-post" key={ postObj.id }>
           <div className="post-header">
             <Link to={{ pathname: '/profile' }} style={{ textDecoration: 'none' }}>
             <Avatar

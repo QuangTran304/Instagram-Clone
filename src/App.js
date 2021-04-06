@@ -19,14 +19,14 @@ function App() {
 
         <Route exact path="/" 
           render={ rProps => token === null ? 
-          <SignIn key={6}/> : 
-          [<Navbar key={1}/>, <PopUp key={2}/>,<Follow key={3}/>, <Post key={4}/>]}
+          <SignIn /> : 
+          [<Navbar />, <PopUp />,<Follow />, <Post />]}
         />
         
         <Route exact path="/signin"
           render={rProps => token === null ? 
           <Redirect to='/' /> : 
-          [<Navbar key={1}/>, <PopUp key={2}/>, <Post key={4}/>]}
+          [<Navbar />, <PopUp />, <Post />]}
         />
         
         <Route exact path="/signup" component={SignUp} />
@@ -34,7 +34,7 @@ function App() {
         <Route exact path="/profile" 
           render={() => token === null ? 
           <Redirect to='/' /> : 
-          [<Navbar key={1}/>, <Profile key={5}/>]}
+          [<Navbar />, <Profile />]}
         />
         
       </Switch>

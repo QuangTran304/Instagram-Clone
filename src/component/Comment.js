@@ -67,7 +67,6 @@ const Comment = ({ postId }) => {
           size = "small"
           margin ="normal"
           label = "Comment"
-          autoFocus
           type="text"
           placeholder="Add a comment..."
           value={comment}

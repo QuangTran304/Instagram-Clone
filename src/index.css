@@ -190,8 +190,6 @@ body {
   border-radius: 2px;
   margin: 25px auto;
   max-width: 500px;
-  height: 85vh;
-  overflow: scroll;
 }
 
 .post-header {
@@ -413,10 +411,19 @@ progress::-webkit-progress-value {
 }
 
 .profile-postModal {
-  /* background: white; */
   border: 0 transparent;
   width: fit-content;
   margin: 5vh auto;
+}
+
+.profile-post {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  margin: 25px auto;
+  max-width: 500px;
+  height: 85vh;
+  overflow: scroll;
 }
 
 
