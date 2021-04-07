@@ -118,7 +118,3 @@ const Follow = () => {
 }
 
 export default Follow;
-
-
-//TO implement next sprint -> this is for removing users that are already being followed. 
-

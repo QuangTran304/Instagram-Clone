@@ -12,6 +12,7 @@ const Comment = ({ postId, all }) => {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   let length = 0;
+  let start = 0;
 
   const useStyles = makeStyles((theme) => ({
     margin: {
@@ -55,9 +56,16 @@ const Comment = ({ postId, all }) => {
   function lengthIs() {
     if (all) {
       length = comments.length
+      start = 0
     }
     else {
-      length = 3
+      length = comments.length
+      if(length <= 3) {
+        start = 0;
+      }
+      else {
+        start = comments.length - 3
+      }
     }
   }
 
@@ -65,7 +73,7 @@ const Comment = ({ postId, all }) => {
   return (
     <div>
       {lengthIs()}
-      {comments.slice(0, length).map(({ username, comment }) => (
+      {comments.slice(start, length).map(({ username, comment }) => (
         <div className="post_comment">
           <p>
             <strong>{username} </strong> {comment}
@@ -82,7 +90,6 @@ const Comment = ({ postId, all }) => {
           size="small"
           margin="normal"
           label="Comment"
-          autoFocus
           type="text"
           placeholder="Add a comment..."
           value={comment}
