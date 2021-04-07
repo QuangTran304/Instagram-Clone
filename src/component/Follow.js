@@ -73,7 +73,6 @@ const Follow = () => {
 
     const unFollowUser = (username) => {
         database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
-            console.log("User successfully deleted from the following guy!");
         }).catch((error) => {
             console.error("Error removing user: ", error);
         });
