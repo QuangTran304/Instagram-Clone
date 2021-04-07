@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import "../index.css";
-import { database, auth } from '../firebase/firebase';
-import firebase from 'firebase'
-import "../index.css"
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import firebase from 'firebase';
 import Button from '@material-ui/core/Button';
+import { database, auth } from '../firebase/firebase';
+import Navbar  from './Navbar';
+import "../index.css";
 // import Modal from '@material-ui/core/Modal';
 // import { Link } from 'react-router-dom';
 // import { Avatar } from '@material-ui/core';
@@ -14,13 +15,14 @@ import Button from '@material-ui/core/Button';
 
 
 const Profile = () => {
-  const[username, setUserName] = useState("");
+  const { username } = useParams();
+  // const[username, setUserName] = useState("");
 
-  firebase.auth().onAuthStateChanged( (user) => {
-    if(user) {
-      setUserName(auth.currentUser.displayName);
-    }
-  }) 
+  // firebase.auth().onAuthStateChanged( (user) => {
+  //   if(user) {
+  //     setUserName(auth.currentUser.displayName);
+  //   }
+  // }) 
 
   // For User's stats
   const [follower, setFollower] = useState();
@@ -58,11 +60,12 @@ const Profile = () => {
 
   // Get user posts & id on page load
   useEffect(() => {
+
     firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
         database
           .collection("posts")
-          .where("username", "==", auth.currentUser.displayName)
+          .where("username", "==", username)
           .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
             setPostCount(
@@ -77,7 +80,7 @@ const Profile = () => {
           });
       } 
     })
-  }, []); 
+  }, [username]); 
 
   // Get # of follower on page load
   useEffect(() => {
@@ -117,6 +120,7 @@ const Profile = () => {
 
   return (
   <>
+    <Navbar />
     <div className="profile-userInfo">
       <div className="profile-avatar">
           <img src="https://source.unsplash.com/random/250x250/?nature" alt="Profile Avatar"/>
