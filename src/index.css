@@ -429,15 +429,64 @@ progress::-webkit-progress-value {
 
 /* Follow and Unfollow */
 
-.user-description {
-  font-weight: 300;
-  font-size: 15px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  padding: 10px 0;
+.test-container {
+  width: 500px;
+  padding-left: 38px;
+  width: 330px;
+  height: 70vh;
+  border-radius: 10px;
+  overflow: scroll;
+  transform: translate(0, 20vh);
+  transition: ease-in-out 0.55s;
+  position: fixed;
+  bottom: 20vh;
+  right: -330px;
+  z-index: 20;
 }
 
-.user-username{
-  font-size: 20px;
+.test-container:hover {
+  transform: translate(-330px, 20vh);
+  transition: ease-in-out 0.55s;
+}
+
+.follow-container {
+  background-color: white;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 5px;
+  padding: 25px 5% 25px 5%;
+}
+
+.follow-hoverButton {
+  background-color: #F50057;
+  color: white;
+  padding: 10px 55px;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: 15vh;
+  left: -65px;
+  z-index: 50;
+}
+
+.follow-userContainer{
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.follow-userLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.follow-userName {
+  font-size: 16px;
   font-weight: 600;
+  color: gray;
+}
+
+.follow-groupTitle {
+  margin-bottom: 10px;
 }

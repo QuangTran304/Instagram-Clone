@@ -1,35 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import firebase from "firebase";
 import { database } from "../firebase/firebase";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "../index.css";
 import { useRef } from "react";
-import { Brightness1Rounded } from "@material-ui/icons";
 import UnFollow from "./Unfollow";
 import "../index.css";
-import Grid from "@material-ui/core/Grid";
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   paper: {
-//     height: 140,
-//     width: 100,
-//   },
-//   control: {
-//     padding: theme.spacing(2),
-//   },
-// }));
+
 
 const Follow = () => {
   const [users, setUsers] = useState([]);
   // const [followed, setFollowed] = useState(false);
   let btnRef = useRef();
-  // const classes = useStyles();
 
   useEffect(() => {
     database.collection("users").onSnapshot((snapshot) => {
@@ -68,27 +52,37 @@ const Follow = () => {
 
 
   return (
-    <div className="post">
-      <p className="user-username"> People you may know: </p>
-      <h4 className="user-description">
-        {users.map(({ user }) => (
-          <div>
-            {user !== firebase.auth().currentUser.displayName && (
-              <div>
-                {user}{" "}
-                <Button ref={btnRef} onClick={() => followUser(user)}>
-                  {" "}
-                  Follow{" "}
-                </Button>
-              </div>
-            )}
-          </div>
-        ))}
-      </h4>
-      <p className="user-username"> Following: </p>
-      <h4 className="user-description">
-        <UnFollow />
-      </h4>
+
+    <div className="test-container">
+        <h4 className="follow-hoverButton">
+          Explore
+        </h4>
+
+      <div className="follow-container">
+        
+        <div className="follow-userContainer">
+          <h3 className="follow-groupTitle"> People you may know: </h3>
+          {users.map(({ user }) => (
+            <div>
+              {user !== firebase.auth().currentUser.displayName && (
+                <div className="follow-userLine">
+                  <div className="follow-userName">
+                    {user}
+                  </div>
+                  <Button  variant="contained" color="primary" ref={btnRef} onClick={() => followUser(user)}>
+                    Follow
+                  </Button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      
+        <div>
+          <h3 className="follow-groupTitle"> Following: </h3>
+          <UnFollow />
+        </div>
+      </div>
     </div>
   );
 };
