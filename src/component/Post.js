@@ -32,10 +32,11 @@ const Post = () => {
       });
   }, []); 
 
+  console.log(posts, "posts");
   return posts.map(({ id, post }) => (
     <div className="post" key={ id }>
       <div className="post-header">
-        <Link to={{ pathname: '/profile', state: {username: post.username } }} style={{ textDecoration: 'none' }}>
+        <Link to={{ pathname: `/profile/${post.username}`, state: {username: post.username } }} style={{ textDecoration: 'none' }} >
         <Avatar
           className="post-avatar"
           alt={post.username}
@@ -64,7 +65,7 @@ const Post = () => {
         <p className="post-like-number"> Liked by { post.likes } people</p>
 
         <h4 className="post-description">
-          <strong>{post.username}</strong> {post.description}
+          <Link  to={{ pathname: `/profile/${post.username}`, state: {username: post.username } }} style={{ textDecoration: 'none' }}><strong>{post.username}</strong> {post.description}</Link>
         </h4>
 
         <h3 className="post-comment">Comments</h3>
