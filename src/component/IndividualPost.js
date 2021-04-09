@@ -1,13 +1,10 @@
-// import React, { useState, useEffect, Component } from "react";
 import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-// import { database } from "../firebase/firebase";
 import Comment from "./Comment";
 import Like from "./Like";
 import PopUpLike from "./PopUpLike"
 import Grid from '@material-ui/core/Grid';
-// import { render } from "react-dom";
 
 const IndividualPost = ({id, post}) => {
     return (
@@ -67,18 +64,3 @@ const IndividualPost = ({id, post}) => {
 }
 
 export default IndividualPost;
-
-
-// useEffect(() => {
-//     database
-//         .collection('posts')
-//         .doc(id)
-//         .then((doc) => {
-//             if(doc.exists){
-//                 setPost(doc.data())
-//             }else{
-//                 console.log("Error - Post does not exist.")
-//             }
-//         })
-//     // eslint-disable-next-line
-// },[])
