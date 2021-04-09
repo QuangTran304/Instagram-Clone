@@ -13,7 +13,7 @@ const Comment = ({ postId, all }) => {
   const [comment, setComment] = useState("");
   let length = 0;
   let start = 0;
-
+  
   const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(2),

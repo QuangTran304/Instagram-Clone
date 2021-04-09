@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import Like from "./Like";
 import PopUpLike from "./PopUpLike"
 import PostPopUp from "./PostPopUp"
+import { Link } from "react-router-dom";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -28,12 +29,14 @@ const Post = () => {
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
       <div className="post-header">
+      <Link to={{ pathname: '/profile', state: {username: post.username } }} style={{ textDecoration: 'none' }}>
         <Avatar
           className="post-avatar"
           alt={post.username}
           src="/static/images/avatar/1.jpg"
           style={{ width: 35, height: 35 }}
         ></Avatar>
+      </Link>
         <div className="post-meta">
           <h3 className="post-username">{post.username}</h3>
           <p className="post-location">{post.location}</p>
