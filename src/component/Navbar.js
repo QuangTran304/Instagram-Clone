@@ -1,25 +1,24 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import logo from "../Instagrill.png";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import Popover from '@material-ui/core/Popover';
-// import { makeStyles } from '@material-ui/core/styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
 import {firebaseAuth} from '../provider/AuthProvider';
+import { auth } from "../firebase/firebase";
 
-// const useStyles = makeStyles((theme) => ({
-//   popover: {
-//     pointerEvents: 'none',
-//   },
-//   paper: {
-//     padding: theme.spacing(1),
-//   },
-// }));
 
 const Navbar = () => {
   const {handleSignout} = useContext(firebaseAuth)
+  const[username, setUsername] = useState("");
+
+  auth.onAuthStateChanged( (user) => {
+    if(user) {
+      setUsername(user.displayName);
+    }
+  }) 
+
 
   return (
     <div className="nav-bar">
@@ -33,12 +32,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu">
-          <Link to="/"><HomeRoundedIcon className="icon-item" /></Link>
-          <Link to="/profile"><AccountCircleIcon className="icon-item" /></Link>
-          <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" /></Link>
-          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" /></Link>
-        
-          <Popover>Logout</Popover>
+          <Link to="/"><HomeRoundedIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
+          <Link to={`/${username}`}><AccountCircleIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
+          <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
+          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
         </div>
       </div>
     </div>

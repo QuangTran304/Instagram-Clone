@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import "../index.css"
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
 import Comment from './Comment';
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
@@ -14,21 +14,12 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 
 
 const Profile = () => {
-  // const[username, setUsername] = useState("");
-  const[username, setUsername] = useState();
-
-  auth.onAuthStateChanged( (user) => {
-    if(user) {
-      // setUsername(auth.currentUser.displayName);
-      setUsername(user.displayName);
-    }
-  }) 
-
-  // For User's stats
+  const { username } = useParams();
   const [follower, setFollower] = useState();
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
+
 
   // Dummy Post data to prevent 'undefined' error
   const dummyPostObj = {
@@ -66,10 +57,6 @@ const Profile = () => {
   const handleImageClick = (postObj) => {
     handleOpen(true);
     setPostObj(postObj);
-
-    // console.log("\n\n[Post ImageURL]: " + postObj.post.image);  // TESTING ONLY
-    // console.log("[Post id]: " + postObj.id);                    // TESTING ONLY
-    // console.log("[Is button clicked]: " + clicked);             // TESTING ONLY
   }
 
 
@@ -79,7 +66,7 @@ const Profile = () => {
       if (user) {
         database
           .collection("posts")
-          .where("username", "==", user.displayName)
+          .where("username", "==", username)
           .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
             setPostCount(
@@ -102,7 +89,7 @@ const Profile = () => {
       if (user) {
         database
           .collection("users")
-          .doc(user.displayName)
+          .doc(username)
           .collection("follower")
           .onSnapshot((snapshot) => {
             setFollower(
@@ -119,7 +106,7 @@ const Profile = () => {
       if (user) {
         database
           .collection("users")
-          .doc(user.displayName)
+          .doc(username)
           .collection("following")
           .onSnapshot((snapshot) => {
             setFollowing(
@@ -202,11 +189,9 @@ const Profile = () => {
             </div>
 
             <p className="post-like-number"> Liked by { postObj.post.likes } people</p>
-
             <h4 className="post-description">
               <strong>{ postObj.post.username }</strong> { postObj.post.description }
             </h4>
-
             <h3 className="post-comment">Comments</h3>
 
             <Comment postId={ postObj.id } />

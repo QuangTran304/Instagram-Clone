@@ -302,6 +302,12 @@ body {
   height : 15%; 
 }
 
+@media only screen and (max-width: 600px) {
+  .post_button {
+    width: 50%;
+  }
+}
+
 .post-upload-image {
   font-family: inherit;
   padding: 15px 15px;
@@ -429,8 +435,7 @@ progress::-webkit-progress-value {
 
 /* Follow and Unfollow */
 
-.test-container {
-  width: 500px;
+.follow-wrapContainer{
   padding-left: 38px;
   width: 330px;
   height: 70vh;
@@ -444,7 +449,7 @@ progress::-webkit-progress-value {
   z-index: 20;
 }
 
-.test-container:hover {
+.follow-wrapContainer:hover {
   transform: translate(-330px, 20vh);
   transition: ease-in-out 0.55s;
 }
@@ -489,4 +494,11 @@ progress::-webkit-progress-value {
 
 .follow-groupTitle {
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .follow-hoverButton {
+    bottom: 40vh;
+    left: -65px;
+  }
 }

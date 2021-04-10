@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         width: '30%',
         maxWidth: '500px',
         padding: theme.spacing(2),
-        marginTop: theme.spacing(12),
+        marginTop: theme.spacing(14),
         marginBottom: theme.spacing(5),
         display: "flex",
         justifyContent: "center",
@@ -50,7 +50,7 @@ export default function PopUp() {
   return (
     <div>
       <button type="button" onClick={handleOpen} className={classes.button}>
-        Create a Post
+        New Post
       </button>
 
       <Modal open={open} onClose={handleClose} >

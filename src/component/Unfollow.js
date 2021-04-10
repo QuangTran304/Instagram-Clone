@@ -4,10 +4,10 @@ import firebase from "firebase";
 import { database } from "../firebase/firebase";
 import Button from "@material-ui/core/Button";
 import "../index.css";
+import { Link } from "react-router-dom";
 
 const UnFollow = () => {
   const [following, setFollowing] = useState([]);
-  // const [follower, setFollower] = useState([]);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -74,7 +74,9 @@ const UnFollow = () => {
     <div>
       {following.map(({ username }) => (
         <div className="follow-userLine">
-          <div className="follow-userName"> {username} </div>
+          <div className="follow-userName"> 
+            <Link to={`/${username}`} style={{ textDecoration: 'none', color: 'gray' }}> {username} </Link>
+          </div>
           <Button variant="contained" color="secondary" onClick={() => unFollowUser(username)}> 
             Unfollow 
           </Button>

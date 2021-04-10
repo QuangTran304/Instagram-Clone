@@ -7,12 +7,12 @@ import "../index.css";
 import { useRef } from "react";
 import UnFollow from "./Unfollow";
 import "../index.css";
+import { Link } from "react-router-dom";
 
 
 
 const Follow = () => {
   const [users, setUsers] = useState([]);
-  // const [followed, setFollowed] = useState(false);
   let btnRef = useRef();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Follow = () => {
 
   return (
 
-    <div className="test-container">
+    <div className="follow-wrapContainer">
         <h4 className="follow-hoverButton">
           Explore
         </h4>
@@ -67,7 +67,7 @@ const Follow = () => {
               {user !== firebase.auth().currentUser.displayName && (
                 <div className="follow-userLine">
                   <div className="follow-userName">
-                    {user}
+                    <Link to={`/${user}`} style={{ textDecoration: 'none', color: 'gray' }}> {user} </Link>
                   </div>
                   <Button  variant="contained" color="primary" ref={btnRef} onClick={() => followUser(user)}>
                     Follow
