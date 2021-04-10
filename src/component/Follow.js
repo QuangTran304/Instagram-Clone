@@ -88,25 +88,3 @@ const Follow = () => {
 };
 
 export default Follow;
-
-//TO implement next sprint -> this is for removing users that are already being followed.
-// useEffect(() =>
-//         firebase.auth().onAuthStateChanged(function (user) {
-//             if (user) {
-//                 users.map(({ user }) => (
-//                     database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(user).get().then((doc) => {
-//                         if (doc.exists) {
-//                             setFollowed(true)
-//                         }
-//                         else {
-//                             setFollowed(false)
-//                         }
-//                     }),
-//                     console.log(user + " " + followed)
-//                 ))
-//             } else {
-//                 // No user is signed in.
-//             }
-//         }
-//         )
-// )
