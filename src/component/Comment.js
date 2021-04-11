@@ -7,9 +7,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import "../index.css";
 
-const Comment = ({ postId }) => {
+const Comment = ({ postId, all }) => {
+  const increment = firebase.firestore.FieldValue.increment(1);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  let length = 0;
+  let start = 0;
+  
   const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(2),
@@ -35,7 +39,8 @@ const Comment = ({ postId }) => {
           })));
         });
     }
-  }, [postId]);
+    // eslint-disable-next-line
+  }, []);
 
   const postComment = (event) => {
     event.preventDefault();
@@ -45,12 +50,30 @@ const Comment = ({ postId }) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setComment("");
+    database.collection("posts").doc(postId).update({comments : increment})
   };
+
+  function lengthIs() {
+    if (all) {
+      length = comments.length
+      start = 0
+    }
+    else {
+      length = comments.length
+      if(length <= 3) {
+        start = 0;
+      }
+      else {
+        start = comments.length - 3
+      }
+    }
+  }
 
 
   return (
     <div>
-      {comments.map(({ username, comment }) => (
+      {lengthIs()}
+      {comments.slice(start, length).map(({ username, comment }) => (
         <div className="post_comment">
           <p>
             <strong>{username} </strong> {comment}
@@ -63,10 +86,10 @@ const Comment = ({ postId }) => {
         <TextField
           className="post_input"
           data-testid="commentingBox"
-          variant = "outlined"
-          size = "small"
-          margin ="normal"
-          label = "Comment"
+          variant="outlined"
+          size="small"
+          margin="normal"
+          label="Comment"
           type="text"
           placeholder="Add a comment..."
           value={comment}

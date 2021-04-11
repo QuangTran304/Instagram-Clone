@@ -13,7 +13,7 @@ const CreatePost = () => {
 
 
   const handleImage = (e) => {
-    if(e.target.files[0]) {
+    if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   }
@@ -41,7 +41,7 @@ const CreatePost = () => {
           .ref(`${firebase.auth().currentUser.displayName}`)
           .child(image.name)
           .getDownloadURL()
-          .then( url => {
+          .then(url => {
             database.collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               username: firebase.auth().currentUser.displayName,
@@ -77,24 +77,24 @@ const CreatePost = () => {
           label="What's on your mind?"
           placeholder="Post Description"
           multiline
-          value = {description}
+          value={description}
           rows={4}
           variant="outlined"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <input 
-          type="file" 
-          className="post-upload-image" 
-          onChange={handleImage} 
+        <input
+          type="file"
+          className="post-upload-image"
+          onChange={handleImage}
         />
 
-        <Button 
-          color="secondary" 
+        <Button
+          color="secondary"
           onClick={handleSubmit}
           disabled={!((image !== null && description) && location)}
-          >Post
+        >Post
         </Button>
-        
+
         <progress value={progress} max="100"> hello</progress>
       </form>
     </div>

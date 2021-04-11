@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "../index.css";
 import Avatar from "@material-ui/core/Avatar";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import { database } from "../firebase/firebase";
 import Comment from "./Comment";
-import firebase from 'firebase'
+import Like from "./Like";
+import PopUpLike from "./PopUpLike"
+import PostPopUp from "./PostPopUp"
 import { Link } from "react-router-dom";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
-  const increment = firebase.firestore.FieldValue.increment(1);
-
-  const handleLikeClick = ( id ) => {
-    var post = database.collection("posts").doc(id);
-    post.update({ likes: increment });
-  };
 
   useEffect(() => {
     database
@@ -25,15 +19,15 @@ const Post = () => {
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
-            post: doc.data(),
-            
+            post: doc.data()
           }))
-        );
+        )
       });
-  }, []); 
-
+    // eslint-disable-next-line
+  }, []);
+ 
   return posts.map(({ id, post }) => (
-    <div className="post" key={ id }>
+    <div className="post" key={id}>
       <div className="post-header">
         <Avatar
           className="post-avatar"
@@ -53,16 +47,15 @@ const Post = () => {
 
       <div className="post-body">
         <div className="post-icons">
-          <FavoriteBorder
-            onClick={() => handleLikeClick( id )}
-            style={{ marginRight: 8, width: 20 }}
-          />
-          <ChatBubbleOutlineOutlinedIcon
-            style={{ marginRight: 8, width: 20 }}
-          />
+          <Like id={id} />
+          <PostPopUp id={id} post={post} />
+          <h5> {post.comments} </h5>
         </div>
 
-        <p className="post-like-number"> Liked by { post.likes } people</p>
+        <p className="post-like-number"> Liked by {post.likes}
+          <PopUpLike id={id} />
+        </p>
+
 
         <h4 className="post-description">
           <strong>{post.username}</strong> {post.description}
@@ -70,7 +63,8 @@ const Post = () => {
 
         <h3 className="post-comment">Comments</h3>
 
-        <Comment postId={id} />
+        <Comment postId={id} all={false} />
+
       </div>
     </div>
   ));

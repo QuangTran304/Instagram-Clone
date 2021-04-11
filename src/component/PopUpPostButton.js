@@ -6,13 +6,13 @@ import "../index.css";
 
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        position: 'absolute',
-        backgroundColor: '#000000',
-        border: '0px',
-        padding: theme.spacing(0, 0),
-        boxShadow: 'theme.shadows[5]',
-        textAlign: 'center',
+  paper: {
+    position: 'absolute',
+    backgroundColor: '#000000',
+    border: '0px',
+    padding: theme.spacing(0, 0),
+    boxShadow: 'theme.shadows[5]',
+    textAlign: 'center',
   },
     button:{
         marginLeft: '35%',
@@ -54,7 +54,7 @@ export default function PopUp() {
       </button>
 
       <Modal open={open} onClose={handleClose} >
-        <CreatePost/>
+        <CreatePost />
       </Modal>
     </div>
   );

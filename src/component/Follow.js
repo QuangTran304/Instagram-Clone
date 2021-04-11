@@ -1,90 +1,158 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import firebase from "firebase";
-import { database } from "../firebase/firebase";
-import Button from "@material-ui/core/Button";
+import React from "react"
+import { useState, useEffect } from "react"
+import firebase from "firebase"
+import Avatar from "@material-ui/core/Avatar";
+import { database } from "../firebase/firebase"
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid';
 import "../index.css";
-import { useRef } from "react";
-import UnFollow from "./Unfollow";
-import "../index.css";
-import { Link } from "react-router-dom";
-
-
 
 const Follow = () => {
-  const [users, setUsers] = useState([]);
-  let btnRef = useRef();
+    const [users, setUsers] = useState([]);
+    const [following, setFollowing] = useState([]);
 
-  useEffect(() => {
-    database.collection("users").onSnapshot((snapshot) => {
-      setUsers(
-        snapshot.docs.map((doc) => ({
-          user: doc.data().username,
-        }))
-      );
-    });
-  }, []);
+    useEffect(() => {
+        database
+            .collection('users')
+            .onSnapshot(snapshot => {
+                setUsers(
+                    snapshot.docs.map(doc => ({
+                        user: doc.data().username
+                    })));
+            })
+        // eslint-disable-next-line
+    }, [])
 
-  const followUser = (user) => {
-    if (btnRef.current) {
-      btnRef.current.setAttribute("disabled", "disabled");
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                database
+                    .collection('users')
+                    .doc(firebase.auth().currentUser.displayName)
+                    .collection('following')
+                    .onSnapshot(snapshot => {
+                        setFollowing(
+                            snapshot.docs.map(doc => ({
+                                username: doc.data().username
+                            })));
+                    })
+
+            } else {
+                // No user is signed in.
+            }
+        });
+        // eslint-disable-next-line
+    }, [])
+
+    function isFollowed(user) {
+        let follow = false;
+
+        // eslint-disable-next-line
+        following.map(({ username }) => {
+            if (user === username) {
+                follow = true;
+            }
+        })
+
+        if (follow) {
+            return true;
+        }
+        return false;
     }
-    database
-      .collection("users")
-      .doc(user)
-      .collection("follower")
-      .doc(firebase.auth().currentUser.displayName)
-      .set({
-        username: firebase.auth().currentUser.displayName,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-    database
-      .collection("users")
-      .doc(firebase.auth().currentUser.displayName)
-      .collection("following")
-      .doc(user)
-      .set({
-        username: user,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-  };
 
+    const followUser = (user) => {
+        database.collection('users').doc(user).collection('follower').doc(firebase.auth().currentUser.displayName).set({
+            username: firebase.auth().currentUser.displayName,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(user).set({
+            username: user,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+    }
 
+    const unFollowUser = (username) => {
+        database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
+        }).catch((error) => {
+            console.error("Error removing user: ", error);
+        });
 
-  return (
+        database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
+        }).catch((error) => {
+            console.error("Error removing user: ", error);
+        });
+    }
 
-    <div className="follow-wrapContainer">
-        <h4 className="follow-hoverButton">
-          Explore
-        </h4>
-
-      <div className="follow-container">
-        
-        <div className="follow-userContainer">
-          <h3 className="follow-groupTitle"> People you may know: </h3>
-          {users.map(({ user }) => (
-            <div>
-              {user !== firebase.auth().currentUser.displayName && (
-                <div className="follow-userLine">
-                  <div className="follow-userName">
-                    <Link to={`/${user}`} style={{ textDecoration: 'none', color: 'gray' }}> {user} </Link>
-                  </div>
-                  <Button  variant="contained" color="primary" ref={btnRef} onClick={() => followUser(user)}>
-                    Follow
-                  </Button>
-                </div>
-              )}
-            </div>
-          ))}
+    return (
+        <div className="follow-users">
+                    <p className="user-headline"> Suggestions for You </p>
+                    <h4 className="user-description">
+                        {users.map(({ user }) => (
+                                <div>
+                                    {user !== firebase.auth().currentUser.displayName &&
+                                        <div className="user-info">
+                                            <Grid className='user-right'>
+                                                <Avatar
+                                                    className="user-avatar"
+                                                    src="/broken-image.jpg"
+                                                    style={{ width: 35, height: 35 }}
+                                                ></Avatar>
+                                                <span className='user-username'>{user}</span>
+                                            </Grid>
+                                            <Grid className="follow-align">
+                                                {isFollowed(user) ?
+                                                    <Button className="follow-button" style={{ color: 'DodgerBlue' }} onClick={() => unFollowUser(user)}>Unfollow</Button>
+                                                    :
+                                                    <Button className="follow-button" style={{ color: 'DodgerBlue' }} onClick={() => followUser(user)}> Follow </Button>
+                                                }
+                                            </Grid>
+                                        </div>
+                                    }
+                                </div>
+                        )
+                        )}
+                    </h4>
         </div>
-      
-        <div>
-          <h3 className="follow-groupTitle"> Following: </h3>
-          <UnFollow />
-        </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
 export default Follow;
+
+
+//   return (
+
+//     <div className="follow-wrapContainer">
+//         <h4 className="follow-hoverButton">
+//           Explore
+//         </h4>
+
+//       <div className="follow-container">
+        
+//         <div className="follow-userContainer">
+//           <h3 className="follow-groupTitle"> People you may know: </h3>
+//           {users.map(({ user }) => (
+//             <div>
+//               {user !== firebase.auth().currentUser.displayName && (
+//                 <div className="follow-userLine">
+//                   <div className="follow-userName">
+//                     <Link to={`/${user}`} style={{ textDecoration: 'none', color: 'gray' }}> {user} </Link>
+//                   </div>
+//                   <Button  variant="contained" color="primary" ref={btnRef} onClick={() => followUser(user)}>
+//                     Follow
+//                   </Button>
+//                 </div>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+      
+//         <div>
+//           <h3 className="follow-groupTitle"> Following: </h3>
+//           <UnFollow />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Follow;
