@@ -302,18 +302,6 @@ body {
   height : 15%;
 }
 
-/* .exit {
-  color: #aaa;
-  float: right;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.exit:hover,
-.exit:focus {
-    color: black;
-    cursor: pointer;
-}  */
 
 /* Post Comments */
 
@@ -325,6 +313,12 @@ body {
   margin-left: 7.5px;
   display: flex;
   margin: 0 30px 0 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .post_button {
+    width: 50%;
+  }
 }
 
 .post-upload-image {
@@ -569,4 +563,174 @@ progress::-webkit-progress-value {
 
 .like-people {
   cursor: pointer;
+}
+
+/* Post Comments */
+
+.post_comment {
+  font-size: 12px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 5px 0;
+  margin-left: 7.5px;
+  display: flex ;
+  margin: 0 30px 0 5px;
+}
+
+.content {
+  display : flex;
+}
+
+.unfollow{
+  background: red;
+  color: white;
+} 
+
+
+/* Profile Page Styling */
+
+.profile-userInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 0 80px 0;
+  background-color: rgb(250, 242, 242);
+}
+
+.profile-userMeta {
+  margin-left: 5%;
+}
+
+.profile-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 0px 3px rgb(252, 157, 120);
+}
+
+.profile-userName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-stats-box {
+  display: flex;
+}
+
+.profile-stats {
+  margin-right: 35px;
+}
+
+.profile-userPosts {
+  column-count: 3;
+  margin: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-userPosts {
+    column-count: 2;
+  }
+}
+
+.profile-userPosts img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.profile-userPosts img:hover {
+  box-shadow: 0 0 18px 2px rgba(0, 0, 0, 0.60);
+  cursor: pointer;
+  transform: translateY(-5px);
+  transition: 600ms;
+}
+
+.profile-postModal {
+  border: 0 transparent;
+  width: fit-content;
+  margin: 5vh auto;
+}
+
+.profile-post {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  margin: 25px auto;
+  max-width: 500px;
+  height: 85vh;
+  overflow: scroll;
+}
+
+
+/* Follow and Unfollow */
+
+.follow-wrapContainer{
+  padding-left: 38px;
+  width: 330px;
+  height: 70vh;
+  border-radius: 10px;
+  overflow: scroll;
+  transform: translate(0, 20vh);
+  transition: ease-in-out 0.55s;
+  position: fixed;
+  bottom: 20vh;
+  right: -330px;
+  z-index: 20;
+}
+
+.follow-wrapContainer:hover {
+  transform: translate(-330px, 20vh);
+  transition: ease-in-out 0.55s;
+}
+
+.follow-container {
+  background-color: white;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 5px;
+  padding: 25px 5% 25px 5%;
+}
+
+.follow-hoverButton {
+  background-color: #F50057;
+  color: white;
+  padding: 10px 55px;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: 15vh;
+  left: -65px;
+  z-index: 50;
+}
+
+.follow-userContainer{
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.follow-userLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.follow-userName {
+  font-size: 16px;
+  font-weight: 600;
+  color: gray;
+}
+
+.follow-groupTitle {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .follow-hoverButton {
+    bottom: 40vh;
+    left: -65px;
+  }
 }

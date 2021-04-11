@@ -29,20 +29,20 @@ const Post = () => {
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
       <div className="post-header">
-      <Link to={{ pathname: '/profile', state: {username: post.username } }} style={{ textDecoration: 'none' }}>
         <Avatar
           className="post-avatar"
           alt={post.username}
           src="/static/images/avatar/1.jpg"
           style={{ width: 35, height: 35 }}
         ></Avatar>
-      </Link>
+        
         <div className="post-meta">
-          <h3 className="post-username">{post.username}</h3>
+          <Link to={`/${post.username}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <h3 className="post-username">{post.username}</h3>
+          </Link>
           <p className="post-location">{post.location}</p>
         </div>
       </div>
-
       <img className="post-image" src={post.image} alt="" />
 
       <div className="post-body">

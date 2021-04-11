@@ -11,7 +11,7 @@ import {firebaseAuth} from "./provider/AuthProvider"
 
 
 function App() {
-  const {token} = useContext(firebaseAuth)
+  const {token} = useContext(firebaseAuth);
 
   return (
     <Router>
@@ -19,8 +19,8 @@ function App() {
 
         <Route exact path="/" 
           render={ rProps => token === null ? 
-            <SignIn /> : 
-            [<Navbar />, <PopUp />,<Follow />, <Post />]}
+          <SignIn /> : 
+          [<Navbar />, <PopUp />,<Follow />, <Post />]}
         />
         
         <Route exact path="/signin"
@@ -31,12 +31,12 @@ function App() {
         
         <Route exact path="/signup" component={SignUp} />
 
-        <Route exact path="/profile" 
+        <Route path={`/:username`} 
           render={() => token === null ? 
           <Redirect to='/' /> : 
           [<Navbar />, <Profile />]}
         />
-
+        
       </Switch>
     </Router>
   );

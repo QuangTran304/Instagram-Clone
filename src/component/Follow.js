@@ -117,3 +117,42 @@ const Follow = () => {
 }
 
 export default Follow;
+
+
+//   return (
+
+//     <div className="follow-wrapContainer">
+//         <h4 className="follow-hoverButton">
+//           Explore
+//         </h4>
+
+//       <div className="follow-container">
+        
+//         <div className="follow-userContainer">
+//           <h3 className="follow-groupTitle"> People you may know: </h3>
+//           {users.map(({ user }) => (
+//             <div>
+//               {user !== firebase.auth().currentUser.displayName && (
+//                 <div className="follow-userLine">
+//                   <div className="follow-userName">
+//                     <Link to={`/${user}`} style={{ textDecoration: 'none', color: 'gray' }}> {user} </Link>
+//                   </div>
+//                   <Button  variant="contained" color="primary" ref={btnRef} onClick={() => followUser(user)}>
+//                     Follow
+//                   </Button>
+//                 </div>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+      
+//         <div>
+//           <h3 className="follow-groupTitle"> Following: </h3>
+//           <UnFollow />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Follow;

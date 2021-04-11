@@ -14,22 +14,22 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'theme.shadows[5]',
     textAlign: 'center',
   },
-  button: {
-    marginLeft: '35%',
-    marginRight: '35%',
-    width: '30%',
-    maxWidth: '500px',
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(12),
-    marginBottom: theme.spacing(5),
-    display: "flex",
-    justifyContent: "center",
-    background: "white",
-    border: "1px solid #fdcfde",
-    borderRadius: "25px",
-    boxShadow: "0 0 12px 0 rgba(0, 0, 0, 0.103)",
-    fontWeight: "bold",
-    cursor: "pointer",
+    button:{
+        marginLeft: '35%',
+        marginRight: '35%',
+        width: '30%',
+        maxWidth: '500px',
+        padding: theme.spacing(2),
+        marginTop: theme.spacing(14),
+        marginBottom: theme.spacing(5),
+        display: "flex",
+        justifyContent: "center",
+        background: "white",
+        border: "1px solid #fdcfde",
+        borderRadius: "25px",
+        boxShadow: "0 0 12px 0 rgba(0, 0, 0, 0.103)",
+        fontWeight: "bold",
+        cursor: "pointer",
   },
 }));
 
@@ -50,7 +50,7 @@ export default function PopUp() {
   return (
     <div>
       <button type="button" onClick={handleOpen} className={classes.button}>
-        Create a Post
+        New Post
       </button>
 
       <Modal open={open} onClose={handleClose} >
