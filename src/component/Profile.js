@@ -14,18 +14,41 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 
 
 const Profile = () => {
+  
   const { username } = useParams();
   const [follower, setFollower] = useState();
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
   const [currentUser , setCurrentUser] = useState("");
+  const [followingList, setFollowingList] = useState([]);
 
   auth.onAuthStateChanged( (user) => {
     if(user) {
       setCurrentUser(user.displayName);
     }
   }) 
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            database
+                .collection('users')
+                .doc(firebase.auth().currentUser.displayName)
+                .collection('following')
+                .onSnapshot(snapshot => {
+                    setFollowingList(
+                        snapshot.docs.map(doc => ({
+                            username: doc.data().username
+                        })));
+                })
+
+        } else {
+            // No user is signed in.
+        }
+    });
+    // eslint-disable-next-line
+}, [])
 
 
   // Dummy Post data to prevent 'undefined' error
@@ -65,6 +88,45 @@ const Profile = () => {
     handleOpen(true);
     setPostObj(postObj);
   }
+
+  const isFollowed = (user) => {
+    let follow = false;
+
+    // eslint-disable-next-line
+    followingList.map(({ username }) => {
+        if (user === username) {
+            follow = true;
+        }
+    })
+
+    if (follow) {
+        return true;
+    }
+    return false;
+}
+
+  const followUser = (user) => {
+    database.collection('users').doc(user).collection('follower').doc(firebase.auth().currentUser.displayName).set({
+        username: firebase.auth().currentUser.displayName,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(user).set({
+        username: user,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    })
+}
+
+const unFollowUser = (username) => {
+    database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
+    }).catch((error) => {
+        console.error("Error removing user: ", error);
+    });
+
+    database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
+    }).catch((error) => {
+        console.error("Error removing user: ", error);
+    });
+}
 
 
   // Get user posts & id on page load
@@ -136,7 +198,13 @@ const Profile = () => {
       <div className="profile-userMeta">
         <div className="profile-userName">
           <h2>{username}'s Profile</h2>
-          {username != currentUser  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
+          {username != currentUser  &&  
+           (isFollowed(username) ?
+            <Button variant="contained" color="secondary" style={{marginLeft: '20px'}} onClick={() => unFollowUser(username)}>Unfollow</Button>
+            :
+            <Button variant="contained" color="secondary" style={{marginLeft: '20px'}} onClick={() => followUser(username)}> Follow </Button>
+           )
+        }
         </div>
       
         <div className="profile-stats-box">
