@@ -150,7 +150,7 @@ const unFollowUser = (username) => {
           });
       } 
     })
-  }, []); 
+  }, [username]); 
 
   // Get # of follower on page load
   useEffect(() => {
