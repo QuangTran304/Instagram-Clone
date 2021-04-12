@@ -19,6 +19,13 @@ const Profile = () => {
   const [following, setFollowing] = useState();
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
+  const [currentUser , setCurrentUser] = useState("");
+
+  auth.onAuthStateChanged( (user) => {
+    if(user) {
+      setCurrentUser(user.displayName);
+    }
+  }) 
 
 
   // Dummy Post data to prevent 'undefined' error
@@ -129,7 +136,7 @@ const Profile = () => {
       <div className="profile-userMeta">
         <div className="profile-userName">
           <h2>{username}'s Profile</h2>
-          {!username  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
+          {username != currentUser  &&  <Button variant="contained" color="secondary" style={{marginLeft: '20px'}}>Follow</Button>}
         </div>
       
         <div className="profile-stats-box">
