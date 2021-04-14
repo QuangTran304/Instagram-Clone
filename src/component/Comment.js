@@ -79,8 +79,7 @@ const Comment = ({ postId, all }) => {
             <strong>{username} </strong> {comment}
           </p>
         </div>
-      ))
-      }
+      ))}
 
       <form className="post_commentBox">
         <TextField
@@ -103,10 +102,10 @@ const Comment = ({ postId, all }) => {
           className={classes.margin}
         >
           Post
-          </Button>
+        </Button>
       </form>
     </div>
-  )
+  );
 };
 
 export default Comment;
