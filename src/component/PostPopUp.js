@@ -57,6 +57,7 @@ const PostPopUp = ({ id, post }) => {
                   <Like id={id} />
                   <ChatBubbleOutlineOutlinedIcon
                     style={{ marginRight: 8, width: 20 }}
+                    className="post-iconItem"
                   />
                   {post.comments}
                 </div>

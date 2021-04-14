@@ -35,9 +35,9 @@ const Post = () => {
           src="/static/images/avatar/1.jpg"
           style={{ width: 35, height: 35 }}
         ></Avatar>
-        
+
         <div className="post-meta">
-          <Link to={`/${post.username}`} style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to={`/${post.username}`} className="nav-link">
             <h3 className="post-username">{post.username}</h3>
           </Link>
           <p className="post-location">{post.location}</p>
@@ -47,15 +47,16 @@ const Post = () => {
 
       <div className="post-body">
         <div className="post-icons">
-          <Like id={id} />
+          <Like id={id} className="post-iconItem"/>
           <PostPopUp id={id} post={post} />
           <h5> {post.comments} </h5>
         </div>
 
-        <p className="post-like-number"> Liked by {post.likes}
+        <p className="post-like-number">
+          {" "}
+          Liked by {post.likes}
           <PopUpLike id={id} />
         </p>
-
 
         <h4 className="post-description">
           <strong>{post.username}</strong> {post.description}
@@ -64,7 +65,6 @@ const Post = () => {
         <h3 className="post-comment">Comments</h3>
 
         <Comment postId={id} all={false} />
-
       </div>
     </div>
   ));

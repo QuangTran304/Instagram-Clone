@@ -47,6 +47,11 @@ body {
   height: auto;
 }
 
+.nav-link {
+  color: black;
+  text-decoration: none;
+}
+
 .search-box {
   position: absolute;
   left: 40%;
@@ -70,6 +75,18 @@ body {
   width: 30px;
   height: auto;
   margin: 5px;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: #F50057;
+  border-bottom: 2px solid #F50057;
+  width: 30px;
+  height: 5px;
 }
 
 .search-box input {
@@ -259,6 +276,12 @@ body {
   align-items: center;
 }
 
+
+.post-icons > svg:hover, .post-icons > div > svg:hover {
+  color: #F50057;
+  transition: 0.250s;
+}
+
 .post-like-number {
   font-size: 11px;
   padding: 5px 0 10px 0;
@@ -268,6 +291,7 @@ body {
 /* Styles for Post Upload Form */
 
 .post-upload-container {
+  display: flex;
   margin: auto;
   max-width: 500px;
   margin-top: 30px;
@@ -279,9 +303,46 @@ body {
   background: white;
   border: 2px solid #fdcfde;
   border-radius: 10px;
+  width: 100%;
   padding: 20px 25px;
-  margin: 15vh 15px;
+  margin: 15% 5%;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.103);
+}
+
+@media only screen and (max-width: 600px) {
+  .post-upload-form {
+    max-width: 75%;
+    margin: 100px 5% 0 5%;
+  }
+}
+
+.post-upload-button {
+  margin: 14vh auto 3vh auto;
+  padding: 15px 20%;
+  border-radius: 10px;
+  border: 0;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: ease-in-out 0.250s;
+  animation: postButton-slideUp 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 650ms both;
+}
+
+@keyframes postButton-slideUp {
+   100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
+.post-upload-button:hover {
+  box-shadow: 2px 3px 15px 2px rgba(30, 143, 255, 0.30);
 }
 
 .MuiOutlinedInput-root {
@@ -290,9 +351,10 @@ body {
 }
 
 .post-form-title {
+  color: rgb(32, 32, 32);
   font-family: inherit;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .post_commentBox {
@@ -503,6 +565,18 @@ progress::-webkit-progress-value {
   margin-left: 25px;
 }
 
+@media only screen and (max-width: 600px) {
+  .post-popup {
+    padding: 0;
+    max-width: 85vw;
+    max-height: 60vh;
+    left: 52%;
+  }
+  .post-popup-content {
+    margin: 0;
+  }
+}
+
 
 /* Like Popup*/
 
@@ -544,6 +618,12 @@ progress::-webkit-progress-value {
   margin-left: 7.5px;
   display: flex ;
   margin: 0 30px 0 5px;
+}
+
+.post_comment p:hover {
+  transform: translateY(-2px);
+  transition: 0.125s;
+  box-shadow: 2px 2px 3px 0 rgb(192, 192, 192);
 }
 
 .content {

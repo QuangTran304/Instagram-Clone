@@ -124,7 +124,7 @@ const Follow = () => {
                       src="/broken-image.jpg"
                       style={{ width: 35, height: 35 }}
                     ></Avatar>
-                    <Link to={`/${user}`} style={{ textDecoration: 'none', color: 'gray' }}> 
+                    <Link to={`/${user}`} className="nav-link"> 
                       <p className="follow-nameLink">{user}</p>
                     </Link>
                   </Grid>

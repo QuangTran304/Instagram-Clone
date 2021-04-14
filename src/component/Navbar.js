@@ -32,10 +32,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu">
-          <Link to="/"><HomeRoundedIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
-          <Link to={`/${username}`}><AccountCircleIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
-          <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
-          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item" style={{ textDecoration: 'none', color: 'black' }}/></Link>
+          <Link to="/"><HomeRoundedIcon className="icon-item"/></Link>
+          <Link to={`/${username}`}><AccountCircleIcon className="icon-item"/></Link>
+          <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item"/></Link>
+          <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item"/></Link>
         </div>
       </div>
     </div>
