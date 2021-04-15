@@ -47,6 +47,11 @@ body {
   height: auto;
 }
 
+.nav-link {
+  color: black;
+  text-decoration: none;
+}
+
 .search-box {
   position: absolute;
   left: 40%;
@@ -70,6 +75,18 @@ body {
   width: 30px;
   height: auto;
   margin: 5px;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: #F50057;
+  border-bottom: 2px solid #F50057;
+  width: 30px;
+  height: 5px;
 }
 
 .search-box input {
@@ -187,7 +204,7 @@ body {
 .post {
   background-color: white;
   border: 1px solid #dbdbdb;
-  border-radius: 2px;
+  border-radius: 8px;
   margin: 25px auto;
   max-width: 500px;
 }
@@ -211,6 +228,12 @@ body {
 .post-username {
   font-size: 14px;
   font-weight: 600;
+  /* cursor: pointer; */
+}
+
+.post-username:hover {
+  color: orange;
+  transition: 0.125s;
 }
 
 .post-location {
@@ -231,15 +254,19 @@ body {
 
 .post-description {
   font-weight: lighter;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  padding: 10px 0;
+  padding: 20px 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgb(240, 240, 240);
 }
 
 .post-comment {
-  font-weight: lighter;
-  font-size: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(180, 180, 180);
+  padding-bottom: 5px;
 }
 
 .post-icons {
@@ -249,15 +276,22 @@ body {
   align-items: center;
 }
 
+
+.post-icons > svg:hover, .post-icons > div > svg:hover {
+  color: #F50057;
+  transition: 0.250s;
+}
+
 .post-like-number {
-  font-size: 10px;
-  padding: 5px 0;
+  font-size: 11px;
+  padding: 5px 0 10px 0;
 }
 
 
 /* Styles for Post Upload Form */
 
 .post-upload-container {
+  display: flex;
   margin: auto;
   max-width: 500px;
   margin-top: 30px;
@@ -268,9 +302,47 @@ body {
   flex-direction: column;
   background: white;
   border: 2px solid #fdcfde;
-  border-radius: 3px;
+  border-radius: 10px;
+  width: 100%;
   padding: 20px 25px;
+  margin: 15% 5%;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.103);
+}
+
+@media only screen and (max-width: 600px) {
+  .post-upload-form {
+    max-width: 75%;
+    margin: 100px 5% 0 5%;
+  }
+}
+
+.post-upload-button {
+  margin: 14vh auto 3vh auto;
+  padding: 15px 20%;
+  border-radius: 10px;
+  border: 0;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: ease-in-out 0.250s;
+  animation: postButton-slideUp 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 650ms both;
+}
+
+@keyframes postButton-slideUp {
+   100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
+.post-upload-button:hover {
+  box-shadow: 2px 3px 15px 2px rgba(30, 143, 255, 0.30);
 }
 
 .MuiOutlinedInput-root {
@@ -279,9 +351,10 @@ body {
 }
 
 .post-form-title {
+  color: rgb(32, 32, 32);
   font-family: inherit;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .post_commentBox {
@@ -305,14 +378,11 @@ body {
 
 /* Post Comments */
 
-.post_comment {
-  font-size: 12px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  padding: 5px 0;
-  margin-left: 7.5px;
-  display: flex;
-  margin: 0 30px 0 5px;
+.post_comment p {
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 3px 10px 10px 10px;
+  background: #d8ecff;
 }
 
 @media only screen and (max-width: 600px) {
@@ -445,53 +515,20 @@ progress::-webkit-progress-value {
   height: 85vh;
   overflow: scroll;
 }
+
+
 /* Follow and Unfollow */
-
-.follow-users {
-  position: fixed;
-  top: 58px;
-  right: 10%;
-  margin: 25px auto;
-  max-width: 500px;
-  padding: 10px 20px 10px 20px;
-}
-
-
-.follow-align{
-  position: absolute;
-  right: 0;
-  display: flex;
-}
 
 .follow-button {
   text-transform: unset !important;
 }
 
 .user-description {
-  font-weight: 300;
+  font-weight: 500;
   font-size: 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 10px;
-}
-
-.user-headline {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.user-info {
-  display: flex;
-  padding: 5px;
-  width: 200px;
-}
-
-.user-right {
-  display: flex;
-}
-
-.user-username {
-  padding-top: 8px;
 }
 
 .user-avatar {
@@ -502,49 +539,44 @@ progress::-webkit-progress-value {
       rgba(199, 53, 141, 1) 100%);
 }
 
-/* Mobile View for User Follow List */
-@media only screen and (max-width: 600px) {
-  .follow-users {
-  position: static;
-  top: 0;
-}
-.follow-button {
-  right: 50px;
-}
-
-}
-
-@media only screen and (max-width: 1024px) {
-  .follow-users {
-  position: static;
-  top: 0;
-}
-.follow-button {
-  right: 320px;
-}
-
-}
 
 /* PopUp Post*/
 
 .post-popup {
   background-color: white;
-  border-radius: 2px;
+  border-radius: 10px;
   max-width: 75%;
-  min-height: 50%;
-  max-height: 85%;
+  max-height: 70vh;
+  overflow: scroll;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+  padding: 5px 0 0 25px;
 }
 
 .post-popup-image {
   width: 100%;
-  max-height: 83vmin;
-  object-fit: contain;
 }
+
+.post-popup-content {
+  overflow: sroll;
+  margin-left: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .post-popup {
+    padding: 0;
+    max-width: 85vw;
+    max-height: 60vh;
+    left: 52%;
+  }
+  .post-popup-content {
+    margin: 0;
+  }
+}
+
 
 /* Like Popup*/
 
@@ -553,16 +585,27 @@ progress::-webkit-progress-value {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 30%;
+  min-width: 250px;
   background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  overflow: scroll;
 }
 
-.popup-like-username{
-  margin: 20px auto;
+.like-popup-userInfo {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
 }
 
 .like-people {
   cursor: pointer;
+}
+
+.like-people:hover {
+  color: orange;
+  transition: 0.125s;
 }
 
 /* Post Comments */
@@ -575,6 +618,12 @@ progress::-webkit-progress-value {
   margin-left: 7.5px;
   display: flex ;
   margin: 0 30px 0 5px;
+}
+
+.post_comment p:hover {
+  transform: translateY(-2px);
+  transition: 0.125s;
+  box-shadow: 2px 2px 3px 0 rgb(192, 192, 192);
 }
 
 .content {
@@ -673,7 +722,7 @@ progress::-webkit-progress-value {
   height: 70vh;
   border-radius: 10px;
   overflow: scroll;
-  transform: translate(0, 20vh);
+  transform: translate(0, 24vh);
   transition: ease-in-out 0.55s;
   position: fixed;
   bottom: 20vh;
@@ -682,7 +731,7 @@ progress::-webkit-progress-value {
 }
 
 .follow-wrapContainer:hover {
-  transform: translate(-330px, 20vh);
+  transform: translate(-330px, 24vh);
   transition: ease-in-out 0.55s;
 }
 
@@ -700,7 +749,7 @@ progress::-webkit-progress-value {
   border-radius: 10px 10px 0 0;
   transform: rotate(-90deg);
   position: absolute;
-  bottom: 15vh;
+  bottom: 20vh;
   left: -65px;
   z-index: 50;
 }
@@ -719,13 +768,23 @@ progress::-webkit-progress-value {
 }
 
 .follow-userName {
+  display: flex;
+  align-items: center;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: gray;
 }
 
+.follow-nameLink:hover {
+  color: orange;
+  transition: 0.125s;
+}
+
 .follow-groupTitle {
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(224, 224, 224);
 }
 
 @media only screen and (max-width: 600px) {
