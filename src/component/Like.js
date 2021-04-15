@@ -64,7 +64,7 @@ const Like = ({ id }) => {
     };
 
     return (
-        <div>
+        <div data-testid="likeButton">
             {liked ? <FavoriteIcon
                 onClick={() => handleLikeClick(id)}
                 color="secondary"
