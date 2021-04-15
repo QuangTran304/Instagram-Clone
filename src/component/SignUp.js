@@ -11,6 +11,8 @@ import Container from '@material-ui/core/Container';
 import { firebaseAuth } from '../provider/AuthProvider'
 import logo from "../Instagrill.png";
 
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -44,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function SignUp(props) {
   const classes = useStyles();
 
@@ -58,6 +62,8 @@ export default function SignUp(props) {
     const { name, value } = e.target
     setInputs(prev => ({ ...prev, [name]: value }))
   }
+
+
 
   return (
     <Container component="main" maxWidth="xs">

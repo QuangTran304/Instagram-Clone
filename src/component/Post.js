@@ -8,6 +8,8 @@ import PopUpLike from "./PopUpLike"
 import PostPopUp from "./PostPopUp"
 import { Link } from "react-router-dom";
 
+
+
 const Post = () => {
   const [posts, setPosts] = useState([]);
 
@@ -26,6 +28,8 @@ const Post = () => {
     // eslint-disable-next-line
   }, []);
  
+
+
   return posts.map(({ id, post }) => (
     <div className="post" key={id}>
       <div className="post-header">
@@ -38,16 +42,21 @@ const Post = () => {
 
         <div className="post-meta">
           <Link to={`/${post.username}`} className="nav-link">
-            <h3 className="post-username">{post.username}</h3>
+            <h3 className="post-username">
+              {post.username}
+            </h3>
           </Link>
-          <p className="post-location">{post.location}</p>
+          <p className="post-location">
+            {post.location}
+          </p>
         </div>
       </div>
-      <img className="post-image" src={post.image} alt="" />
+
+      <img  className="post-image" src={post.image} alt="" />
 
       <div className="post-body">
         <div className="post-icons">
-          <Like id={id} className="post-iconItem"/>
+          <Like id={id} className="post-iconItem" />
           <PostPopUp id={id} post={post} />
           <h5> {post.comments} </h5>
         </div>

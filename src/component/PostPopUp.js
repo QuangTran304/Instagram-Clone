@@ -8,6 +8,8 @@ import PopUpLike from "./PopUpLike";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
 
+
+
 const PostPopUp = ({ id, post }) => {
   const [open, setOpen] = useState(false);
 
@@ -18,6 +20,8 @@ const PostPopUp = ({ id, post }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+
 
   return (
     <>

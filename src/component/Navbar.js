@@ -23,6 +23,7 @@ const Navbar = () => {
   return (
     <div className="nav-bar">
       <div className="nav-container">
+
         <div className="nav-logo-and-search">
           <div>
             <Link to="/"><img src={logo} className="app-logo" alt="logo" /></Link>
@@ -31,12 +32,14 @@ const Navbar = () => {
             <input type="text" className="search" placeholder="Search..." />
           </div>
         </div>
+
         <div className="menu">
           <Link to="/"><HomeRoundedIcon className="icon-item"/></Link>
           <Link to={`/${username}`}><AccountCircleIcon className="icon-item"/></Link>
           <Link to="#LikedPost"><FavoriteBorderRoundedIcon className="icon-item"/></Link>
           <Link onClick={handleSignout} to="/"><ExitToAppIcon className="icon-item"/></Link>
         </div>
+
       </div>
     </div>
   )

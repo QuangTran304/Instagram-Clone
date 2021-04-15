@@ -18,6 +18,7 @@ const CreatePost = () => {
     }
   }
 
+  
   const handleSubmit = () => {
     const uploadedContent = storage.ref(`${firebase.auth().currentUser.displayName}/${image.name}`).put(image);
 

@@ -3,6 +3,8 @@ import Modal from '@material-ui/core/Modal';
 import { database } from "../firebase/firebase";
 import Avatar from "@material-ui/core/Avatar";
 
+
+
 const PopUpLike = ({id}) => {
     const[open, setOpen] = useState(false);
     const [liked, setLiked] = useState([]);
@@ -34,6 +36,8 @@ const PopUpLike = ({id}) => {
           // eslint-disable-next-line
       }, []);
 
+
+      
     return (
       <>
         <span className="like-people" onClick={handleOpen}>

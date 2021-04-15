@@ -77,6 +77,11 @@ body {
   margin: 5px;
 }
 
+.menu li {
+  list-style: none;
+  display: inline-block;
+}
+
 .menu a {
   color: black;
   text-decoration: none;
@@ -720,6 +725,7 @@ progress::-webkit-progress-value {
   padding-left: 38px;
   width: 330px;
   height: 70vh;
+  max-height: 500px;
   border-radius: 10px;
   overflow: scroll;
   transform: translate(0, 24vh);

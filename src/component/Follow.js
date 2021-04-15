@@ -112,8 +112,10 @@ const Follow = () => {
       <h4 className="follow-hoverButton">Explore</h4>
 
       <div className="follow-container">
-        <p className="follow-groupTitle"> People you may know </p>
-        <h4 className="user-description">
+        <p className="follow-groupTitle" data-testid="test-sidebarTitle"> 
+          People you may know 
+        </p> 
+        <h4 className="user-description" data-testid="test-userDescription">
           {users.map(({ user }) => (
             <div>
               {user !== firebase.auth().currentUser.displayName && (
