@@ -7,6 +7,12 @@ test("Sidebar shows title", () => {
   expect(sidebarTitle).toHaveTextContent("People you may know");
 });
 
+test("Sidebar shows Explore", () => {
+  render(<Follow />);
+  const sidebarExplore = screen.getByTestId("test-sidebarExplore");
+  expect(sidebarExplore).toHaveTextContent("Explore");
+});
+
 afterEach(() => {
   cleanup();
 });

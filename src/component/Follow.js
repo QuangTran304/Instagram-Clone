@@ -109,7 +109,7 @@ const Follow = () => {
 
   return (
     <div className="follow-wrapContainer">
-      <h4 className="follow-hoverButton">Explore</h4>
+      <h4 className="follow-hoverButton" data-testid="test-sidebarExplore">Explore</h4>
 
       <div className="follow-container">
         <p className="follow-groupTitle" data-testid="test-sidebarTitle"> 
