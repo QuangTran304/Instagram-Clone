@@ -40,12 +40,17 @@ const PopUpLike = ({id}) => {
       
     return (
       <>
-        <span className="like-people" onClick={handleOpen}>
+        <span
+          className="like-people"
+          onClick={handleOpen}
+          data-testid="test-likedPeople"
+        >
           {" "}
           people{" "}
         </span>
+
         <Modal open={open} onClose={handleClose}>
-          <div className="like-popup">
+          <div className="like-popup" data-testid="test-likedModal">
             {liked.map(({ username }) => (
               <div className="like-popup-userInfo">
                 <Avatar
