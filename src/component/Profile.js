@@ -10,13 +10,13 @@ import { Avatar } from '@material-ui/core';
 import Comment from './Comment';
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-
-
+import PopUpFollowing from "./PopUpFollowing";
+import PopUpFollower from "./PopUpFollower";
 
 const Profile = () => {
   const { username } = useParams();
-  const [follower, setFollower] = useState();
-  const [following, setFollowing] = useState();
+  const [follower, setFollower] = useState([]);
+  const [following, setFollowing] = useState([]);
   const [postCount, setPostCount] = useState();
   const [userPosts, setUserPosts] = useState([]);
   const [currentUser , setCurrentUser] = useState("");
@@ -161,7 +161,10 @@ const Profile = () => {
           .doc(username)
           .collection("follower")
           .onSnapshot((snapshot) => {
-            setFollower(snapshot.docs.length);
+            setFollower(
+              snapshot.docs.map(doc => ({
+                username: doc.data().username
+            })));
           });
       }
     });
@@ -177,7 +180,10 @@ const Profile = () => {
           .doc(username)
           .collection("following")
           .onSnapshot((snapshot) => {
-            setFollowing(snapshot.docs.length);
+            setFollowing(
+              snapshot.docs.map(doc => ({
+                username: doc.data().username
+            })));
           });
       }
     });
@@ -210,10 +216,10 @@ const Profile = () => {
             <h4>{postCount} <br /> Posts</h4>
           </div>
           <div className="profile-stats">
-            <h4>{follower} <br /> Followers</h4>
+            <h4>{follower.length} <br /> <PopUpFollower follower={follower}/></h4>
           </div>
           <div className="profile-stats">
-            <h4>{following} <br /> Following</h4>
+            <h4>{following.length} <br /> <PopUpFollowing following={following}/></h4>
           </div>
         </div>
       </div>
