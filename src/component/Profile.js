@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import "../index.css";
 import { database, auth } from '../firebase/firebase';
 import firebase from 'firebase'
-import "../index.css"
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import { Link, useParams } from 'react-router-dom';
@@ -84,7 +83,7 @@ const Profile = () => {
     post.update({ likes: increment });
   };
 
-  const handleImageClick = (postObj) => {
+  const handleImageClick = () => {
     handleOpen(true);
     setPostObj(postObj);
   }
@@ -93,7 +92,7 @@ const Profile = () => {
     let follow = false;
 
     // eslint-disable-next-line
-    followingList.map(({ username }) => {
+    followingList.map(() => {
         if (user === username) {
             follow = true;
         }
@@ -116,13 +115,15 @@ const Profile = () => {
     })
   }
 
-  const unFollowUser = (username) => {
+  const unFollowUser = () => {
       database.collection('users').doc(firebase.auth().currentUser.displayName).collection('following').doc(username).delete().then(() => {
+        // intentionally-blank override ?
       }).catch((error) => {
           console.error("Error removing user: ", error);
       });
 
       database.collection('users').doc(username).collection('follower').doc(firebase.auth().currentUser.displayName).delete().then(() => {
+        // intentionally-blank override ?
       }).catch((error) => {
           console.error("Error removing user: ", error);
       });
@@ -204,7 +205,7 @@ const Profile = () => {
           <h2>{username}'s Profile</h2>
           {username !== currentUser  &&  
            (isFollowed(username) ?
-            <Button variant="contained" color="secondary" style={{marginLeft: '20px'}} onClick={() => unFollowUser(username)}>Unfollow</Button>
+            <Button variant="contained" color="secondary" style={{marginLeft: '20px'}} onClick={() => unFollowUser()}>Unfollow</Button>
             :
             <Button variant="contained" color="secondary" style={{marginLeft: '20px'}} onClick={() => followUser(username)}> Follow </Button>
            )
@@ -230,7 +231,7 @@ const Profile = () => {
     <div className="profile-userPosts">
     { // Loop through each image user have posted, onClick == show that post
       userPosts.map( ({id, post}) => (
-        <img src={post.image} alt="" onClick={() => handleImageClick( {id, post} )}/>
+        <img src={post.image} alt="" onClick={() => handleImageClick()}/>
       ))
     }
     </div>

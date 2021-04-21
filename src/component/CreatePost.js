@@ -1,6 +1,5 @@
-import React from "react";
+import {useState, React} from "react";
 import "../index.css";
-import { useState } from "react";
 import firebase from "firebase";
 import { database, storage } from '../firebase/firebase';
 import { Button, TextField } from "@material-ui/core";
@@ -27,10 +26,10 @@ const CreatePost = () => {
 
       (snapshot) => {
         // uploading progress bar
-        const progress = Math.round(
+        const prog = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        setProgress(progress);
+        setProgress(prog);
       },
 
       (error) => {

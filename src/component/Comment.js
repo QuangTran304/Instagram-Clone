@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, React} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import firebase from "firebase";
 import { database } from "../firebase/firebase";
@@ -72,8 +71,7 @@ const Comment = ({ postId, all }) => {
 
   return (
     <div>
-      {lengthIs()}
-      {comments.slice(start, length).map(({ username, comment }) => (
+      {comments.slice(start, length).map(({ username}) => (
         <div className="post_comment">
           <p>
             <strong>{username} </strong> {comment}

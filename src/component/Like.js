@@ -41,14 +41,13 @@ const Like = ({ id }) => {
               );
             });
         }
-      } else {
       }
     });
     // eslint-disable-next-line
   }, []);
 
 
-  const handleLikeClick = (id) => {
+  const handleLikeClick = () => {
     const post = database.collection("posts").doc(id);
     if (liked) {
       database
@@ -85,13 +84,13 @@ const Like = ({ id }) => {
     <div data-testid="likeButton">
       {liked ? (
         <FavoriteIcon
-          onClick={() => handleLikeClick(id)}
+          onClick={() => handleLikeClick()}
           color="secondary"
           style={{ marginRight: 8, width: 20, cursor: "pointer" }}
         />
       ) : (
         <FavoriteBorder
-          onClick={() => handleLikeClick(id)}
+          onClick={() => handleLikeClick()}
           style={{ marginRight: 8, width: 20, cursor: "pointer" }}
         />
       )}

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, React} from "react";
 import firebase from "firebase";
 import Avatar from "@material-ui/core/Avatar";
 import { database } from "../firebase/firebase";
@@ -88,7 +87,9 @@ const Follow = () => {
       .collection("following")
       .doc(username)
       .delete()
-      .then(() => {})
+      .then(() => { 
+        //intentionally-blank override
+      })
       .catch((error) => {
         console.error("Error removing user: ", error);
       });
@@ -99,7 +100,9 @@ const Follow = () => {
       .collection("follower")
       .doc(firebase.auth().currentUser.displayName)
       .delete()
-      .then(() => {})
+      .then(() => {
+        // intentionally-blank override
+      })
       .catch((error) => {
         console.error("Error removing user: ", error);
       });

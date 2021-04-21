@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import React, {useContext} from 'react';
 import Post from "./component/Post";
 import Navbar from './component/Navbar'
-import SignIn from "./component/SignIn";
+import SignInSide from "./component/SignInSide";
 import SignUp from "./component/SignUp";
 import Profile from "./component/Profile";
 import Follow from "./component/Follow";
-import PopUp from "./component/PopUpPostButton";
+import PopUp from "./component/PopUp";
 import {firebaseAuth} from "./provider/AuthProvider"
 
 
@@ -19,7 +19,7 @@ function App() {
 
         <Route exact path="/" 
           render={ rProps => token === null ? 
-          <SignIn /> : 
+          <SignInSide /> : 
           [<Navbar />, <PopUp />,<Follow />, <Post />]}
         />
         
