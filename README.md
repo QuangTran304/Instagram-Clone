@@ -2,6 +2,9 @@
 
 This project is part of the SOEN 341 - Software Process class at Concordia University.
 
+## App screenshot
+![2023-02-17 11 34 55](https://user-images.githubusercontent.com/45047536/219712271-7a10ef69-3b55-49de-bc1a-83c8cf328516.gif)
+
 ## **The Task**
 
 In a team of maximum 7 students, implement an application (Instagram) using any programming language/ scripting language, frameworks, or any other tools of choice. All members of your team must have a good understanding of the tools used. Your documentation, both internal and external, must be clear enough to be easily understandable by a reader who may not be familiar with the language or tools used.
