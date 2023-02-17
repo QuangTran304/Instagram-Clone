@@ -3,7 +3,14 @@
 This project is part of the SOEN 341 - Software Process class at Concordia University.
 
 ## App screenshot
-![2023-02-17 11 34 55](https://user-images.githubusercontent.com/45047536/219712271-7a10ef69-3b55-49de-bc1a-83c8cf328516.gif)
+![2023-02-17 11 34 55](https://user-images.githubusercontent.com/45047536/219714103-82e56a81-4d9a-445a-8006-be7495e63a57.gif)
+
+<hr />
+
+### Mobile view
+<img width="300" src="https://user-images.githubusercontent.com/45047536/219714376-fe4a7153-d7d4-4cdf-83b5-7044486cb752.jpg" />
+<img width="300" src="https://user-images.githubusercontent.com/45047536/219714379-d24db225-03c9-45a0-807f-24fc150af706.jpg" />
+
 
 ## **The Task**
 
